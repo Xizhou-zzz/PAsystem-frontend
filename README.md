@@ -4,7 +4,7 @@
 
 # PA-system
 
-Follow is the quick guide for how to use.
+
 
 ### 其余的是导包过来时自己生成的，看汉字就行了
 
@@ -22,6 +22,10 @@ npm run start
 ↑这样就不会出现用户名密码的问题
 
 ### 其余的是导包过来时自己生成的，看汉字就行了
+
+
+
+
 
 ## Environment Prepare
 
