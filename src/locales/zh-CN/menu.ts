@@ -1,4 +1,12 @@
 export default {
+  'menu.learn': '学习',
+  'menu.set': '设置',
+  'menu.learn.mycourse': '我的课程',
+  'menu.learn.myhomework': '我的作业',
+  'menu.learn.evaluate': '批改任务',
+  'menu.learn.grade': '成绩查询',
+  'menu.set.myinformation': '个人信息',
+  'menu.set.safetysetting': '安全设置',
   'menu.welcome': '欢迎',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
