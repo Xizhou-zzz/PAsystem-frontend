@@ -72,6 +72,19 @@ export default [
     ],
   },
   {
+    path: '/teacher',
+    name: 'teacher',
+    icon: 'MenuOutlined',
+    routes: [
+      {
+        //我的课程
+        path: '/teacher/mycourse',
+        name: 'mycourse',
+        component: './teacher/Mycourse'
+      },
+    ],
+  },
+  {
     path: '/admin',
     name: 'admin',
     icon: 'crown',
