@@ -22,104 +22,140 @@ export default [
     component: './Welcome',
   },
   {
-    //学生角色的 学习 菜单栏
-    path: '/learn',
-    name: 'learn',
-    access: 'canStudent',
+    //教师的 课程平台 菜单栏
+    path: '/course_platform_t',
+    name: 'course_platform_t',
     icon: 'MenuOutlined',
+    access: 'canTeacher',
     routes: [
       {
-        //我的课程
-        path: '/learn/mycourse',
-        name: 'mycourse',
-        component: './Learn/Mycourse',
+        //我的课程 菜单栏
+        path: '/course_platform_t/mycourse_t',
+        name: 'mycourse_t',
+        component: './Course_platform_t/Mycourse_t',
       },
       {
-        //我的作业
-        path: '/learn/myhomework',
-        name: 'myhomework',
-        component: './Learn/Myhomework',
-      },
-      {
-        //批改任务
-        path: '/learn/evaluate',
-        name: 'evaluate',
-        component: './Learn/Evaluate',
-      },
-      {
-        //成绩查询
-        path: '/learn/grade',
-        name: 'grade',
-        component: './Learn/Grade',
+        //学生成绩 菜单栏
+        path: '/course_platform_t/student_grade',
+        name: 'student_grade',
+        component: './Course_platform_t/Student_grade',
       },
     ],
   },
   {
-    //学生角色的 设置 菜单栏
-    path: '/set',
-    name: 'set',
+    //教师的 作业平台 菜单栏
+    path: '/homework_platform',
+    name: 'homework_platform',
+    icon: 'MenuOutlined',
+    access: 'canTeacher',
+    routes: [
+      {
+        //作业管理 菜单栏
+        path: '/homework_platform/homework_manage',
+        name: 'homework_manage',
+        component: './Homework_platform/Homework_manage',
+      },
+      {
+        //批改情况 菜单栏
+        path: '/homework_platform/correction',
+        name: 'correction',
+        component: './Homework_platform/Correction',
+      },
+    ],
+  },
+  {
+    //学生的 课程平台 菜单栏
+    path: '/course_platform_s',
+    name: 'course_platform_s',
+    icon: 'MenuOutlined',
     access: 'canStudent',
+    routes: [
+      {
+        //我的课程 菜单栏
+        path: '/course_platform_s/mycourse_s',
+        name: 'mycourse_s',
+        component: './Course_platform_s/Mycourse_s',
+      },
+      {
+        //我的任务 菜单栏
+        path: '/course_platform_s/mission',
+        name: 'mission',
+        component: './Course_platform_s/Mission',
+      },
+    ],
+  },
+  {
+    //管理员的 授课管理 菜单栏
+    path: '/teaching_manage',
+    name: 'teaching_manage',
+    icon: 'MenuOutlined',
+    access: 'canAdmin',
+    routes: [
+      {
+        //课程管理 菜单栏
+        path: '/teaching_manage/course_manage',
+        name: 'course_manage',
+        component: './Teaching_manage/Course_manage',
+      },
+      {
+        //人员管理 菜单栏
+        path: '/teaching_manage/people_manage',
+        name: 'people_manage',
+        component: './Teaching_manage/People_manage',
+      },
+    ],
+  },
+  {
+    //管理员的 权限管理 菜单栏
+    path: '/permission_manage',
+    name: 'permission_manage',
+    icon: 'KeyOutlined',
+    access: 'canAdmin',
+    component: './Permission_manage',
+  },
+  {
+    //通用的 个人信息 菜单栏
+    path: '/myinformation',
+    name: 'myinformation',
     icon: 'MenuOutlined',
     routes: [
       {
-        //个人信息
-        path: '/set/myinformation',
-        name: 'myinformation',
-        component: './Set/Myinformation',
+        //基本信息 菜单栏
+        path: '/myinformation/basicinformation',
+        name: 'basicinformation',
+        component: './Myinformation/Basicinformation',
       },
       {
-        //安全设置
-        path: '/set/safetysetting',
-        name: 'safetysetting',
-        component: './Set/Safetysetting',
+        //安全设置 菜单栏
+        path: '/myinformation/safetysettings',
+        name: 'safetysettings',
+        component: './Myinformation/Safetysettings',
+      },
+      {
+        //其他设置 菜单栏
+        path: '/myinformation/othersettings',
+        name: 'othersettings',
+        component: './Myinformation/Othersettings',
       },
     ],
   },
   // {
-  //   path: '/teacher',
-  //   name: 'teacher',
-  //   access: 'canTeacher',
-  //   icon: 'MenuOutlined',
+  //   path: '/admin',
+  //   name: 'admin',
+  //   icon: 'crown',
+  //   access: 'canAdmin',
   //   routes: [
   //     {
-  //       //我的课程
-  //       path: '/teacher/Teacher_course',
-  //       name: 'Teacher_course',
-  //       component: './teacher/Teacher_course',
+  //       path: '/admin/sub-page',
+  //       name: 'sub-page',
+  //       icon: 'smile',
+  //       component: './Welcome',
+  //     },
+  //     {
+  //       component: './404',
   //     },
   //   ],
   // },
-  {
-    //教师的 我的课程 菜单栏
-    path: '/teacher/teacher_course',
-    name: 'teacher_course',
-    access: 'canTeacher',
-    component:'./Teacher/Teacher_course',
-  },
-  {
-    //教师的 统计 菜单栏
-    path: '/teacher/statistic',
-    name: 'statistic',
-    access: 'canTeacher',
-    component:'./Teacher/Statistic',
-  },
-  {
-    path: '/admin',
-    name: 'admin',
-    icon: 'crown',
-    access: 'canAdmin',
-    routes: [
-      {
-        path: '/admin/sub-page',
-        name: 'sub-page',
-        icon: 'smile',
-        component: './Welcome',
-      },
-      {
-        component: './404',
-      },
-    ],
-  },
   {
     path: '/',
     redirect: '/welcome',

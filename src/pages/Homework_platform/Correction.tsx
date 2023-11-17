@@ -2,16 +2,16 @@ import { PageContainer } from "@ant-design/pro-components";
 import {Card} from 'antd';
 import React from "react";
 
-const Grade: React.FC = () =>{
+const Correction: React.FC = () =>{
   return (
     <PageContainer>
       <Card>
         <p>
-          这是成绩查询界面
+          这是批改情况界面
         </p>
       </Card>
     </PageContainer>
   )
 };
 
-export default Grade;
+export default Correction;

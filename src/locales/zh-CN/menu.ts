@@ -1,14 +1,28 @@
 export default {
-  'menu.teacher_course': '我的课程',
-  'menu.statistic': '统计',
-  'menu.learn': '学习',
-  'menu.set': '设置',
-  'menu.learn.mycourse': '我的课程',
-  'menu.learn.myhomework': '我的作业',
-  'menu.learn.evaluate': '批改任务',
-  'menu.learn.grade': '成绩查询',
-  'menu.set.myinformation': '个人信息',
-  'menu.set.safetysetting': '安全设置',
+  //通用的 个人信息 菜单栏及其下拉菜单栏的名称
+  'menu.myinformation': '个人信息',
+  'menu.myinformation.basicinformation': '基本信息',
+  'menu.myinformation.safetysettings': '安全设置',
+  'menu.myinformation.othersettings': '其他设置',
+  //教师的 课程平台 菜单栏及其下拉菜单栏的名称
+  'menu.course_platform_t': '课程平台',
+  'menu.course_platform_t.mycourse_t': '我的课程',
+  'menu.course_platform_t.student_grade': '学生成绩',
+  //教师的 作业平台 菜单栏及其下拉菜单栏的名称
+  'menu.homework_platform': '作业平台',
+  'menu.homework_platform.homework_manage': '作业管理',
+  'menu.homework_platform.correction': '批改情况',
+  //学生的 课程平台 菜单栏及其下拉菜单栏的名称
+  'menu.course_platform_s': '课程平台',
+  'menu.course_platform_s.mycourse_s': '我的课程',
+  'menu.course_platform_s.mission': '我的任务',
+  //管理员的 授课管理 菜单栏及其下拉菜单栏的名称
+  'menu.teaching_manage': '授课管理',
+  'menu.teaching_manage.course_manage': '课程管理',
+  'menu.teaching_manage.people_manage': '人员管理',
+  //管理员的 权限管理 菜单栏名称
+  'menu.permission_manage': '权限管理',
+
   'menu.welcome': '欢迎',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',

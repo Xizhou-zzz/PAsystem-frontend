@@ -2,16 +2,16 @@ import { PageContainer } from "@ant-design/pro-components";
 import {Card} from 'antd';
 import React from "react";
 
-const Safetysetting: React.FC = () =>{
+const Basicinformation: React.FC = () =>{
   return (
     <PageContainer>
       <Card>
         <p>
-          这是安全设置界面
+          这是基本信息界面
         </p>
       </Card>
     </PageContainer>
   )
 };
 
-export default Safetysetting;
+export default Basicinformation;
