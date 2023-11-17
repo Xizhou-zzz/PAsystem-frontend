@@ -120,6 +120,7 @@ export default {
   'POST /api/login/account': async (req: Request, res: Response) => {
     const { password, username, type } = req.body;
     await waitTime(2000);
+    //管理员用户
     if (password === 'ant.design' && username === 'admin') {
       res.send({
         status: 'ok',
@@ -129,15 +130,27 @@ export default {
       access = 'admin';
       return;
     }
-    if (password === 'ant.design' && username === 'user') {
+    //学生用户
+    if (password === 'ant.design' && username === 'student') {
       res.send({
         status: 'ok',
         type,
         currentAuthority: 'user',
       });
-      access = 'user';
+      access = 'student';
       return;
     }
+    //教师用户
+    if (password === 'ant.design' && username === 'teacher') {
+      res.send({
+        status: 'ok',
+        type,
+        currentAuthority: 'user',
+      });
+      access = 'teacher';
+      return;
+    }
+
     if (type === 'mobile') {
       res.send({
         status: 'ok',

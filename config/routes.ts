@@ -24,63 +24,66 @@ export default [
   {
     path: '/learn',
     name: 'learn',
+    access: 'canStudent',
     icon: 'MenuOutlined',
     routes: [
       {
         //我的课程
         path: '/learn/mycourse',
         name: 'mycourse',
-        component: './Learn/Mycourse'
+        component: './Learn/Mycourse',
       },
       {
         //我的作业
         path: '/learn/myhomework',
         name: 'myhomework',
-        component: './Learn/Myhomework'
+        component: './Learn/Myhomework',
       },
       {
         //批改任务
         path: '/learn/evaluate',
         name: 'evaluate',
-        component: './Learn/Evaluate'
+        component: './Learn/Evaluate',
       },
       {
         //成绩查询
         path: '/learn/grade',
         name: 'grade',
-        component: './Learn/Grade'
+        component: './Learn/Grade',
       },
     ],
   },
   {
     path: '/set',
     name: 'set',
+    access: 'canStudent',
     icon: 'MenuOutlined',
     routes: [
       {
         //个人信息
         path: '/set/myinformation',
         name: 'myinformation',
-        component: './Set/Myinformation'
+        component: './Set/Myinformation',
       },
       {
         //安全设置
         path: '/set/safetysetting',
         name: 'safetysetting',
-        component: './Set/Safetysetting'
+        component: './Set/Safetysetting',
       },
     ],
   },
   {
     path: '/teacher',
     name: 'teacher',
+    access: 'canTeacher',
     icon: 'MenuOutlined',
     routes: [
       {
         //我的课程
         path: '/teacher/Teacher_course',
         name: 'Teacher_course',
-        component: './teacher/Teacher_course'
+        component: './teacher/Teacher_course',
       },
     ],
   },
