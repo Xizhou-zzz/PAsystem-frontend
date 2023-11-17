@@ -78,9 +78,9 @@ export default [
     routes: [
       {
         //我的课程
-        path: '/teacher/mycourse',
-        name: 'mycourse',
-        component: './teacher/Mycourse'
+        path: '/teacher/Teacher_course',
+        name: 'Teacher_course',
+        component: './teacher/Teacher_course'
       },
     ],
   },

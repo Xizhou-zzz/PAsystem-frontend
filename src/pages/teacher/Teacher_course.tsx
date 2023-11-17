@@ -2,7 +2,7 @@ import { PageContainer } from "@ant-design/pro-components";
 import {Card} from 'antd';
 import React from "react";
 
-const Mycourse: React.FC = () =>{
+const Teacher_course: React.FC = () =>{
   return (
     <PageContainer>
       <Card>
@@ -15,4 +15,4 @@ const Mycourse: React.FC = () =>{
   )
 };
 
-export default Mycourse;
+export default Teacher_course;
