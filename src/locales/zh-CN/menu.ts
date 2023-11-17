@@ -1,4 +1,6 @@
 export default {
+  'menu.teacher_course': '我的课程',
+  'menu.statistic': '统计',
   'menu.learn': '学习',
   'menu.set': '设置',
   'menu.learn.mycourse': '我的课程',

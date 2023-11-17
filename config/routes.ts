@@ -22,6 +22,7 @@ export default [
     component: './Welcome',
   },
   {
+    //学生角色的 学习 菜单栏
     path: '/learn',
     name: 'learn',
     access: 'canStudent',
@@ -54,6 +55,7 @@ export default [
     ],
   },
   {
+    //学生角色的 设置 菜单栏
     path: '/set',
     name: 'set',
     access: 'canStudent',
@@ -73,19 +75,33 @@ export default [
       },
     ],
   },
+  // {
+  //   path: '/teacher',
+  //   name: 'teacher',
+  //   access: 'canTeacher',
+  //   icon: 'MenuOutlined',
+  //   routes: [
+  //     {
+  //       //我的课程
+  //       path: '/teacher/Teacher_course',
+  //       name: 'Teacher_course',
+  //       component: './teacher/Teacher_course',
+  //     },
+  //   ],
+  // },
   {
-    path: '/teacher',
-    name: 'teacher',
+    //教师的 我的课程 菜单栏
+    path: '/teacher/teacher_course',
+    name: 'teacher_course',
     access: 'canTeacher',
-    icon: 'MenuOutlined',
-    routes: [
-      {
-        //我的课程
-        path: '/teacher/Teacher_course',
-        name: 'Teacher_course',
-        component: './teacher/Teacher_course',
-      },
-    ],
+    component:'./Teacher/Teacher_course',
+  },
+  {
+    //教师的 统计 菜单栏
+    path: '/teacher/statistic',
+    name: 'statistic',
+    access: 'canTeacher',
+    component:'./Teacher/Statistic',
   },
   {
     path: '/admin',
