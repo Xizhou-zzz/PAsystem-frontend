@@ -65,7 +65,7 @@ export default [
       },
       {
         //安全设置
-        path: '/learn/safetysetting',
+        path: '/set/safetysetting',
         name: 'safetysetting',
         component: './Set/Safetysetting'
       },
