@@ -3,6 +3,7 @@ import { Alert, Card, Typography } from 'antd';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'umi';
 import styles from './Welcome.less';
+import { currentUser } from '@/services/ant-design-pro/api';
 
 const CodePreview: React.FC = ({ children }) => (
   <pre className={styles.pre}>
@@ -20,8 +21,8 @@ const Welcome: React.FC = () => {
       <Card>
         <Alert
           message={intl.formatMessage({
-            id: 'pages.welcome.alertMessage',
-            defaultMessage: 'Faster and stronger heavy-duty components have been released.',
+            id: 'pages.welcome.alertMessage_teacher',
+            defaultMessage: '欢迎来到教师界面，尊敬的' + currentUser,
           })}
           type="success"
           showIcon

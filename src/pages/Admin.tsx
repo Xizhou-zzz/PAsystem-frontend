@@ -1,3 +1,4 @@
+import { currentUser } from '@/services/ant-design-pro/api';
 import { HeartTwoTone, SmileTwoTone } from '@ant-design/icons';
 import { PageHeaderWrapper } from '@ant-design/pro-components';
 import { Alert, Card, Typography } from 'antd';
@@ -16,8 +17,8 @@ const Admin: React.FC = () => {
       <Card>
         <Alert
           message={intl.formatMessage({
-            id: 'pages.welcome.alertMessage',
-            defaultMessage: 'Faster and stronger heavy-duty components have been released.',
+            id: 'pages.welcome.alertMessage_admin',
+            defaultMessage: '欢迎来到管理员界面，尊敬的' + currentUser,
           })}
           type="success"
           showIcon

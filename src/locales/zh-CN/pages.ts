@@ -23,7 +23,7 @@ export default {
   'pages.login.loginWith': '其他登录方式 :',
   'pages.login.registerAccount': '注册账户',
   'pages.welcome.link': '欢迎使用',
-  'pages.welcome.alertMessage': '欢迎来到学生界面，尊敬的',
+  'pages.welcome.alertMessage_student': '欢迎来到学生界面，尊敬的',
   'pages.welcome.alertMessage_teacher': '欢迎来到教师界面，尊敬的',
   'pages.welcome.alertMessage_admin': '欢迎来到管理员界面，尊敬的',
   'pages.admin.subPage.title': ' 这个页面只有 admin 权限才能查看',
