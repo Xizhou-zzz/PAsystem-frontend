@@ -1,4 +1,3 @@
-
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Avatar, Form, Input, Button, Upload, message } from 'antd';
 import { UserOutlined, UploadOutlined } from '@ant-design/icons';
@@ -34,11 +33,11 @@ const Basicinformation: React.FC = () => {
           <Form
             onFinish={handleUpdateInfo}
             initialValues={{
-              username: 'Jacky',
+              username: '闹铃哥',
               account: '起飞',
               identity: 'Admin',
-              contact: '21301026@bjtu.edu.cn',
-              hometown: '江苏连云港',
+              contact: '21301028@bjtu.edu.cn',
+              hometown: '内蒙古不知道哪个市',
             }}
             style={{ marginTop: 24 }}
           >
@@ -58,16 +57,14 @@ const Basicinformation: React.FC = () => {
               <Input />
             </Form.Item>
             <Form.Item label="上传头像">
-              <Upload
-                accept="image/*"
-                showUploadList={false}
-                onChange={handleAvatarChange}
-              >
+              <Upload accept="image/*" showUploadList={false} onChange={handleAvatarChange}>
                 <Button icon={<UploadOutlined />}>选择文件</Button>
               </Upload>
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit">保存</Button>
+              <Button type="primary" htmlType="submit">
+                保存
+              </Button>
             </Form.Item>
           </Form>
         </div>
