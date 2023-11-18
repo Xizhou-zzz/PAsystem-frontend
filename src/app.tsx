@@ -57,7 +57,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     waterMarkProps: {
       //initialState?.currentUser?.name
       //(水印)
-      content: "汤臣一品业主委员会",
+      content: "",
     },
     footerRender: () => <Footer />,
     onPageChange: () => {
