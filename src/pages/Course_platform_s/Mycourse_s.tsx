@@ -3,7 +3,6 @@ import { Card, Table, Button, Input, Space, Modal, Tag } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { Badge } from 'antd';
 
-
 const Mycourse_t: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const handleSearch = (value: string) => {
@@ -21,8 +20,7 @@ const Mycourse_t: React.FC = () => {
       course_name: '计算机网络',
       course_id: 'M310003B',
       teacher_name: '高睿鹏',
-    }
-
+    },
   ];
   const columns = [
     {
@@ -38,7 +36,7 @@ const Mycourse_t: React.FC = () => {
     {
       title: '主讲教师',
       dataIndex: 'teacher_name',
-      key: 'teacher_name'
+      key: 'teacher_name',
     },
     {
       title: '',
@@ -51,7 +49,7 @@ const Mycourse_t: React.FC = () => {
     },
   ];
   return (
-    <PageContainer>
+    <PageContainer style={{ backgroundColor: 'white' }}>
       <Card>
         <div style={{ marginBottom: 16 }}>
           <Input.Search
@@ -61,7 +59,6 @@ const Mycourse_t: React.FC = () => {
           />
         </div>
         <Table columns={columns} dataSource={dataSource} />
-
       </Card>
     </PageContainer>
   );
