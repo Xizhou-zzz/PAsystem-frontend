@@ -28,7 +28,7 @@ const Student_grade: React.FC = () => {
 
   const [searchText, setSearchText] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedDevice, setSelectedDevice] = useState<any>(null);
+  const [selectedGrade, setSelectedGrade] = useState<any>(null);
 
   const dataSource = [
     { id: '21301002', homework: '作业1', grade: '90' },
@@ -45,7 +45,7 @@ const Student_grade: React.FC = () => {
   };
 
   const handleEdit = (record: any) => {
-    setSelectedDevice(record);
+    setSelectedGrade(record);
     setIsModalVisible(true);
   };
 
@@ -58,13 +58,13 @@ const Student_grade: React.FC = () => {
   const handleModalOk = () => {
     // 处理模态框确认逻辑
     setIsModalVisible(false);
-    setSelectedDevice(null);
+    setSelectedGrade(null);
   };
 
   const handleModalCancel = () => {
     // 处理模态框取消逻辑
     setIsModalVisible(false);
-    setSelectedDevice(null);
+    setSelectedGrade(null);
   };
 
   const columns = [
@@ -101,7 +101,7 @@ const Student_grade: React.FC = () => {
 
         {/* 设备模态框 */}
         <Modal
-          title={selectedDevice ? '修改设备' : '新增设备'}
+          title={selectedGrade ? '修改设备' : '新增设备'}
           visible={isModalVisible}
           onOk={handleModalOk}
           onCancel={handleModalCancel}
@@ -110,15 +110,15 @@ const Student_grade: React.FC = () => {
           {/* 这里只是一个示例，你可以根据实际需求进行修改 */}
           <div>
             学生学号：
-            <Input value={selectedDevice?.id} />
+            <Input value={selectedGrade?.id} />
           </div>
           <div>
             作业名称：
-            <Input value={selectedDevice?.location} />
+            <Input value={selectedGrade?.location} />
           </div>
           <div>
             作业成绩：
-            <Input value={selectedDevice?.status} />
+            <Input value={selectedGrade?.status} />
           </div>
         </Modal>
       </Card>
