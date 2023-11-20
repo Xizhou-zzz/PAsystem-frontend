@@ -57,11 +57,11 @@ const People_manage: React.FC = () => {
             key: 'student_id',
         },
         {
-            title: '课程',
+            title: '操作',
             key: 'courses',
             render: (record: any) => (
                 <Button type="link" onClick={() => handleAdjust(record)}>
-                    调整
+                    调整课程
                 </Button>
             ),
         },
@@ -113,7 +113,7 @@ const People_manage: React.FC = () => {
                             <Select
                                 mode="multiple"
                                 style={{ width: '100%' }}
-                                placeholder="请选择课程"
+                                placeholder="请选择要调整的课程"
                                 defaultValue={selectedPerson?.courses}
                             >
                                 {renderCourseOptions()}
