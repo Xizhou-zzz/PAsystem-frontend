@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Table, Button, Input, Modal, Upload, Space } from 'antd';
+import { Card, Table, Button, Input, Modal, Upload, Space,Progress } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 const HomeworkManage: React.FC = () => {
@@ -84,6 +84,15 @@ const HomeworkManage: React.FC = () => {
       title: '已提交人数',
       dataIndex: 'submitted_count',
       key: 'submitted_count',
+    },
+    {
+      title: '提交进度',
+      key: 'progress',
+      render: (record: any) => (
+        <Space size="middle">
+          <Progress type="circle" percent={75}></Progress>
+        </Space>
+      ),
     },
     {
       title: '所属课程',
