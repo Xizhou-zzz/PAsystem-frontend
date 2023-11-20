@@ -22,7 +22,7 @@ const Safetysettings: React.FC = () => {
   };
 
   return (
-    <PageContainer>
+    <PageContainer style={{ backgroundColor: 'white' }}>
       <Card title="账户密码" style={{ marginBottom: 24 }}>
         <Form onFinish={handleUpdatePassword}>
           <Form.Item label="当前密码强度" name="passwordStrength">
