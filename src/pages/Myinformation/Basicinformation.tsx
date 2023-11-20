@@ -1,5 +1,5 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Avatar, Form, Input, Button, Upload, message } from 'antd';
+import { Avatar, Form, Input, Button, Upload, message } from 'antd';
 import { UserOutlined, UploadOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 //定义一个名为Basicinformation的函数组件
@@ -26,49 +26,47 @@ const Basicinformation: React.FC = () => {
   };
 
   return (
-    <PageContainer>
-      <Card>
-        <div style={{ textAlign: 'center' }}>
-          <Avatar size={120} icon={<UserOutlined />} src={avatarUrl} />
-          <Form
-            onFinish={handleUpdateInfo}
-            initialValues={{
-              username: '闹铃哥',
-              account: '起飞',
-              identity: 'Admin',
-              contact: '21301028@bjtu.edu.cn',
-              hometown: '内蒙古不知道哪个市',
-            }}
-            style={{ marginTop: 24 }}
-          >
-            <Form.Item name="username" label="用户名">
-              <Input />
-            </Form.Item>
-            <Form.Item name="account" label="账号">
-              <Input />
-            </Form.Item>
-            <Form.Item name="identity" label="身份">
-              <Input />
-            </Form.Item>
-            <Form.Item name="contact" label="邮箱">
-              <Input />
-            </Form.Item>
-            <Form.Item name="hometown" label="籍贯">
-              <Input />
-            </Form.Item>
-            <Form.Item label="上传头像">
-              <Upload accept="image/*" showUploadList={false} onChange={handleAvatarChange}>
-                <Button icon={<UploadOutlined />}>选择文件</Button>
-              </Upload>
-            </Form.Item>
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                保存
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
-      </Card>
+    <PageContainer style={{ backgroundColor: 'white' }}>
+      <div style={{ textAlign: 'center' }}>
+        <Avatar size={120} icon={<UserOutlined />} src={avatarUrl} />
+        <Form
+          onFinish={handleUpdateInfo}
+          initialValues={{
+            username: '闹铃哥',
+            account: '起飞',
+            identity: 'Admin',
+            contact: '21301028@bjtu.edu.cn',
+            hometown: '内蒙古不知道哪个市',
+          }}
+          style={{ marginTop: 24 }}
+        >
+          <Form.Item name="username" label="用户名">
+            <Input type="text" style={{ marginLeft: '0em' }} />
+          </Form.Item>
+          <Form.Item name="account" label="账号">
+            <Input style={{ marginLeft: '1em' }} />
+          </Form.Item>
+          <Form.Item name="identity" label="身份">
+            <Input style={{ marginLeft: '1em' }} />
+          </Form.Item>
+          <Form.Item name="contact" label="邮箱">
+            <Input style={{ marginLeft: '1em' }} />
+          </Form.Item>
+          <Form.Item name="hometown" label="籍贯">
+            <Input style={{ marginLeft: '1em' }} />
+          </Form.Item>
+          <Form.Item label="上传头像">
+            <Upload accept="image/*" showUploadList={false} onChange={handleAvatarChange}>
+              <Button icon={<UploadOutlined />}>选择文件</Button>
+            </Upload>
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              保存
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </PageContainer>
   );
 };

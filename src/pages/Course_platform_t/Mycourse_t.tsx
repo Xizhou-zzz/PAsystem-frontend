@@ -96,7 +96,6 @@ const Mycourse_t: React.FC = () => {
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
-      <Card>
         <div style={{ marginBottom: 16 }}>
           <Input.Search
             placeholder="搜索课程"
@@ -131,7 +130,6 @@ const Mycourse_t: React.FC = () => {
             <Input value={selectedClass?.time} />
           </div>
         </Modal>
-      </Card>
     </PageContainer>
   );
 };

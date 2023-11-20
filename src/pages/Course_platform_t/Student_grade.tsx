@@ -131,7 +131,6 @@ const Student_grade: React.FC = () => {
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
       {contextHolder}
-      <Card>
         <div style={{ marginBottom: 16 }}>
           <Input.Search
             placeholder="搜索"
@@ -168,13 +167,10 @@ const Student_grade: React.FC = () => {
           </Form>
 
         </Modal>
-      </Card>
-      <Card>
         <div>
           <p style={{ fontSize: '20px' }}>作业均分</p>
           <Line {...config} />
         </div>
-      </Card>
     </PageContainer>
   );
 };

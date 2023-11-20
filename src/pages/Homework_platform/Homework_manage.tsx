@@ -119,7 +119,6 @@ const HomeworkManage: React.FC = () => {
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
-      <Card>
         <div style={{ marginBottom: 16 }}>
           <Button type="primary" onClick={handleAddHomework} style={{ marginRight: 16 }}>
             新增作业
@@ -172,7 +171,6 @@ const HomeworkManage: React.FC = () => {
             </Upload>
           </div>
         </Modal>
-      </Card>
     </PageContainer>
   );
 };
