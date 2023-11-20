@@ -58,12 +58,24 @@ const HomeworkManage: React.FC = () => {
       class_id: 'CL001',
       submitted_count: 30,
       homework_title: '作业1',
-      course_name: '课程A',
+      course_name: '软件项目管理与运维',
+      deadline: '2023-11-30',
+    },
+    {
+      key: '2',
+      course_id: 'C001',
+      class_id: 'CL001',
+      submitted_count: 20,
+      homework_title: '作业2',
+      course_name: '科技论文写作',
       deadline: '2023-11-30',
     },
     // 更多作业...
   ];
-
+  const TaskProgress: React.FC<{ percent: number }> = ({ percent }) => (
+    <Progress percent={percent} steps={5} strokeColor={[]} />
+  );
+  
   const columns = [
     {
       title: '作业标题',
@@ -88,11 +100,7 @@ const HomeworkManage: React.FC = () => {
     {
       title: '提交进度',
       key: 'progress',
-      render: (record: any) => (
-        <Space size="middle">
-          <Progress type="circle" percent={75}></Progress>
-        </Space>
-      ),
+      render: (record: any) => <TaskProgress percent={70} />,
     },
     {
       title: '所属课程',
