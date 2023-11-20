@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Button, Table, Modal, Checkbox, Form, Select } from 'antd';
+import Search from "antd/es/input/Search";
 
 const { Option } = Select;
 
@@ -29,10 +30,10 @@ const People_manage: React.FC = () => {
             courses: ['软件测试与质量保证', '专业课程综合实训III'],
         },
         {
-          key: '2',
-          name: '李明',
-          student_id: '21301000',
-          courses: ['机械制图', '高等数学'],
+            key: '2',
+            name: '李明',
+            student_id: '21301000',
+            courses: ['机械制图', '高等数学'],
         },
     ];
 
@@ -47,17 +48,17 @@ const People_manage: React.FC = () => {
 
     const columns = [
         {
-            title: '姓名',
+            title: <small>姓名</small>,
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: 'ID',
+            title: <small>ID</small>,
             dataIndex: 'student_id',
             key: 'student_id',
         },
         {
-            title: '操作',
+            title: <small>操作</small>,
             key: 'courses',
             render: (record: any) => (
                 <Button type="link" onClick={() => handleAdjust(record)}>
@@ -68,8 +69,14 @@ const People_manage: React.FC = () => {
     ];
 
     const renderCourseOptions = () => {
-      
-        const courses = ['软件测试与质量保证', '专业课程综合实训III','机械制图', '高等数学','大学生心理健康', '闺蜜敌密辩证法'];//下拉菜单的备选课程列表
+        const courses = [
+            '软件测试与质量保证',
+            '专业课程综合实训III',
+            '机械制图',
+            '高等数学',
+            '大学生心理健康',
+            '闺蜜敌密辩证法',
+        ]; //下拉菜单的备选课程列表
         return courses.map((course) => (
             <Option value={course} key={course}>
                 {course}
@@ -86,14 +93,56 @@ const People_manage: React.FC = () => {
         ));
     };
 
+    const [searchText, setSearchText] = useState('');
+
+    const handleSearch = (value) => {
+        setSearchText(value);
+    };
+
+    const filteredStudents = students.filter((student) =>
+        student.name.includes(searchText)
+    );
+
+    const filteredTeachers = teachers.filter((teacher) =>
+        teacher.name.includes(searchText)
+    );
+
     return (
         <PageContainer>
             <Card>
-                <h2>学生列表</h2>
-                <Table dataSource={students} columns={columns} />
+                <h2>
+                    学生列表{' '}
+                    <small>
+                        (学生人数: {filteredStudents.length}/{students.length})
+                    </small>
+                </h2>
+                <div>
+                    <Search
+                        placeholder="搜索学生姓名"
+                        allowClear
+                        enterButton="搜索"
+                        onSearch={handleSearch}
+                        style={{ width: 200, marginLeft: 16 }}
+                    />
+                </div>
+                <Table dataSource={filteredStudents} columns={columns} />
 
-                <h2>教师列表</h2>
-                <Table dataSource={teachers} columns={columns} />
+                <h2>
+                    教师列表{' '}
+                    <small>
+                        (教师人数: {filteredTeachers.length}/{teachers.length})
+                    </small>
+                </h2>
+                <div>
+                    <Search
+                        placeholder="搜索教师姓名"
+                        allowClear
+                        enterButton="搜索"
+                        onSearch={handleSearch}
+                        style={{ width: 200, marginLeft: 16 }}
+                    />
+                </div>
+                <Table dataSource={filteredTeachers} columns={columns} />
 
                 <Modal
                     title="调整课程"
@@ -125,4 +174,5 @@ const People_manage: React.FC = () => {
         </PageContainer>
     );
 };
+
 export default People_manage;
