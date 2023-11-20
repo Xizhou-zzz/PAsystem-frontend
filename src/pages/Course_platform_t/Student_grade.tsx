@@ -1,7 +1,8 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Table, Button, Input, Space, Modal } from 'antd';
-import React, { useState } from 'react';
+import { Card, Table, Button, Input, Space, Modal,Form,message,Popconfirm } from 'antd';
+import React, { useState,useEffect } from 'react';
 import { Line } from '@ant-design/charts';
+import { ColumnType, ColumnGroupType } from 'antd/lib/table';
 
 const Student_grade: React.FC = () => {
   const data = [
@@ -25,40 +26,80 @@ const Student_grade: React.FC = () => {
       shape: 'diamond',
     },
   };
+  //提交成功与否消息提示的相关定义
+  const [messageApi, contextHolder] = message.useMessage();
+  const info1 = () => {
+    messageApi.info('修改成功！');
+  };
+  const info2 = () => {
+    messageApi.info('删除成功！');
+  };
 
+  const [form] = Form.useForm();
   const [searchText, setSearchText] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedGrade, setSelectedGrade] = useState<any>(null);
-
-  const dataSource = [
+  const [selectedRow,setSelectedRow] = useState<number>(-1);
+  const [dataSource,setDataSource] = useState([
     { id: '21301002', homework: '作业1', grade: '90' },
     { id: '21301004', homework: '作业1', grade: '80' },
     { id: '21301016', homework: '作业2', grade: '70' },
     { id: '21301019', homework: '作业4', grade: '100' },
     { id: '21301027', homework: '作业5', grade: '90' },
     { id: '21301028', homework: '作业6', grade: 'NULL' },
-    // 数据源
-  ];
+  ]);
+  // 当selectedGrade变化时，更新表单的默认值
+  useEffect(() => {
+    form.setFieldsValue(selectedGrade);
+  }, [selectedGrade]);
+  //更新特定行的函数
+  const updateRow = (index:any, newData:any) => {
+    setDataSource((prevDataSource) => {
+      const newDataSource = [...prevDataSource]; // 创建副本以避免直接修改原数组
+      newDataSource[index] = newData; // 更新特定行的数据
+      return newDataSource;
+    });
+  };
+  //删除特定行的函数
+  const deleteRow = (rowindex:any) => {
+    setDataSource((prevDataSource) =>
+      prevDataSource.filter((_, index) => index !== rowindex)
+    );
+  };
+  //表单提交后的操作，更新数据源并显示在界面上
+  const onFinish = (values:any) =>{
+    console.log('修改后的数据:', values);
+    updateRow(selectedRow,values);
+  }
 
   const handleSearch = (value: string) => {
     setSearchText(value);
   };
-
-  const handleEdit = (record: any) => {
+  //处理更改成绩逻辑
+  const handleEdit = (record: any, index: number) => {
+    console.log('当前行的数据：', record);
     setSelectedGrade(record);
+    console.log('要修改的行号：', index);
+    setSelectedRow(index);
     setIsModalVisible(true);
   };
-
-  const handleDelete = (record: any) => {
-    // 处理删除设备逻辑
-    console.log('删除成绩:', record);
+  //处理删除成绩逻辑
+  const handleDelete = (record: any, index: number) => {
+    console.log('要删除的成绩:', record);
+    console.log('要删除的行号：', index);
     // 这里可以编写删除设备的处理代码，如发送到后端进行删除等操作
+    deleteRow(index);
+    info2();
   };
 
   const handleModalOk = () => {
     // 处理模态框确认逻辑
     setIsModalVisible(false);
+    //提交表单
+    form.submit();
     setSelectedGrade(null);
+    //修改数据成功
+    info1();
   };
 
   const handleModalCancel = () => {
@@ -67,19 +108,19 @@ const Student_grade: React.FC = () => {
     setSelectedGrade(null);
   };
 
-  const columns = [
+  const columns: (ColumnType<{ id: string; homework: string; grade: string }> | ColumnGroupType<{ id: string; homework: string; grade: string }>)[] = [
     { title: '学生学号', dataIndex: 'id', key: 'id' },
     { title: '作业', dataIndex: 'homework', key: 'homework' },
     { title: '成绩', dataIndex: 'grade', key: 'grade' },
     {
       title: '操作',
       key: 'action',
-      render: (record: any) => (
+      render: (text,record: any ,index: number) => (
         <Space size="middle">
-          <Button type="primary" onClick={() => handleEdit(record)}>
+          <Button type="primary" onClick={() => handleEdit(record,index)}>
             更改
           </Button>
-          <Button danger onClick={() => handleDelete(record)}>
+          <Button danger onClick={() => handleDelete(record,index)}>
             删除
           </Button>
         </Space>
@@ -89,6 +130,7 @@ const Student_grade: React.FC = () => {
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
+      {contextHolder}
       <Card>
         <div style={{ marginBottom: 16 }}>
           <Input.Search
@@ -101,25 +143,30 @@ const Student_grade: React.FC = () => {
 
         {/* 设备模态框 */}
         <Modal
-          title={selectedGrade ? '修改设备' : '新增设备'}
+          title={selectedGrade ? '更改成绩' : '新增成绩'}
           visible={isModalVisible}
           onOk={handleModalOk}
           onCancel={handleModalCancel}
         >
-          {/* 在模态框中可以放置设备的表单项，用于编辑或添加设备信息 */}
-          {/* 这里只是一个示例，你可以根据实际需求进行修改 */}
-          <div>
-            学生学号：
-            <Input value={selectedGrade?.id} />
-          </div>
-          <div>
-            作业名称：
-            <Input value={selectedGrade?.location} />
-          </div>
-          <div>
-            作业成绩：
-            <Input value={selectedGrade?.status} />
-          </div>
+
+          <Form form={form} onFinish={onFinish}>
+            <Form.Item
+              label="学生学号"
+              name="id">
+                <Input value={selectedGrade?.id}/>
+            </Form.Item>
+            <Form.Item
+              label="作业名称"
+              name="homework">
+                <Input value={selectedGrade?.homework}/>
+            </Form.Item>
+            <Form.Item
+              label="作业成绩"
+              name="grade">
+                <Input value={selectedGrade?.grade}/>
+            </Form.Item>
+          </Form>
+
         </Modal>
       </Card>
       <Card>
