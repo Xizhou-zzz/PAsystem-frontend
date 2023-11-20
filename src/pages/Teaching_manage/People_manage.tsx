@@ -48,17 +48,17 @@ const People_manage: React.FC = () => {
 
     const columns = [
         {
-            title: <small>姓名</small>,
+            title: '姓名',
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: <small>ID</small>,
+            title: 'ID',
             dataIndex: 'student_id',
             key: 'student_id',
         },
         {
-            title: <small>操作</small>,
+            title: '操作',
             key: 'courses',
             render: (record: any) => (
                 <Button type="link" onClick={() => handleAdjust(record)}>
@@ -108,8 +108,7 @@ const People_manage: React.FC = () => {
     );
 
     return (
-        <PageContainer>
-            <Card>
+        <PageContainer style ={{backgroundColor:'white'}}>
                 <h2>
                     学生列表{' '}
                     <small>
@@ -170,7 +169,7 @@ const People_manage: React.FC = () => {
                         </Form.Item>
                     </Form>
                 </Modal>
-            </Card>
+            
         </PageContainer>
     );
 };

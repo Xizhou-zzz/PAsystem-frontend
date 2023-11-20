@@ -103,7 +103,6 @@ const Course_manage: React.FC = () => {
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
-      <Card>
         <div style={{ marginBottom: 16 }}>
           <Button type="primary">
             新增课程
@@ -141,7 +140,7 @@ const Course_manage: React.FC = () => {
             <Input value={selectedClass?.time} />
           </div>
         </Modal>
-      </Card>
+      
     </PageContainer>
   );
 };

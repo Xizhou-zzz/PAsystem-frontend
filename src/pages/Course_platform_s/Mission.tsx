@@ -164,13 +164,11 @@ const Mission: React.FC = () => {
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
       {contextHolder}
-      <Card>
         <p>待完成作业：</p>
         <Table columns={columns} dataSource={dataSource} />
         <Divider />
         <p>待批改作业：</p>
         <Table columns={columns1} dataSource={dataSource1} />
-      </Card>
     </PageContainer>
   );
 };

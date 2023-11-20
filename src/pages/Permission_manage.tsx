@@ -73,8 +73,7 @@ const Permission_manage: React.FC = () => {
     ];
 
     return (
-        <PageContainer>
-            <Card>
+        <PageContainer style={{backgroundColor:'white'}}>
                 <h2>用户列表</h2>
                 <Table dataSource={users} columns={columns} />
 
@@ -96,7 +95,7 @@ const Permission_manage: React.FC = () => {
                         <Option value="管理员">管理员</Option>
                     </Select>
                 </Modal>
-            </Card>
+            
         </PageContainer>
     );
 };
