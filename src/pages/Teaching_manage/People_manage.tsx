@@ -68,8 +68,8 @@ const People_manage: React.FC = () => {
     ];
 
     const renderCourseOptions = () => {
-        // 根据实际情况生成课程选项
-        const courses = ['软件测试与质量保证', '专业课程综合实训III','机械制图', '高等数学','大学生心理健康', '闺蜜敌密辩证法'];
+      
+        const courses = ['软件测试与质量保证', '专业课程综合实训III','机械制图', '高等数学','大学生心理健康', '闺蜜敌密辩证法'];//下拉菜单的备选课程列表
         return courses.map((course) => (
             <Option value={course} key={course}>
                 {course}
