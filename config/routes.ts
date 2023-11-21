@@ -16,10 +16,28 @@ export default [
     ],
   },
   {
-    path: '/welcome',
-    name: 'welcome',
+    //学生的欢迎界面
+    path: '/welcome_s',
+    name: 'welcome_s',
     icon: 'smile',
-    component: './Welcome',
+    access: 'canStudent',
+    component: './Welcome/Welcome_s',
+  },
+  {
+    //老师的欢迎界面
+    path: '/welcome_t',
+    name: 'welcome_t',
+    icon: 'smile',
+    access: 'canTeacher',
+    component: './Welcome/Welcome_t',
+  },
+  {
+    //管理员的欢迎界面
+    path: '/welcome_a',
+    name: 'welcome_a',
+    icon: 'smile',
+    access: 'canAdmin',
+    component: './Welcome/Welcome_a',
   },
   {
     //教师的 课程平台 菜单栏
