@@ -75,10 +75,10 @@ const GradingStatus: React.FC = () => {
   ];
 
   return (
-    <PageContainer>
-      <Card>
+    <PageContainer style={{backgroundColor:'white'}}>
         <Select placeholder="选择课程" style={{ width: 200 }} onChange={handleCourseChange}>
           {/* 示例课程选项，实际应从后端获取 */}
+          <Select.Option value="all">全部</Select.Option>
           <Select.Option value="course1">课程1</Select.Option>
           <Select.Option value="course2">课程2</Select.Option>
         </Select>
@@ -107,7 +107,7 @@ const GradingStatus: React.FC = () => {
             </Space>
           </div>
         </Modal>
-      </Card>
+      
     </PageContainer>
   );
 };
