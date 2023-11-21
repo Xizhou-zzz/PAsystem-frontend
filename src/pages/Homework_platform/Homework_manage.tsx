@@ -6,6 +6,7 @@ import { UploadOutlined } from '@ant-design/icons';
 const HomeworkManage: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible1,setIsModalVisible1] = useState(false);
   const [selectedHomework, setSelectedHomework] = useState<any>({});
   const [fileList, setFileList] = useState([]);
   const [isDetail, setIsDetail] = useState(false); // 新增状态来判断是否是详情模式
@@ -22,6 +23,19 @@ const HomeworkManage: React.FC = () => {
     setIsDetail(false); // 设置为非详情模式
   };
 
+  const handleRelease = () => {
+    console.log('点击了发布批改任务按钮');
+    setIsModalVisible1(true);
+  }
+  const handleModalOk1 = () => {
+    setIsModalVisible1(false);
+    // 添加发布批改任务的逻辑
+  };
+
+  const handleModalCancel1 = () => {
+    setIsModalVisible1(false);
+  };
+
   const handleModalOk = () => {
     setIsModalVisible(false);
     // 添加保存作业信息的逻辑
@@ -31,24 +45,24 @@ const HomeworkManage: React.FC = () => {
     setIsModalVisible(false);
   };
 
-  const handleViewDetails = (record) => {
+  const handleViewDetails = (record:any) => {
     setSelectedHomework(record);
     setIsModalVisible(true);
     setIsDetail(true); // 设置为详情模式
   };
 
-  const handleDelete = (record) => {
+  const handleDelete = (record:any) => {
     // 删除逻辑
   };
 
-  const handleEdit = (record) => {
+  const handleEdit = (record:any) => {
     setSelectedHomework(record);
     setIsModalVisible(true);
     setFileList([]); // 示例，实际应根据附件信息设置
     setIsDetail(false); // 设置为非详情模式
   };
 
-  const handleFileChange = ({ fileList }) => setFileList(fileList);
+  const handleFileChange = ({ fileList }:any) => setFileList(fileList);
 
   const dataSource = [
     // 示例数据源，需要根据实际情况调整
@@ -131,6 +145,9 @@ const HomeworkManage: React.FC = () => {
           <Button type="primary" onClick={handleAddHomework} style={{ marginRight: 16 }}>
             新增作业
           </Button>
+          <Button type="primary" onClick={handleRelease} style={{ marginRight: 16 }}>
+            发布批改任务
+          </Button>
           <Input.Search
             placeholder="搜索作业"
             onSearch={handleSearch}
@@ -179,8 +196,50 @@ const HomeworkManage: React.FC = () => {
             </Upload>
           </div>
         </Modal>
+
+        <Modal
+          title='发布批改任务'
+          visible={isModalVisible1}
+          onOk={handleModalOk1}
+          onCancel={handleModalCancel1}
+          footer={[<Button onClick={handleModalCancel1}>取消</Button>,
+        <Button onClick={handleModalOk1} type='primary'>发布</Button>]}
+        >
+          {/* 模态框内的内容 */}
+          <div style={{ marginTop: 16 }}>
+            作业标题：
+            <Input />
+          </div>
+          <div style={{ marginTop: 16 }}>
+            所属课程：
+            <Input />
+          </div>
+          <div style={{ marginTop: 16 }}>
+            截止日期：
+            <Input />
+          </div>
+          <div style={{ marginTop: 16 }}>
+            批改人：
+            <Input />
+          </div>
+          <div style={{ marginTop: 16 }}>
+            作业简介：
+            <Input.TextArea
+              rows={4}
+            />
+          </div>
+          <div style={{ marginTop: 16 }}>
+            上传附件：
+            <Upload
+              fileList={fileList}
+              onChange={handleFileChange}
+              beforeUpload={() => false} // 阻止自动上传
+            >
+              <Button icon={<UploadOutlined />} disabled={isDetail}>选择文件</Button>
+            </Upload>
+          </div>
+        </Modal>
     </PageContainer>
   );
 };
-
 export default HomeworkManage;
