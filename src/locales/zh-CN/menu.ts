@@ -22,8 +22,11 @@ export default {
   'menu.teaching_manage.people_manage': '人员管理',
   //管理员的 权限管理 菜单栏名称
   'menu.permission_manage': '权限管理',
-
-  'menu.welcome': '欢迎',
+  //三种角色分别对应的 欢迎 菜单栏名称
+  'menu.welcome_s': '欢迎',
+  'menu.welcome_t': '欢迎',
+  'menu.welcome_a': '欢迎',
+  
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',
