@@ -46,6 +46,21 @@ const Mission: React.FC = () => {
     setOpen(false);
   };
 
+  //点击批改作业弹出的对话框
+  const [isModalOpen2,setIsModalOpen2] = useState(false);
+  const showModal2 = () => {
+    setIsModalOpen2(true);
+  };
+  const handleOk2 = () => {
+    console.log('点击了批改作业对话框的确定按钮');
+    setIsModalOpen2(false);
+  };
+
+  const handleCancel2 = () => {
+    console.log('点击了批改作业对话框的取消按钮');
+    setIsModalOpen2(false);
+  };
+
   //提交作业中文本域相关定义
   const { TextArea } = Input;
   //待完成作业表格数据和列名定义
@@ -104,6 +119,7 @@ const Mission: React.FC = () => {
       ),
     },
   ];
+
   //待批改作业表格数据和列名定义
   const dataSource1 = [
     {
@@ -140,17 +156,18 @@ const Mission: React.FC = () => {
             onOk={handleOk}
             onCancel={handleCancel}
           ></Modal>
-          <Button type="primary" onClick={showModal1}>
+
+          <Button type="primary" onClick={showModal2}>
             批改作业
           </Button>
           <Modal
-            title="提交作业"
-            open={open}
-            onOk={handleOk1}
+            title="批改作业"
+            open={isModalOpen2}
+            onOk={handleOk2}
             confirmLoading={confirmLoading}
-            onCancel={handleCancel1}
+            onCancel={handleCancel2}
           >
-            <p>{modalText}</p>
+            <p>请提交批改内容：</p>
             <TextArea rows={4} />
             <Upload>
               <Button icon={<UploadOutlined />}>上传附件</Button>
