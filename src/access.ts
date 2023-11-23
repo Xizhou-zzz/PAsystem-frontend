@@ -8,5 +8,6 @@ export default function access(initialState: { currentUser?: API.CurrentUser } |
     canAdmin: currentUser && currentUser.access === 'admin',
     canStudent: currentUser && currentUser.access === 'student',
     canTeacher: currentUser && currentUser.access === 'teacher',
+    canAssistant: currentUser && currentUser.access === 'assistant',
   };
 }
