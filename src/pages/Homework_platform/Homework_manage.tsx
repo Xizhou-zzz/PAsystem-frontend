@@ -81,7 +81,7 @@ const HomeworkManage: React.FC = () => {
       class_id: 'CL001',
       submitted_count: 20,
       homework_title: '作业2',
-      course_name: '科技论文写作',
+      course_name: '科技论文写作w',
       deadline: '2023-11-30',
     },
     // 更多作业...
