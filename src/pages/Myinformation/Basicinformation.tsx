@@ -36,7 +36,7 @@ const Basicinformation: React.FC = () => {
             account: '起飞',
             identity: 'Admin',
             contact: '21301028@bjtu.edu.cn',
-            hometown: '内蒙古不知道哪个市',
+            hometown: '内蒙古包头市',
           }}
           style={{ marginTop: 24 }}
         >
