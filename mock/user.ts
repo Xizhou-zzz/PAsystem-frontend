@@ -160,6 +160,16 @@ export default {
       access = re_access;
       return;
     }
+    // zlt:add assistant
+    if (re_status === 'ok' && re_access === 'assistant') {
+      res.send({
+        status:re_status,
+        type,
+        currentAuthority:'assistant',
+      });
+      access = re_access;
+      return;
+    }
 
     if (type === 'mobile') {
       res.send({
