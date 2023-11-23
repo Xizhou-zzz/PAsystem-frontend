@@ -108,9 +108,10 @@ const Mission: React.FC = () => {
             onOk={handleOk1}
             confirmLoading={confirmLoading}
             onCancel={handleCancel1}
+            destroyOnClose={true}
           >
             <p>{modalText}</p>
-            <TextArea rows={4} />
+            <TextArea defaultValue="" rows={4} />
             <Upload>
               <Button icon={<UploadOutlined />}>上传附件</Button>
             </Upload>
@@ -166,9 +167,10 @@ const Mission: React.FC = () => {
             onOk={handleOk2}
             confirmLoading={confirmLoading}
             onCancel={handleCancel2}
+            destroyOnClose={true}
           >
             <p>请提交批改内容：</p>
-            <TextArea rows={4} />
+            <TextArea defaultValue="" rows={4} />
             <Upload>
               <Button icon={<UploadOutlined />}>上传附件</Button>
             </Upload>
