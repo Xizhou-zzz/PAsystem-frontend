@@ -4,4 +4,3 @@
 # Export Git hook params
 export GIT_PARAMS=$*
 
-npx.cmd --no-install fabric verify-commit
