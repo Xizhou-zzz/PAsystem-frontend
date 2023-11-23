@@ -50,7 +50,7 @@ const Course_manage: React.FC = () => {
       key: '3',
       course_name: '专业课程综合实训 Ⅲ',
       course_id: 'P310002B',
-      teacher_name: '马翼萱，王楠',
+      teacher_name: '马翼萱',
       classroom: 'YF609',
       time: 'Fri 14:10-16:00',
     },

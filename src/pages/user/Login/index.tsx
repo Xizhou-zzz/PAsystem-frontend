@@ -165,7 +165,7 @@ const Login: React.FC = () => {
                 }}
                 placeholder={intl.formatMessage({
                   id: 'pages.login.password.placeholder',
-                  defaultMessage: '密码: 请输入密码',
+                  defaultMessage: '请输入密码：',
                 })}
                 rules={[
                   {
