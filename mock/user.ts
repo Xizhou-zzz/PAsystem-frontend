@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+const axios = require('axios');
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -119,35 +120,44 @@ export default {
   ],
   'POST /api/login/account': async (req: Request, res: Response) => {
     const { password, username, type } = req.body;
+
+    const response = await axios.post(`http://127.0.0.1:5000/api/login`, {
+      username: username,
+      password: password
+    });
+
+    const re_status = response.data.status;
+    const re_access = response.data.access;
+
     await waitTime(2000);
     //管理员用户
-    if (password === 'ant.design' && username === 'admin') {
+    if (re_status === 'ok' && re_access === 'admin') {
       res.send({
-        status: 'ok',
+        status:re_status,
         type,
-        currentAuthority: 'admin',
+        currentAuthority:'admin',
       });
-      access = 'admin';
+      access = re_access;
       return;
     }
     //学生用户
-    if (password === 'ant.design' && username === 'student') {
+    if (re_status === 'ok' && re_access === 'student') {
       res.send({
-        status: 'ok',
+        status:re_status,
         type,
-        currentAuthority: 'user',
+        currentAuthority:'student',
       });
-      access = 'student';
+      access = re_access;
       return;
     }
     //教师用户
-    if (password === 'ant.design' && username === 'teacher') {
+    if (re_status === 'ok' && re_access === 'teacher') {
       res.send({
-        status: 'ok',
+        status:re_status,
         type,
-        currentAuthority: 'user',
+        currentAuthority:'teacher',
       });
-      access = 'teacher';
+      access = re_access;
       return;
     }
 
