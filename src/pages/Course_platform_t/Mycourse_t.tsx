@@ -1,9 +1,23 @@
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Table, Button, Input, Space, Modal, Tag } from 'antd';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Mycourse_t: React.FC = () => {
   const [searchText, setSearchText] = useState('');
+  const [course_data, setCourseData] = useState([]);
+
+    // 在页面加载时发起get请求，获取后端数据
+  useEffect(() => {
+    axios.get('http://127.0.0.1:5000/teaching_manage/course_manage/get')
+      .then(res => {
+        console.log(res.data);
+        setCourseData(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   const handleSearch = (value: string) => {
     setSearchText(value);
@@ -103,7 +117,7 @@ const Mycourse_t: React.FC = () => {
             style={{ width: 200, marginLeft: 16 }}
           />
         </div>
-        <Table columns={columns} dataSource={dataSource} />
+        <Table columns={columns} dataSource={course_data} />
         {/* 设备模态框 */}
         <Modal
           title={selectedClass ? '课程详情' : '新增设备'}
