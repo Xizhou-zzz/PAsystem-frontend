@@ -2,22 +2,40 @@ import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Avatar, Form, Input, Button, Upload, message } from 'antd';
 import { UserOutlined, UploadOutlined } from '@ant-design/icons';
+import { currentUser } from '@/services/ant-design-pro/api';
 import axios from 'axios';
 
 const Basicinformation: React.FC = () => {
+  
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await currentUser();
+        setCurrentUserInfo(response.data);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+
   // 确保在组件函数体内部调用Form.useForm()
   const [form] = Form.useForm();
     //声明一个状态变量avatarUrl，初始值设为null；声明一个函数setAvatarUrl，用于更新avatarUrl的值
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    const user_id = 1;
-    axios.get(`http://localhost:5000/api/user/${user_id}`)
-      .then(response => {
-        form.setFieldsValue(response.data);
-      })
-      .catch(error => console.error('Error fetching user data:', error));
-  }, [form]);
+    if (currentUserInfo) {
+      const user_name = currentUserInfo.name; // 使用当前用户name
+      axios.get(`http://localhost:5000/api/user/${user_name}`)
+        .then(response => {
+          form.setFieldsValue(response.data);
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+    }
+  }, [currentUserInfo, form]); // 添加 currentUserInfo 作为依赖项
 
   const [initialValues, setInitialValues] = useState({
     username: '',
