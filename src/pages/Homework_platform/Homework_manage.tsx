@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Table, Button, Input, Modal, Upload, Space,Progress } from 'antd';
+import { Table, Button, Input, Modal, Upload, Space,Progress,Select } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 const HomeworkManage: React.FC = () => {
@@ -164,12 +164,20 @@ const HomeworkManage: React.FC = () => {
         >
           {/* 模态框内的内容 */}
           <div style={{ marginTop: 16 }}>
-            作业标题：
-            <Input value={selectedHomework?.homework_title} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, homework_title: e.target.value })} />
+            {/* <Input value={selectedHomework?.course_name} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, course_name: e.target.value })} /> */}
+            <Select
+              defaultValue="选择所属课程"
+              style={{ width: 200 }}
+              // 目前是静态数据，课程列表需要从后端获取
+              options={[
+                {value:'软件项目管理与运维',label:'软件项目管理与运维'},
+                {value:'科技论文写作w',label:'科技论文写作w'},
+              ]}
+            />
           </div>
           <div style={{ marginTop: 16 }}>
-            所属课程：
-            <Input value={selectedHomework?.course_name} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, course_name: e.target.value })} />
+            作业标题：
+            <Input value={selectedHomework?.homework_title} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, homework_title: e.target.value })} />
           </div>
           <div style={{ marginTop: 16 }}>
             截止日期：
@@ -206,12 +214,17 @@ const HomeworkManage: React.FC = () => {
         <Button onClick={handleModalOk1} type='primary'>发布</Button>]}
         >
           {/* 模态框内的内容 */}
+          <Select
+              defaultValue="选择所属课程"
+              style={{ width: 200 }}
+              // 目前是静态数据，课程列表需要从后端获取
+              options={[
+                {value:'软件项目管理与运维',label:'软件项目管理与运维'},
+                {value:'科技论文写作w',label:'科技论文写作w'},
+              ]}
+            />
           <div style={{ marginTop: 16 }}>
             作业标题：
-            <Input />
-          </div>
-          <div style={{ marginTop: 16 }}>
-            所属课程：
             <Input />
           </div>
           <div style={{ marginTop: 16 }}>

@@ -1,5 +1,5 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Table, Button, Input, Space, Modal,Form,message,Popconfirm } from 'antd';
+import { Card, Table, Button, Input, Space, Modal,Form,message,Popconfirm,Select } from 'antd';
 import React, { useState,useEffect } from 'react';
 import { Line } from '@ant-design/charts';
 import { ColumnType, ColumnGroupType } from 'antd/lib/table';
@@ -41,12 +41,12 @@ const Student_grade: React.FC = () => {
   const [selectedGrade, setSelectedGrade] = useState<any>(null);
   const [selectedRow,setSelectedRow] = useState<number>(-1);
   const [dataSource,setDataSource] = useState([
-    { id: '21301002', homework: '作业1', grade: '90' },
-    { id: '21301004', homework: '作业1', grade: '80' },
-    { id: '21301016', homework: '作业2', grade: '70' },
-    { id: '21301019', homework: '作业4', grade: '100' },
-    { id: '21301027', homework: '作业5', grade: '90' },
-    { id: '21301028', homework: '作业6', grade: 'NULL' },
+    { id: '21301002', grade: '90' },
+    { id: '21301004', grade: '80' },
+    { id: '21301016', grade: '70' },
+    { id: '21301019', grade: '100' },
+    { id: '21301027', grade: '90' },
+    { id: '21301028', grade: 'NULL' },
   ]);
   // 当selectedGrade变化时，更新表单的默认值
   useEffect(() => {
@@ -108,9 +108,21 @@ const Student_grade: React.FC = () => {
     setSelectedGrade(null);
   };
 
+  //处理选择课程名称的函数
+  const handleChangeCourse = (value: string) => {
+  console.log(`选择的课程名称是：${value}`);
+  //后端在此添加内容
+};
+  //处理选择作业标题的函数
+  const handleChangeHomework = (value: string) => {
+  console.log(`选择的作业标题是： ${value}`);
+  //后端在此添加内容
+};
+//根据选择的课程名和作业标题返回对应的学生成绩列表
+
   const columns: (ColumnType<{ id: string; homework: string; grade: string }> | ColumnGroupType<{ id: string; homework: string; grade: string }>)[] = [
+
     { title: '学生学号', dataIndex: 'id', key: 'id' },
-    { title: '作业', dataIndex: 'homework', key: 'homework' },
     { title: '成绩', dataIndex: 'grade', key: 'grade' },
     {
       title: '操作',
@@ -131,13 +143,37 @@ const Student_grade: React.FC = () => {
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
       {contextHolder}
-        <div style={{ marginBottom: 16 }}>
+      <Space>
+        <Select
+          defaultValue="请选择课程"
+          style={{ width: 250 }}
+          onChange={handleChangeCourse}
+          // 目前是静态数据，课程列表需要从后端获取
+          options={[
+            {value:'软件项目管理与运维',label:'软件项目管理与运维'},
+            {value:'科技论文写作w',label:'科技论文写作w'},
+          ]}
+        />
+        <Select
+          defaultValue="请选择作业标题"
+          style={{ width: 200 }}
+          onChange={handleChangeHomework}
+          //作业标题列表需要从后端获取
+          // 目前是静态数据，作业标题列表需要从后端获取，一个课程名称有它对应的作业标题列表
+          options={[
+            {value:'作业1',label:'作业1'},
+            {value:'作业2',label:'作业2'},
+          ]}
+        />
+      </Space>
+        {/* <div style={{ marginBottom: 16 }}>
           <Input.Search
             placeholder="搜索"
             onSearch={handleSearch}
             style={{ width: 200, marginLeft: 16 }}
           />
-        </div>
+        </div> */}
+
         <Table dataSource={dataSource} columns={columns} rowKey="id" />
 
         {/* 设备模态框 */}
