@@ -1,10 +1,43 @@
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Table, Button, Input, Space, Modal, Tag } from 'antd';
+import { currentUser } from '@/services/ant-design-pro/api';
 import React, { useState, useEffect } from 'react';
-import { Badge } from 'antd';
+import axios from 'axios';
 
-const Mycourse_t: React.FC = () => {
+const Mycourse_s: React.FC = () => {
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await currentUser();
+        setCurrentUserInfo(response.data);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+  
+  const [course_data, setCourseData] = useState([]);
+
+    // 在页面加载时发起get请求，获取后端数据
+    useEffect(() => {
+      if (currentUserInfo) {
+        const user_name = currentUserInfo.name; // 使用当前用户name
+        axios.get(`http://127.0.0.1:5000/Course_platform_s/Mycourse/get/${user_name}`)
+      .then(res => {
+        console.log(res.data);
+        setCourseData(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      }
+    }, [currentUserInfo]); // 添加 currentUserInfo 作为依赖项
+  
   const [searchText, setSearchText] = useState('');
+    
   const handleSearch = (value: string) => {
     setSearchText(value);
   };
@@ -28,24 +61,7 @@ const Mycourse_t: React.FC = () => {
     setSelectedClass(record);
     setIsModalVisible(true);
   };
-  const dataSource = [
-    {
-      key: '1',
-      course_name: '科技论文写作',
-      course_id: 'C110002B',
-      teacher_name: '苏景昕',
-      classroom: 'YF507',
-      time: 'Thu 10：30-12：20',
-    },
-    {
-      key: '2',
-      course_name: '计算机网络',
-      course_id: 'M310003B',
-      teacher_name: '高睿鹏',
-      classroom: '我不知道',
-      time: '我不知道',
-    },
-  ];
+
   const columns = [
     {
       title: '课程名称',
@@ -59,18 +75,18 @@ const Mycourse_t: React.FC = () => {
     },
     {
       title: '主讲教师',
-      dataIndex: 'teacher_name',
-      key: 'teacher_name',
+      dataIndex: 'main_teacher',
+      key: 'main_teacher',
     },
     {
       title: '授课教室',
-      dataIndex: 'classroom',
-      key: 'classroom',
+      dataIndex: 'teaching_room',
+      key: 'teaching_room',
     },
     {
       title: '授课时间',
-      dataIndex: 'time',
-      key: 'time',
+      dataIndex: 'teaching_time',
+      key: 'teaching_time',
     },
     {
       title: '',
@@ -84,6 +100,7 @@ const Mycourse_t: React.FC = () => {
       ),
     },
   ];
+
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
         <div style={{ marginBottom: 16 }}>
@@ -93,7 +110,7 @@ const Mycourse_t: React.FC = () => {
             style={{ width: 200, marginLeft: 16 }}
           />
         </div>
-        <Table columns={columns} dataSource={dataSource} />
+        <Table columns={columns} dataSource={course_data} />
         {/* 设备模态框 */}
         <Modal
           title={selectedClass ? '课程详情' : '新增设备'}
@@ -109,19 +126,19 @@ const Mycourse_t: React.FC = () => {
           </div>
           <div>
             授课教师：
-            <Input value={selectedClass?.teacher_name} />
+            <Input value={selectedClass?.main_teacher} />
           </div>
           <div>
             授课教室：
-            <Input value={selectedClass?.classroom} />
+            <Input value={selectedClass?.teaching_room} />
           </div>
           <div>
             授课时间：
-            <Input value={selectedClass?.time} />
+            <Input value={selectedClass?.teaching_time} />
           </div>
         </Modal>
     </PageContainer>
   );
 };
 
-export default Mycourse_t;
+export default Mycourse_s;

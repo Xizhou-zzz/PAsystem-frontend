@@ -61,6 +61,19 @@ const Mission: React.FC = () => {
     setIsModalOpen2(false);
   };
 
+  const handleUploadChange = (info) => {
+    if (info.file.status === 'uploading') {
+      // 正在上传
+      console.log('Uploading...');
+    } else if (info.file.status === 'done') {
+      // 上传完成
+      message.success(`${info.file.name} 文件上传成功`);
+    } else if (info.file.status === 'error') {
+      // 上传失败
+      message.error(`${info.file.name} 文件上传失败`);
+    }
+  };
+  
   //提交作业中文本域相关定义
   const { TextArea } = Input;
   //待完成作业表格数据和列名定义
@@ -112,8 +125,11 @@ const Mission: React.FC = () => {
           >
             <p>{modalText}</p>
             <TextArea defaultValue="" rows={4} />
-            <Upload>
-              <Button icon={<UploadOutlined />}>上传附件</Button>
+            <Upload
+              action="http://127.0.0.1:5000/api/upload" // 指定上传的URL
+              onChange={handleUploadChange} // 处理文件上传的状态变化
+            >
+            <Button icon={<UploadOutlined />}>上传附件</Button>
             </Upload>
           </Modal>
         </Space>
