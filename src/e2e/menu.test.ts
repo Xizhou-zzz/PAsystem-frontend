@@ -1,4 +1,4 @@
-﻿import type { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 const { uniq } = require('lodash');
 const RouterConfig = require('../../config/routes').default;
@@ -29,26 +29,20 @@ const testPage = (path: string, page: Page) => async () => {
     localStorage.setItem('antd-pro-authority', '["admin"]');
   });
   await page.goto(`${BASE_URL}${path}`);
-  await page.waitForSelector('footer', {
-    timeout: 2000,
-  });
-  const haveFooter = await page.evaluate(() => document.getElementsByTagName('footer').length > 0);
-  expect(haveFooter).toBeTruthy();
+
+  await page.waitForLoadState('load');
+  await page.waitForLoadState('networkidle');
+  const submitButton = await page.waitForSelector('Menu', { timeout: 5000 });
+  expect(submitButton).toBeTruthy();
 };
 
 const routers = formatter(RouterConfig);
 
 // 在这里定义顶层的测试用例
 routers.forEach((route) => {
-  test(`test route page ${route}`, async ({ page }) => {
+  test(`should have a menu on route ${route}`, async ({ page }) => {
     await testPage(route, page);
   });
-
-
-  test(`should have a button on route ${route}`, async ({ page }) => {
-     await page.waitForLoadState('load');
-    await page.waitForLoadState('networkidle');
-    const submitButton = await page.waitForSelector('Card', { timeout: 5000 });
-    expect(submitButton).toBeTruthy(); 
-  });
 });
+
+

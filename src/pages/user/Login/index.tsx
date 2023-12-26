@@ -4,7 +4,7 @@ import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import {
   AlipayCircleOutlined,
   LockOutlined,
-  MobileOutlined,
+  MailOutlined,
   QqOutlined,
   UserOutlined,
   WechatOutlined,
@@ -188,7 +188,7 @@ const Login: React.FC = () => {
               <ProFormText
                 fieldProps={{
                   size: 'large',
-                  prefix: <MobileOutlined className={styles.prefixIcon} />,
+                  prefix: <MailOutlined className={styles.prefixIcon} />,
                 }}
                 name="mobile"
                 placeholder={intl.formatMessage({

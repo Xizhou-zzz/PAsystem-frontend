@@ -1,0 +1,2026 @@
+<testsuites id="" name="" tests="512" failures="52" skipped="0" errors="0" time="216.934103">
+<testsuite name="src\e2e\baseLayout.e2e.spec.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="46" failures="23" skipped="0" time="152.228" errors="0">
+<testcase name="test route page /user" classname="src\e2e\baseLayout.e2e.spec.ts" time="1.676">
+</testcase>
+<testcase name="should have a button on route /user" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.751">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /user" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /user ────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /user/login" classname="src\e2e\baseLayout.e2e.spec.ts" time="1.214">
+</testcase>
+<testcase name="should have a button on route /user/login" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.779">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /user/login" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /user/login ──────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /welcome_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.947">
+</testcase>
+<testcase name="should have a button on route /welcome_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.765">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /welcome_s" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /welcome_s ───────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /welcome_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="1.244">
+</testcase>
+<testcase name="should have a button on route /welcome_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.691">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /welcome_t" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /welcome_t ───────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /welcome_a" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.903">
+</testcase>
+<testcase name="should have a button on route /welcome_a" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.626">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /welcome_a" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /welcome_a ───────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.948">
+</testcase>
+<testcase name="should have a button on route /course_platform_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.612">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_t" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_t 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_t/mycourse_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.901">
+</testcase>
+<testcase name="should have a button on route /course_platform_t/mycourse_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.615">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_t/mycourse_t" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_t/mycourse_t 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_t/student_grade" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.908">
+</testcase>
+<testcase name="should have a button on route /course_platform_t/student_grade" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.618">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_t/student_grade" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_t/student_grade 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /homework_platform" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.917">
+</testcase>
+<testcase name="should have a button on route /homework_platform" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.617">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /homework_platform" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /homework_platform 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /homework_platform/homework_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.913">
+</testcase>
+<testcase name="should have a button on route /homework_platform/homework_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.611">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /homework_platform/homework_manage" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /homework_platform/homework_manage 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /homework_platform/correction" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.932">
+</testcase>
+<testcase name="should have a button on route /homework_platform/correction" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.617">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /homework_platform/correction" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /homework_platform/correction 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.94">
+</testcase>
+<testcase name="should have a button on route /course_platform_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.631">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_s" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_s 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_s/mycourse_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.939">
+</testcase>
+<testcase name="should have a button on route /course_platform_s/mycourse_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.627">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_s/mycourse_s" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_s/mycourse_s 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_s/mission" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.917">
+</testcase>
+<testcase name="should have a button on route /course_platform_s/mission" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.629">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_s/mission" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_s/mission 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /teaching_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.912">
+</testcase>
+<testcase name="should have a button on route /teaching_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.617">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /teaching_manage" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /teaching_manage ─
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /teaching_manage/course_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.902">
+</testcase>
+<testcase name="should have a button on route /teaching_manage/course_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.634">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /teaching_manage/course_manage" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /teaching_manage/course_manage 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /teaching_manage/people_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.911">
+</testcase>
+<testcase name="should have a button on route /teaching_manage/people_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.629">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /teaching_manage/people_manage" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /teaching_manage/people_manage 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /permission_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.908">
+</testcase>
+<testcase name="should have a button on route /permission_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.616">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /permission_manage" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /permission_manage 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /myinformation" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.937">
+</testcase>
+<testcase name="should have a button on route /myinformation" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.615">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /myinformation" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /myinformation ───
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /myinformation/basicinformation" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.906">
+</testcase>
+<testcase name="should have a button on route /myinformation/basicinformation" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.604">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /myinformation/basicinformation" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /myinformation/basicinformation 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /myinformation/safetysettings" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.893">
+</testcase>
+<testcase name="should have a button on route /myinformation/safetysettings" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.611">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /myinformation/safetysettings" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /myinformation/safetysettings 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /myinformation/othersettings" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.902">
+</testcase>
+<testcase name="should have a button on route /myinformation/othersettings" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.608">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /myinformation/othersettings" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /myinformation/othersettings 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.912">
+</testcase>
+<testcase name="should have a button on route /" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.623">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route / ────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\button_danger.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="5.448" errors="0">
+<testcase name="should have a danger button on route /user" classname="src\e2e\button_danger.test.ts" time="1.609">
+</testcase>
+<testcase name="should have a danger button on route /user/login" classname="src\e2e\button_danger.test.ts" time="0.203">
+</testcase>
+<testcase name="should have a danger button on route /welcome_s" classname="src\e2e\button_danger.test.ts" time="0.182">
+</testcase>
+<testcase name="should have a danger button on route /welcome_t" classname="src\e2e\button_danger.test.ts" time="0.17">
+</testcase>
+<testcase name="should have a danger button on route /welcome_a" classname="src\e2e\button_danger.test.ts" time="0.181">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_t" classname="src\e2e\button_danger.test.ts" time="0.153">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_t/mycourse_t" classname="src\e2e\button_danger.test.ts" time="0.15">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_t/student_grade" classname="src\e2e\button_danger.test.ts" time="0.158">
+</testcase>
+<testcase name="should have a danger button on route /homework_platform" classname="src\e2e\button_danger.test.ts" time="0.187">
+</testcase>
+<testcase name="should have a danger button on route /homework_platform/homework_manage" classname="src\e2e\button_danger.test.ts" time="0.146">
+</testcase>
+<testcase name="should have a danger button on route /homework_platform/correction" classname="src\e2e\button_danger.test.ts" time="0.22">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_s" classname="src\e2e\button_danger.test.ts" time="0.186">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_s/mycourse_s" classname="src\e2e\button_danger.test.ts" time="0.18">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_s/mission" classname="src\e2e\button_danger.test.ts" time="0.183">
+</testcase>
+<testcase name="should have a danger button on route /teaching_manage" classname="src\e2e\button_danger.test.ts" time="0.166">
+</testcase>
+<testcase name="should have a danger button on route /teaching_manage/course_manage" classname="src\e2e\button_danger.test.ts" time="0.174">
+</testcase>
+<testcase name="should have a danger button on route /teaching_manage/people_manage" classname="src\e2e\button_danger.test.ts" time="0.172">
+</testcase>
+<testcase name="should have a danger button on route /permission_manage" classname="src\e2e\button_danger.test.ts" time="0.189">
+</testcase>
+<testcase name="should have a danger button on route /myinformation" classname="src\e2e\button_danger.test.ts" time="0.151">
+</testcase>
+<testcase name="should have a danger button on route /myinformation/basicinformation" classname="src\e2e\button_danger.test.ts" time="0.16">
+</testcase>
+<testcase name="should have a danger button on route /myinformation/safetysettings" classname="src\e2e\button_danger.test.ts" time="0.171">
+</testcase>
+<testcase name="should have a danger button on route /myinformation/othersettings" classname="src\e2e\button_danger.test.ts" time="0.174">
+</testcase>
+<testcase name="should have a danger button on route /" classname="src\e2e\button_danger.test.ts" time="0.183">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\button_dashed.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="5.103" errors="0">
+<testcase name="should have a dashed button on route /user" classname="src\e2e\button_dashed.test.ts" time="1.386">
+</testcase>
+<testcase name="should have a dashed button on route /user/login" classname="src\e2e\button_dashed.test.ts" time="0.18">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_s" classname="src\e2e\button_dashed.test.ts" time="0.183">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_t" classname="src\e2e\button_dashed.test.ts" time="0.172">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_a" classname="src\e2e\button_dashed.test.ts" time="0.179">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t" classname="src\e2e\button_dashed.test.ts" time="0.145">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t/mycourse_t" classname="src\e2e\button_dashed.test.ts" time="0.154">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t/student_grade" classname="src\e2e\button_dashed.test.ts" time="0.161">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform" classname="src\e2e\button_dashed.test.ts" time="0.149">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform/homework_manage" classname="src\e2e\button_dashed.test.ts" time="0.151">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform/correction" classname="src\e2e\button_dashed.test.ts" time="0.194">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s" classname="src\e2e\button_dashed.test.ts" time="0.174">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s/mycourse_s" classname="src\e2e\button_dashed.test.ts" time="0.161">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s/mission" classname="src\e2e\button_dashed.test.ts" time="0.182">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage" classname="src\e2e\button_dashed.test.ts" time="0.176">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage/course_manage" classname="src\e2e\button_dashed.test.ts" time="0.179">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage/people_manage" classname="src\e2e\button_dashed.test.ts" time="0.183">
+</testcase>
+<testcase name="should have a dashed button on route /permission_manage" classname="src\e2e\button_dashed.test.ts" time="0.18">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation" classname="src\e2e\button_dashed.test.ts" time="0.158">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/basicinformation" classname="src\e2e\button_dashed.test.ts" time="0.169">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/safetysettings" classname="src\e2e\button_dashed.test.ts" time="0.155">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/othersettings" classname="src\e2e\button_dashed.test.ts" time="0.167">
+</testcase>
+<testcase name="should have a dashed button on route /" classname="src\e2e\button_dashed.test.ts" time="0.165">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\button_primary.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="5.664" errors="0">
+<testcase name="should have a primary button on route /user" classname="src\e2e\button_primary.test.ts" time="1.804">
+</testcase>
+<testcase name="should have a primary button on route /user/login" classname="src\e2e\button_primary.test.ts" time="0.183">
+</testcase>
+<testcase name="should have a primary button on route /welcome_s" classname="src\e2e\button_primary.test.ts" time="0.181">
+</testcase>
+<testcase name="should have a primary button on route /welcome_t" classname="src\e2e\button_primary.test.ts" time="0.17">
+</testcase>
+<testcase name="should have a primary button on route /welcome_a" classname="src\e2e\button_primary.test.ts" time="0.165">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_t" classname="src\e2e\button_primary.test.ts" time="0.164">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_t/mycourse_t" classname="src\e2e\button_primary.test.ts" time="0.154">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_t/student_grade" classname="src\e2e\button_primary.test.ts" time="0.157">
+</testcase>
+<testcase name="should have a primary button on route /homework_platform" classname="src\e2e\button_primary.test.ts" time="0.169">
+</testcase>
+<testcase name="should have a primary button on route /homework_platform/homework_manage" classname="src\e2e\button_primary.test.ts" time="0.17">
+</testcase>
+<testcase name="should have a primary button on route /homework_platform/correction" classname="src\e2e\button_primary.test.ts" time="0.174">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_s" classname="src\e2e\button_primary.test.ts" time="0.183">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_s/mycourse_s" classname="src\e2e\button_primary.test.ts" time="0.166">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_s/mission" classname="src\e2e\button_primary.test.ts" time="0.177">
+</testcase>
+<testcase name="should have a primary button on route /teaching_manage" classname="src\e2e\button_primary.test.ts" time="0.179">
+</testcase>
+<testcase name="should have a primary button on route /teaching_manage/course_manage" classname="src\e2e\button_primary.test.ts" time="0.193">
+</testcase>
+<testcase name="should have a primary button on route /teaching_manage/people_manage" classname="src\e2e\button_primary.test.ts" time="0.208">
+</testcase>
+<testcase name="should have a primary button on route /permission_manage" classname="src\e2e\button_primary.test.ts" time="0.198">
+</testcase>
+<testcase name="should have a primary button on route /myinformation" classname="src\e2e\button_primary.test.ts" time="0.162">
+</testcase>
+<testcase name="should have a primary button on route /myinformation/basicinformation" classname="src\e2e\button_primary.test.ts" time="0.18">
+</testcase>
+<testcase name="should have a primary button on route /myinformation/safetysettings" classname="src\e2e\button_primary.test.ts" time="0.174">
+</testcase>
+<testcase name="should have a primary button on route /myinformation/othersettings" classname="src\e2e\button_primary.test.ts" time="0.173">
+</testcase>
+<testcase name="should have a primary button on route /" classname="src\e2e\button_primary.test.ts" time="0.18">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\button.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="5.427" errors="0">
+<testcase name="should have a dashed button on route /user" classname="src\e2e\button.test.ts" time="1.7">
+</testcase>
+<testcase name="should have a dashed button on route /user/login" classname="src\e2e\button.test.ts" time="0.182">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_s" classname="src\e2e\button.test.ts" time="0.188">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_t" classname="src\e2e\button.test.ts" time="0.161">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_a" classname="src\e2e\button.test.ts" time="0.183">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t" classname="src\e2e\button.test.ts" time="0.146">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t/mycourse_t" classname="src\e2e\button.test.ts" time="0.154">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t/student_grade" classname="src\e2e\button.test.ts" time="0.171">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform" classname="src\e2e\button.test.ts" time="0.148">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform/homework_manage" classname="src\e2e\button.test.ts" time="0.148">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform/correction" classname="src\e2e\button.test.ts" time="0.187">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s" classname="src\e2e\button.test.ts" time="0.171">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s/mycourse_s" classname="src\e2e\button.test.ts" time="0.171">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s/mission" classname="src\e2e\button.test.ts" time="0.175">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage" classname="src\e2e\button.test.ts" time="0.176">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage/course_manage" classname="src\e2e\button.test.ts" time="0.187">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage/people_manage" classname="src\e2e\button.test.ts" time="0.176">
+</testcase>
+<testcase name="should have a dashed button on route /permission_manage" classname="src\e2e\button.test.ts" time="0.186">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation" classname="src\e2e\button.test.ts" time="0.151">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/basicinformation" classname="src\e2e\button.test.ts" time="0.169">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/safetysettings" classname="src\e2e\button.test.ts" time="0.16">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/othersettings" classname="src\e2e\button.test.ts" time="0.163">
+</testcase>
+<testcase name="should have a dashed button on route /" classname="src\e2e\button.test.ts" time="0.174">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\card.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="5.228" errors="0">
+<testcase name="should have a card on route /user" classname="src\e2e\card.test.ts" time="1.374">
+</testcase>
+<testcase name="should have a card on route /user/login" classname="src\e2e\card.test.ts" time="0.194">
+</testcase>
+<testcase name="should have a card on route /welcome_s" classname="src\e2e\card.test.ts" time="0.178">
+</testcase>
+<testcase name="should have a card on route /welcome_t" classname="src\e2e\card.test.ts" time="0.155">
+</testcase>
+<testcase name="should have a card on route /welcome_a" classname="src\e2e\card.test.ts" time="0.174">
+</testcase>
+<testcase name="should have a card on route /course_platform_t" classname="src\e2e\card.test.ts" time="0.16">
+</testcase>
+<testcase name="should have a card on route /course_platform_t/mycourse_t" classname="src\e2e\card.test.ts" time="0.15">
+</testcase>
+<testcase name="should have a card on route /course_platform_t/student_grade" classname="src\e2e\card.test.ts" time="0.156">
+</testcase>
+<testcase name="should have a card on route /homework_platform" classname="src\e2e\card.test.ts" time="0.168">
+</testcase>
+<testcase name="should have a card on route /homework_platform/homework_manage" classname="src\e2e\card.test.ts" time="0.19">
+</testcase>
+<testcase name="should have a card on route /homework_platform/correction" classname="src\e2e\card.test.ts" time="0.199">
+</testcase>
+<testcase name="should have a card on route /course_platform_s" classname="src\e2e\card.test.ts" time="0.185">
+</testcase>
+<testcase name="should have a card on route /course_platform_s/mycourse_s" classname="src\e2e\card.test.ts" time="0.181">
+</testcase>
+<testcase name="should have a card on route /course_platform_s/mission" classname="src\e2e\card.test.ts" time="0.179">
+</testcase>
+<testcase name="should have a card on route /teaching_manage" classname="src\e2e\card.test.ts" time="0.169">
+</testcase>
+<testcase name="should have a card on route /teaching_manage/course_manage" classname="src\e2e\card.test.ts" time="0.182">
+</testcase>
+<testcase name="should have a card on route /teaching_manage/people_manage" classname="src\e2e\card.test.ts" time="0.174">
+</testcase>
+<testcase name="should have a card on route /permission_manage" classname="src\e2e\card.test.ts" time="0.189">
+</testcase>
+<testcase name="should have a card on route /myinformation" classname="src\e2e\card.test.ts" time="0.162">
+</testcase>
+<testcase name="should have a card on route /myinformation/basicinformation" classname="src\e2e\card.test.ts" time="0.181">
+</testcase>
+<testcase name="should have a card on route /myinformation/safetysettings" classname="src\e2e\card.test.ts" time="0.174">
+</testcase>
+<testcase name="should have a card on route /myinformation/othersettings" classname="src\e2e\card.test.ts" time="0.173">
+</testcase>
+<testcase name="should have a card on route /" classname="src\e2e\card.test.ts" time="0.181">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\form.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="5.496" errors="0">
+<testcase name="should have a form on route /user" classname="src\e2e\form.test.ts" time="1.637">
+</testcase>
+<testcase name="should have a form on route /user/login" classname="src\e2e\form.test.ts" time="0.188">
+</testcase>
+<testcase name="should have a form on route /welcome_s" classname="src\e2e\form.test.ts" time="0.187">
+</testcase>
+<testcase name="should have a form on route /welcome_t" classname="src\e2e\form.test.ts" time="0.158">
+</testcase>
+<testcase name="should have a form on route /welcome_a" classname="src\e2e\form.test.ts" time="0.151">
+</testcase>
+<testcase name="should have a form on route /course_platform_t" classname="src\e2e\form.test.ts" time="0.182">
+</testcase>
+<testcase name="should have a form on route /course_platform_t/mycourse_t" classname="src\e2e\form.test.ts" time="0.15">
+</testcase>
+<testcase name="should have a form on route /course_platform_t/student_grade" classname="src\e2e\form.test.ts" time="0.157">
+</testcase>
+<testcase name="should have a form on route /homework_platform" classname="src\e2e\form.test.ts" time="0.168">
+</testcase>
+<testcase name="should have a form on route /homework_platform/homework_manage" classname="src\e2e\form.test.ts" time="0.178">
+</testcase>
+<testcase name="should have a form on route /homework_platform/correction" classname="src\e2e\form.test.ts" time="0.212">
+</testcase>
+<testcase name="should have a form on route /course_platform_s" classname="src\e2e\form.test.ts" time="0.183">
+</testcase>
+<testcase name="should have a form on route /course_platform_s/mycourse_s" classname="src\e2e\form.test.ts" time="0.186">
+</testcase>
+<testcase name="should have a form on route /course_platform_s/mission" classname="src\e2e\form.test.ts" time="0.178">
+</testcase>
+<testcase name="should have a form on route /teaching_manage" classname="src\e2e\form.test.ts" time="0.165">
+</testcase>
+<testcase name="should have a form on route /teaching_manage/course_manage" classname="src\e2e\form.test.ts" time="0.184">
+</testcase>
+<testcase name="should have a form on route /teaching_manage/people_manage" classname="src\e2e\form.test.ts" time="0.171">
+</testcase>
+<testcase name="should have a form on route /permission_manage" classname="src\e2e\form.test.ts" time="0.19">
+</testcase>
+<testcase name="should have a form on route /myinformation" classname="src\e2e\form.test.ts" time="0.162">
+</testcase>
+<testcase name="should have a form on route /myinformation/basicinformation" classname="src\e2e\form.test.ts" time="0.181">
+</testcase>
+<testcase name="should have a form on route /myinformation/safetysettings" classname="src\e2e\form.test.ts" time="0.179">
+</testcase>
+<testcase name="should have a form on route /myinformation/othersettings" classname="src\e2e\form.test.ts" time="0.162">
+</testcase>
+<testcase name="should have a form on route /" classname="src\e2e\form.test.ts" time="0.187">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\input.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="1" failures="1" skipped="0" time="6.421" errors="0">
+<testcase name="should have an input field on the page" classname="src\e2e\input.test.ts" time="6.421">
+<failure message="input.test.ts:25:5 should have an input field on the page" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\input.test.ts:25:5 › should have an input field on the page ─────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('input[type="text"]') to be visible
+    ============================================================
+
+      12 |
+      13 | const testInput = async (page: Page, inputSelector: string) => {
+    > 14 |   const input = await page.waitForSelector(inputSelector, { timeout: 5000 });
+         |                            ^
+      15 |   expect(input).toBeTruthy();
+      16 |
+      17 |   // 在输入框中输入内容
+
+        at testInput (D:\PA-frontend\PAsystem-frontend\src\e2e\input.test.ts:14:28)
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\input.test.ts:27:9
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\menu.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="3.242" errors="0">
+<testcase name="should have a menu on route /user" classname="src\e2e\menu.test.ts" time="0.168">
+</testcase>
+<testcase name="should have a menu on route /user/login" classname="src\e2e\menu.test.ts" time="0.122">
+</testcase>
+<testcase name="should have a menu on route /welcome_s" classname="src\e2e\menu.test.ts" time="0.116">
+</testcase>
+<testcase name="should have a menu on route /welcome_t" classname="src\e2e\menu.test.ts" time="0.11">
+</testcase>
+<testcase name="should have a menu on route /welcome_a" classname="src\e2e\menu.test.ts" time="0.108">
+</testcase>
+<testcase name="should have a menu on route /course_platform_t" classname="src\e2e\menu.test.ts" time="0.117">
+</testcase>
+<testcase name="should have a menu on route /course_platform_t/mycourse_t" classname="src\e2e\menu.test.ts" time="0.122">
+</testcase>
+<testcase name="should have a menu on route /course_platform_t/student_grade" classname="src\e2e\menu.test.ts" time="0.123">
+</testcase>
+<testcase name="should have a menu on route /homework_platform" classname="src\e2e\menu.test.ts" time="0.123">
+</testcase>
+<testcase name="should have a menu on route /homework_platform/homework_manage" classname="src\e2e\menu.test.ts" time="0.121">
+</testcase>
+<testcase name="should have a menu on route /homework_platform/correction" classname="src\e2e\menu.test.ts" time="0.122">
+</testcase>
+<testcase name="should have a menu on route /course_platform_s" classname="src\e2e\menu.test.ts" time="0.161">
+</testcase>
+<testcase name="should have a menu on route /course_platform_s/mycourse_s" classname="src\e2e\menu.test.ts" time="0.153">
+</testcase>
+<testcase name="should have a menu on route /course_platform_s/mission" classname="src\e2e\menu.test.ts" time="0.119">
+</testcase>
+<testcase name="should have a menu on route /teaching_manage" classname="src\e2e\menu.test.ts" time="0.136">
+</testcase>
+<testcase name="should have a menu on route /teaching_manage/course_manage" classname="src\e2e\menu.test.ts" time="0.148">
+</testcase>
+<testcase name="should have a menu on route /teaching_manage/people_manage" classname="src\e2e\menu.test.ts" time="0.161">
+</testcase>
+<testcase name="should have a menu on route /permission_manage" classname="src\e2e\menu.test.ts" time="0.169">
+</testcase>
+<testcase name="should have a menu on route /myinformation" classname="src\e2e\menu.test.ts" time="0.166">
+</testcase>
+<testcase name="should have a menu on route /myinformation/basicinformation" classname="src\e2e\menu.test.ts" time="0.169">
+</testcase>
+<testcase name="should have a menu on route /myinformation/safetysettings" classname="src\e2e\menu.test.ts" time="0.183">
+</testcase>
+<testcase name="should have a menu on route /myinformation/othersettings" classname="src\e2e\menu.test.ts" time="0.164">
+</testcase>
+<testcase name="should have a menu on route /" classname="src\e2e\menu.test.ts" time="0.161">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\message.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="1" failures="1" skipped="0" time="5.207" errors="0">
+<testcase name="should display a Message component on the page" classname="src\e2e\message.test.ts" time="5.207">
+<failure message="message.test.ts:22:5 should display a Message component on the page" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\message.test.ts:22:5 › should display a Message component on the page ───────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.message') to be visible
+    ============================================================
+
+      12 |
+      13 | const testMessageComponent = async (page: Page, messageSelector: string, expectedMessage: string) => {
+    > 14 |   const messageElement = await page.waitForSelector(messageSelector, { timeout: 5000 });
+         |                                     ^
+      15 |   expect(messageElement).toBeTruthy();
+      16 |
+      17 |   // 获取 Message 组件的文本内容并进行断言
+
+        at testMessageComponent (D:\PA-frontend\PAsystem-frontend\src\e2e\message.test.ts:14:37)
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\message.test.ts:24:9
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\space.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="1" failures="1" skipped="0" time="5.174" errors="0">
+<testcase name="should display a Space component on the page" classname="src\e2e\space.test.ts" time="5.174">
+<failure message="space.test.ts:23:5 should display a Space component on the page" type="FAILURE">
+<![CDATA[  [chromium] › src\e2e\space.test.ts:23:5 › should display a Space component on the page ───────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.space') to be visible
+    ============================================================
+
+      12 |
+      13 | const testSpaceComponent = async (page: Page, spaceSelector: string) => {
+    > 14 |   const spaceElement = await page.waitForSelector(spaceSelector, { timeout: 5000 });
+         |                                   ^
+      15 |   expect(spaceElement).toBeTruthy();
+      16 |
+      17 |   
+
+        at testSpaceComponent (D:\PA-frontend\PAsystem-frontend\src\e2e\space.test.ts:14:35)
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\space.test.ts:25:9
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\table.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="3.265" errors="0">
+<testcase name="should have a table on route /user" classname="src\e2e\table.test.ts" time="0.148">
+</testcase>
+<testcase name="should have a table on route /user/login" classname="src\e2e\table.test.ts" time="0.115">
+</testcase>
+<testcase name="should have a table on route /welcome_s" classname="src\e2e\table.test.ts" time="0.117">
+</testcase>
+<testcase name="should have a table on route /welcome_t" classname="src\e2e\table.test.ts" time="0.117">
+</testcase>
+<testcase name="should have a table on route /welcome_a" classname="src\e2e\table.test.ts" time="0.104">
+</testcase>
+<testcase name="should have a table on route /course_platform_t" classname="src\e2e\table.test.ts" time="0.13">
+</testcase>
+<testcase name="should have a table on route /course_platform_t/mycourse_t" classname="src\e2e\table.test.ts" time="0.123">
+</testcase>
+<testcase name="should have a table on route /course_platform_t/student_grade" classname="src\e2e\table.test.ts" time="0.117">
+</testcase>
+<testcase name="should have a table on route /homework_platform" classname="src\e2e\table.test.ts" time="0.115">
+</testcase>
+<testcase name="should have a table on route /homework_platform/homework_manage" classname="src\e2e\table.test.ts" time="0.137">
+</testcase>
+<testcase name="should have a table on route /homework_platform/correction" classname="src\e2e\table.test.ts" time="0.153">
+</testcase>
+<testcase name="should have a table on route /course_platform_s" classname="src\e2e\table.test.ts" time="0.148">
+</testcase>
+<testcase name="should have a table on route /course_platform_s/mycourse_s" classname="src\e2e\table.test.ts" time="0.139">
+</testcase>
+<testcase name="should have a table on route /course_platform_s/mission" classname="src\e2e\table.test.ts" time="0.135">
+</testcase>
+<testcase name="should have a table on route /teaching_manage" classname="src\e2e\table.test.ts" time="0.148">
+</testcase>
+<testcase name="should have a table on route /teaching_manage/course_manage" classname="src\e2e\table.test.ts" time="0.162">
+</testcase>
+<testcase name="should have a table on route /teaching_manage/people_manage" classname="src\e2e\table.test.ts" time="0.171">
+</testcase>
+<testcase name="should have a table on route /permission_manage" classname="src\e2e\table.test.ts" time="0.157">
+</testcase>
+<testcase name="should have a table on route /myinformation" classname="src\e2e\table.test.ts" time="0.176">
+</testcase>
+<testcase name="should have a table on route /myinformation/basicinformation" classname="src\e2e\table.test.ts" time="0.187">
+</testcase>
+<testcase name="should have a table on route /myinformation/safetysettings" classname="src\e2e\table.test.ts" time="0.168">
+</testcase>
+<testcase name="should have a table on route /myinformation/othersettings" classname="src\e2e\table.test.ts" time="0.144">
+</testcase>
+<testcase name="should have a table on route /" classname="src\e2e\table.test.ts" time="0.154">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\upload.test.tsx" timestamp="2023-11-30T13:25:42.078Z" hostname="chromium" tests="23" failures="0" skipped="0" time="3.286" errors="0">
+<testcase name="should have a upload on route /user" classname="src\e2e\upload.test.tsx" time="0.146">
+</testcase>
+<testcase name="should have a upload on route /user/login" classname="src\e2e\upload.test.tsx" time="0.116">
+</testcase>
+<testcase name="should have a upload on route /welcome_s" classname="src\e2e\upload.test.tsx" time="0.12">
+</testcase>
+<testcase name="should have a upload on route /welcome_t" classname="src\e2e\upload.test.tsx" time="0.106">
+</testcase>
+<testcase name="should have a upload on route /welcome_a" classname="src\e2e\upload.test.tsx" time="0.111">
+</testcase>
+<testcase name="should have a upload on route /course_platform_t" classname="src\e2e\upload.test.tsx" time="0.12">
+</testcase>
+<testcase name="should have a upload on route /course_platform_t/mycourse_t" classname="src\e2e\upload.test.tsx" time="0.124">
+</testcase>
+<testcase name="should have a upload on route /course_platform_t/student_grade" classname="src\e2e\upload.test.tsx" time="0.125">
+</testcase>
+<testcase name="should have a upload on route /homework_platform" classname="src\e2e\upload.test.tsx" time="0.117">
+</testcase>
+<testcase name="should have a upload on route /homework_platform/homework_manage" classname="src\e2e\upload.test.tsx" time="0.123">
+</testcase>
+<testcase name="should have a upload on route /homework_platform/correction" classname="src\e2e\upload.test.tsx" time="0.161">
+</testcase>
+<testcase name="should have a upload on route /course_platform_s" classname="src\e2e\upload.test.tsx" time="0.154">
+</testcase>
+<testcase name="should have a upload on route /course_platform_s/mycourse_s" classname="src\e2e\upload.test.tsx" time="0.119">
+</testcase>
+<testcase name="should have a upload on route /course_platform_s/mission" classname="src\e2e\upload.test.tsx" time="0.136">
+</testcase>
+<testcase name="should have a upload on route /teaching_manage" classname="src\e2e\upload.test.tsx" time="0.15">
+</testcase>
+<testcase name="should have a upload on route /teaching_manage/course_manage" classname="src\e2e\upload.test.tsx" time="0.162">
+</testcase>
+<testcase name="should have a upload on route /teaching_manage/people_manage" classname="src\e2e\upload.test.tsx" time="0.169">
+</testcase>
+<testcase name="should have a upload on route /permission_manage" classname="src\e2e\upload.test.tsx" time="0.151">
+</testcase>
+<testcase name="should have a upload on route /myinformation" classname="src\e2e\upload.test.tsx" time="0.184">
+</testcase>
+<testcase name="should have a upload on route /myinformation/basicinformation" classname="src\e2e\upload.test.tsx" time="0.194">
+</testcase>
+<testcase name="should have a upload on route /myinformation/safetysettings" classname="src\e2e\upload.test.tsx" time="0.18">
+</testcase>
+<testcase name="should have a upload on route /myinformation/othersettings" classname="src\e2e\upload.test.tsx" time="0.152">
+</testcase>
+<testcase name="should have a upload on route /" classname="src\e2e\upload.test.tsx" time="0.166">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\baseLayout.e2e.spec.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="46" failures="23" skipped="0" time="150.999" errors="0">
+<testcase name="test route page /user" classname="src\e2e\baseLayout.e2e.spec.ts" time="1.224">
+</testcase>
+<testcase name="should have a button on route /user" classname="src\e2e\baseLayout.e2e.spec.ts" time="6.208">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /user" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /user ─────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /user/login" classname="src\e2e\baseLayout.e2e.spec.ts" time="1.597">
+</testcase>
+<testcase name="should have a button on route /user/login" classname="src\e2e\baseLayout.e2e.spec.ts" time="6.229">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /user/login" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /user/login ───────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /welcome_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.999">
+</testcase>
+<testcase name="should have a button on route /welcome_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.869">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /welcome_s" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /welcome_s ────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /welcome_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.631">
+</testcase>
+<testcase name="should have a button on route /welcome_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.769">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /welcome_t" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /welcome_t ────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /welcome_a" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.686">
+</testcase>
+<testcase name="should have a button on route /welcome_a" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.75">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /welcome_a" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /welcome_a ────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.677">
+</testcase>
+<testcase name="should have a button on route /course_platform_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.775">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_t" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_t 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_t/mycourse_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.71">
+</testcase>
+<testcase name="should have a button on route /course_platform_t/mycourse_t" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.768">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_t/mycourse_t" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_t/mycourse_t 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_t/student_grade" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.705">
+</testcase>
+<testcase name="should have a button on route /course_platform_t/student_grade" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.781">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_t/student_grade" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_t/student_grade 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /homework_platform" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.849">
+</testcase>
+<testcase name="should have a button on route /homework_platform" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.78">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /homework_platform" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /homework_platform 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /homework_platform/homework_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.711">
+</testcase>
+<testcase name="should have a button on route /homework_platform/homework_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.754">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /homework_platform/homework_manage" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /homework_platform/homework_manage 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /homework_platform/correction" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.712">
+</testcase>
+<testcase name="should have a button on route /homework_platform/correction" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.746">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /homework_platform/correction" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /homework_platform/correction 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.68">
+</testcase>
+<testcase name="should have a button on route /course_platform_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.753">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_s" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_s 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_s/mycourse_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.667">
+</testcase>
+<testcase name="should have a button on route /course_platform_s/mycourse_s" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.749">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_s/mycourse_s" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_s/mycourse_s 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /course_platform_s/mission" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.654">
+</testcase>
+<testcase name="should have a button on route /course_platform_s/mission" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.747">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /course_platform_s/mission" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /course_platform_s/mission 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /teaching_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.666">
+</testcase>
+<testcase name="should have a button on route /teaching_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.728">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /teaching_manage" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /teaching_manage ──
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /teaching_manage/course_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.66">
+</testcase>
+<testcase name="should have a button on route /teaching_manage/course_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.748">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /teaching_manage/course_manage" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /teaching_manage/course_manage 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /teaching_manage/people_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.665">
+</testcase>
+<testcase name="should have a button on route /teaching_manage/people_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.752">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /teaching_manage/people_manage" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /teaching_manage/people_manage 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /permission_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.749">
+</testcase>
+<testcase name="should have a button on route /permission_manage" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.724">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /permission_manage" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /permission_manage 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /myinformation" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.693">
+</testcase>
+<testcase name="should have a button on route /myinformation" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.734">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /myinformation" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /myinformation ────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /myinformation/basicinformation" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.687">
+</testcase>
+<testcase name="should have a button on route /myinformation/basicinformation" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.757">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /myinformation/basicinformation" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /myinformation/basicinformation 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /myinformation/safetysettings" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.673">
+</testcase>
+<testcase name="should have a button on route /myinformation/safetysettings" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.741">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /myinformation/safetysettings" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /myinformation/safetysettings 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /myinformation/othersettings" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.675">
+</testcase>
+<testcase name="should have a button on route /myinformation/othersettings" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.751">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /myinformation/othersettings" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route /myinformation/othersettings 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+<testcase name="test route page /" classname="src\e2e\baseLayout.e2e.spec.ts" time="0.66">
+</testcase>
+<testcase name="should have a button on route /" classname="src\e2e\baseLayout.e2e.spec.ts" time="5.756">
+<failure message="baseLayout.e2e.spec.ts:2:1 should have a button on route /" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\baseLayout.e2e.spec.ts:2:1 › should have a button on route / ─────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('Card') to be visible
+    ============================================================
+
+      1 | ﻿import type { Page } from '@playwright/test';
+    > 2 | import { expect, test } from '@playwright/test';
+        | ^
+      3 | const { uniq } = require('lodash');
+      4 | const RouterConfig = require('../../config/routes').default;
+      5 |
+
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\baseLayout.e2e.spec.ts:2:1
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\button_danger.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="13.165" errors="0">
+<testcase name="should have a danger button on route /user" classname="src\e2e\button_danger.test.ts" time="1.523">
+</testcase>
+<testcase name="should have a danger button on route /user/login" classname="src\e2e\button_danger.test.ts" time="0.672">
+</testcase>
+<testcase name="should have a danger button on route /welcome_s" classname="src\e2e\button_danger.test.ts" time="0.527">
+</testcase>
+<testcase name="should have a danger button on route /welcome_t" classname="src\e2e\button_danger.test.ts" time="0.386">
+</testcase>
+<testcase name="should have a danger button on route /welcome_a" classname="src\e2e\button_danger.test.ts" time="0.298">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_t" classname="src\e2e\button_danger.test.ts" time="0.398">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_t/mycourse_t" classname="src\e2e\button_danger.test.ts" time="0.528">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_t/student_grade" classname="src\e2e\button_danger.test.ts" time="0.505">
+</testcase>
+<testcase name="should have a danger button on route /homework_platform" classname="src\e2e\button_danger.test.ts" time="0.472">
+</testcase>
+<testcase name="should have a danger button on route /homework_platform/homework_manage" classname="src\e2e\button_danger.test.ts" time="0.403">
+</testcase>
+<testcase name="should have a danger button on route /homework_platform/correction" classname="src\e2e\button_danger.test.ts" time="0.419">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_s" classname="src\e2e\button_danger.test.ts" time="0.384">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_s/mycourse_s" classname="src\e2e\button_danger.test.ts" time="0.519">
+</testcase>
+<testcase name="should have a danger button on route /course_platform_s/mission" classname="src\e2e\button_danger.test.ts" time="0.483">
+</testcase>
+<testcase name="should have a danger button on route /teaching_manage" classname="src\e2e\button_danger.test.ts" time="0.549">
+</testcase>
+<testcase name="should have a danger button on route /teaching_manage/course_manage" classname="src\e2e\button_danger.test.ts" time="0.867">
+</testcase>
+<testcase name="should have a danger button on route /teaching_manage/people_manage" classname="src\e2e\button_danger.test.ts" time="0.53">
+</testcase>
+<testcase name="should have a danger button on route /permission_manage" classname="src\e2e\button_danger.test.ts" time="0.811">
+</testcase>
+<testcase name="should have a danger button on route /myinformation" classname="src\e2e\button_danger.test.ts" time="0.532">
+</testcase>
+<testcase name="should have a danger button on route /myinformation/basicinformation" classname="src\e2e\button_danger.test.ts" time="0.631">
+</testcase>
+<testcase name="should have a danger button on route /myinformation/safetysettings" classname="src\e2e\button_danger.test.ts" time="0.716">
+</testcase>
+<testcase name="should have a danger button on route /myinformation/othersettings" classname="src\e2e\button_danger.test.ts" time="0.486">
+</testcase>
+<testcase name="should have a danger button on route /" classname="src\e2e\button_danger.test.ts" time="0.526">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\button_dashed.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="14.38" errors="0">
+<testcase name="should have a dashed button on route /user" classname="src\e2e\button_dashed.test.ts" time="2.23">
+</testcase>
+<testcase name="should have a dashed button on route /user/login" classname="src\e2e\button_dashed.test.ts" time="0.576">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_s" classname="src\e2e\button_dashed.test.ts" time="0.889">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_t" classname="src\e2e\button_dashed.test.ts" time="0.558">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_a" classname="src\e2e\button_dashed.test.ts" time="0.492">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t" classname="src\e2e\button_dashed.test.ts" time="0.605">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t/mycourse_t" classname="src\e2e\button_dashed.test.ts" time="0.468">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t/student_grade" classname="src\e2e\button_dashed.test.ts" time="0.455">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform" classname="src\e2e\button_dashed.test.ts" time="0.549">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform/homework_manage" classname="src\e2e\button_dashed.test.ts" time="0.441">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform/correction" classname="src\e2e\button_dashed.test.ts" time="0.477">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s" classname="src\e2e\button_dashed.test.ts" time="0.495">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s/mycourse_s" classname="src\e2e\button_dashed.test.ts" time="0.532">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s/mission" classname="src\e2e\button_dashed.test.ts" time="0.491">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage" classname="src\e2e\button_dashed.test.ts" time="0.545">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage/course_manage" classname="src\e2e\button_dashed.test.ts" time="0.544">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage/people_manage" classname="src\e2e\button_dashed.test.ts" time="0.854">
+</testcase>
+<testcase name="should have a dashed button on route /permission_manage" classname="src\e2e\button_dashed.test.ts" time="0.469">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation" classname="src\e2e\button_dashed.test.ts" time="0.705">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/basicinformation" classname="src\e2e\button_dashed.test.ts" time="0.475">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/safetysettings" classname="src\e2e\button_dashed.test.ts" time="0.462">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/othersettings" classname="src\e2e\button_dashed.test.ts" time="0.523">
+</testcase>
+<testcase name="should have a dashed button on route /" classname="src\e2e\button_dashed.test.ts" time="0.545">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\button_primary.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="14.339" errors="0">
+<testcase name="should have a primary button on route /user" classname="src\e2e\button_primary.test.ts" time="1.872">
+</testcase>
+<testcase name="should have a primary button on route /user/login" classname="src\e2e\button_primary.test.ts" time="0.741">
+</testcase>
+<testcase name="should have a primary button on route /welcome_s" classname="src\e2e\button_primary.test.ts" time="0.899">
+</testcase>
+<testcase name="should have a primary button on route /welcome_t" classname="src\e2e\button_primary.test.ts" time="0.445">
+</testcase>
+<testcase name="should have a primary button on route /welcome_a" classname="src\e2e\button_primary.test.ts" time="0.56">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_t" classname="src\e2e\button_primary.test.ts" time="0.461">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_t/mycourse_t" classname="src\e2e\button_primary.test.ts" time="0.601">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_t/student_grade" classname="src\e2e\button_primary.test.ts" time="0.494">
+</testcase>
+<testcase name="should have a primary button on route /homework_platform" classname="src\e2e\button_primary.test.ts" time="0.544">
+</testcase>
+<testcase name="should have a primary button on route /homework_platform/homework_manage" classname="src\e2e\button_primary.test.ts" time="0.486">
+</testcase>
+<testcase name="should have a primary button on route /homework_platform/correction" classname="src\e2e\button_primary.test.ts" time="0.444">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_s" classname="src\e2e\button_primary.test.ts" time="0.476">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_s/mycourse_s" classname="src\e2e\button_primary.test.ts" time="0.56">
+</testcase>
+<testcase name="should have a primary button on route /course_platform_s/mission" classname="src\e2e\button_primary.test.ts" time="0.454">
+</testcase>
+<testcase name="should have a primary button on route /teaching_manage" classname="src\e2e\button_primary.test.ts" time="0.499">
+</testcase>
+<testcase name="should have a primary button on route /teaching_manage/course_manage" classname="src\e2e\button_primary.test.ts" time="0.65">
+</testcase>
+<testcase name="should have a primary button on route /teaching_manage/people_manage" classname="src\e2e\button_primary.test.ts" time="0.826">
+</testcase>
+<testcase name="should have a primary button on route /permission_manage" classname="src\e2e\button_primary.test.ts" time="0.491">
+</testcase>
+<testcase name="should have a primary button on route /myinformation" classname="src\e2e\button_primary.test.ts" time="0.781">
+</testcase>
+<testcase name="should have a primary button on route /myinformation/basicinformation" classname="src\e2e\button_primary.test.ts" time="0.521">
+</testcase>
+<testcase name="should have a primary button on route /myinformation/safetysettings" classname="src\e2e\button_primary.test.ts" time="0.559">
+</testcase>
+<testcase name="should have a primary button on route /myinformation/othersettings" classname="src\e2e\button_primary.test.ts" time="0.59">
+</testcase>
+<testcase name="should have a primary button on route /" classname="src\e2e\button_primary.test.ts" time="0.385">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\button.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="13.919" errors="0">
+<testcase name="should have a dashed button on route /user" classname="src\e2e\button.test.ts" time="1.445">
+</testcase>
+<testcase name="should have a dashed button on route /user/login" classname="src\e2e\button.test.ts" time="0.696">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_s" classname="src\e2e\button.test.ts" time="0.585">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_t" classname="src\e2e\button.test.ts" time="0.906">
+</testcase>
+<testcase name="should have a dashed button on route /welcome_a" classname="src\e2e\button.test.ts" time="0.445">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t" classname="src\e2e\button.test.ts" time="0.443">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t/mycourse_t" classname="src\e2e\button.test.ts" time="0.539">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_t/student_grade" classname="src\e2e\button.test.ts" time="0.457">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform" classname="src\e2e\button.test.ts" time="0.487">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform/homework_manage" classname="src\e2e\button.test.ts" time="0.44">
+</testcase>
+<testcase name="should have a dashed button on route /homework_platform/correction" classname="src\e2e\button.test.ts" time="0.485">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s" classname="src\e2e\button.test.ts" time="0.537">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s/mycourse_s" classname="src\e2e\button.test.ts" time="0.508">
+</testcase>
+<testcase name="should have a dashed button on route /course_platform_s/mission" classname="src\e2e\button.test.ts" time="0.516">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage" classname="src\e2e\button.test.ts" time="0.497">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage/course_manage" classname="src\e2e\button.test.ts" time="0.53">
+</testcase>
+<testcase name="should have a dashed button on route /teaching_manage/people_manage" classname="src\e2e\button.test.ts" time="1.068">
+</testcase>
+<testcase name="should have a dashed button on route /permission_manage" classname="src\e2e\button.test.ts" time="0.819">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation" classname="src\e2e\button.test.ts" time="0.48">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/basicinformation" classname="src\e2e\button.test.ts" time="0.659">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/safetysettings" classname="src\e2e\button.test.ts" time="0.482">
+</testcase>
+<testcase name="should have a dashed button on route /myinformation/othersettings" classname="src\e2e\button.test.ts" time="0.492">
+</testcase>
+<testcase name="should have a dashed button on route /" classname="src\e2e\button.test.ts" time="0.403">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\card.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="13.004" errors="0">
+<testcase name="should have a card on route /user" classname="src\e2e\card.test.ts" time="1.915">
+</testcase>
+<testcase name="should have a card on route /user/login" classname="src\e2e\card.test.ts" time="0.715">
+</testcase>
+<testcase name="should have a card on route /welcome_s" classname="src\e2e\card.test.ts" time="0.875">
+</testcase>
+<testcase name="should have a card on route /welcome_t" classname="src\e2e\card.test.ts" time="0.53">
+</testcase>
+<testcase name="should have a card on route /welcome_a" classname="src\e2e\card.test.ts" time="0.515">
+</testcase>
+<testcase name="should have a card on route /course_platform_t" classname="src\e2e\card.test.ts" time="0.519">
+</testcase>
+<testcase name="should have a card on route /course_platform_t/mycourse_t" classname="src\e2e\card.test.ts" time="0.477">
+</testcase>
+<testcase name="should have a card on route /course_platform_t/student_grade" classname="src\e2e\card.test.ts" time="0.52">
+</testcase>
+<testcase name="should have a card on route /homework_platform" classname="src\e2e\card.test.ts" time="0.486">
+</testcase>
+<testcase name="should have a card on route /homework_platform/homework_manage" classname="src\e2e\card.test.ts" time="0.545">
+</testcase>
+<testcase name="should have a card on route /homework_platform/correction" classname="src\e2e\card.test.ts" time="0.515">
+</testcase>
+<testcase name="should have a card on route /course_platform_s" classname="src\e2e\card.test.ts" time="0.464">
+</testcase>
+<testcase name="should have a card on route /course_platform_s/mycourse_s" classname="src\e2e\card.test.ts" time="0.423">
+</testcase>
+<testcase name="should have a card on route /course_platform_s/mission" classname="src\e2e\card.test.ts" time="0.5">
+</testcase>
+<testcase name="should have a card on route /teaching_manage" classname="src\e2e\card.test.ts" time="0.422">
+</testcase>
+<testcase name="should have a card on route /teaching_manage/course_manage" classname="src\e2e\card.test.ts" time="0.448">
+</testcase>
+<testcase name="should have a card on route /teaching_manage/people_manage" classname="src\e2e\card.test.ts" time="0.76">
+</testcase>
+<testcase name="should have a card on route /permission_manage" classname="src\e2e\card.test.ts" time="0.437">
+</testcase>
+<testcase name="should have a card on route /myinformation" classname="src\e2e\card.test.ts" time="0.392">
+</testcase>
+<testcase name="should have a card on route /myinformation/basicinformation" classname="src\e2e\card.test.ts" time="0.663">
+</testcase>
+<testcase name="should have a card on route /myinformation/safetysettings" classname="src\e2e\card.test.ts" time="0.323">
+</testcase>
+<testcase name="should have a card on route /myinformation/othersettings" classname="src\e2e\card.test.ts" time="0.291">
+</testcase>
+<testcase name="should have a card on route /" classname="src\e2e\card.test.ts" time="0.269">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\form.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="12.431" errors="0">
+<testcase name="should have a form on route /user" classname="src\e2e\form.test.ts" time="1.839">
+</testcase>
+<testcase name="should have a form on route /user/login" classname="src\e2e\form.test.ts" time="0.761">
+</testcase>
+<testcase name="should have a form on route /welcome_s" classname="src\e2e\form.test.ts" time="0.8">
+</testcase>
+<testcase name="should have a form on route /welcome_t" classname="src\e2e\form.test.ts" time="0.541">
+</testcase>
+<testcase name="should have a form on route /welcome_a" classname="src\e2e\form.test.ts" time="0.455">
+</testcase>
+<testcase name="should have a form on route /course_platform_t" classname="src\e2e\form.test.ts" time="0.483">
+</testcase>
+<testcase name="should have a form on route /course_platform_t/mycourse_t" classname="src\e2e\form.test.ts" time="0.491">
+</testcase>
+<testcase name="should have a form on route /course_platform_t/student_grade" classname="src\e2e\form.test.ts" time="0.485">
+</testcase>
+<testcase name="should have a form on route /homework_platform" classname="src\e2e\form.test.ts" time="0.47">
+</testcase>
+<testcase name="should have a form on route /homework_platform/homework_manage" classname="src\e2e\form.test.ts" time="0.541">
+</testcase>
+<testcase name="should have a form on route /homework_platform/correction" classname="src\e2e\form.test.ts" time="0.495">
+</testcase>
+<testcase name="should have a form on route /course_platform_s" classname="src\e2e\form.test.ts" time="0.49">
+</testcase>
+<testcase name="should have a form on route /course_platform_s/mycourse_s" classname="src\e2e\form.test.ts" time="0.405">
+</testcase>
+<testcase name="should have a form on route /course_platform_s/mission" classname="src\e2e\form.test.ts" time="0.59">
+</testcase>
+<testcase name="should have a form on route /teaching_manage" classname="src\e2e\form.test.ts" time="0.416">
+</testcase>
+<testcase name="should have a form on route /teaching_manage/course_manage" classname="src\e2e\form.test.ts" time="0.467">
+</testcase>
+<testcase name="should have a form on route /teaching_manage/people_manage" classname="src\e2e\form.test.ts" time="0.7">
+</testcase>
+<testcase name="should have a form on route /permission_manage" classname="src\e2e\form.test.ts" time="0.424">
+</testcase>
+<testcase name="should have a form on route /myinformation" classname="src\e2e\form.test.ts" time="0.397">
+</testcase>
+<testcase name="should have a form on route /myinformation/basicinformation" classname="src\e2e\form.test.ts" time="0.353">
+</testcase>
+<testcase name="should have a form on route /myinformation/safetysettings" classname="src\e2e\form.test.ts" time="0.347">
+</testcase>
+<testcase name="should have a form on route /myinformation/othersettings" classname="src\e2e\form.test.ts" time="0.241">
+</testcase>
+<testcase name="should have a form on route /" classname="src\e2e\form.test.ts" time="0.24">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\input.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="1" failures="1" skipped="0" time="5.4" errors="0">
+<testcase name="should have an input field on the page" classname="src\e2e\input.test.ts" time="5.4">
+<failure message="input.test.ts:25:5 should have an input field on the page" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\input.test.ts:25:5 › should have an input field on the page ──────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('input[type="text"]') to be visible
+    ============================================================
+
+      12 |
+      13 | const testInput = async (page: Page, inputSelector: string) => {
+    > 14 |   const input = await page.waitForSelector(inputSelector, { timeout: 5000 });
+         |                            ^
+      15 |   expect(input).toBeTruthy();
+      16 |
+      17 |   // 在输入框中输入内容
+
+        at testInput (D:\PA-frontend\PAsystem-frontend\src\e2e\input.test.ts:14:28)
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\input.test.ts:27:9
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\menu.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="8.871" errors="0">
+<testcase name="should have a menu on route /user" classname="src\e2e\menu.test.ts" time="0.421">
+</testcase>
+<testcase name="should have a menu on route /user/login" classname="src\e2e\menu.test.ts" time="0.377">
+</testcase>
+<testcase name="should have a menu on route /welcome_s" classname="src\e2e\menu.test.ts" time="0.386">
+</testcase>
+<testcase name="should have a menu on route /welcome_t" classname="src\e2e\menu.test.ts" time="0.319">
+</testcase>
+<testcase name="should have a menu on route /welcome_a" classname="src\e2e\menu.test.ts" time="0.246">
+</testcase>
+<testcase name="should have a menu on route /course_platform_t" classname="src\e2e\menu.test.ts" time="0.232">
+</testcase>
+<testcase name="should have a menu on route /course_platform_t/mycourse_t" classname="src\e2e\menu.test.ts" time="0.232">
+</testcase>
+<testcase name="should have a menu on route /course_platform_t/student_grade" classname="src\e2e\menu.test.ts" time="0.255">
+</testcase>
+<testcase name="should have a menu on route /homework_platform" classname="src\e2e\menu.test.ts" time="0.294">
+</testcase>
+<testcase name="should have a menu on route /homework_platform/homework_manage" classname="src\e2e\menu.test.ts" time="0.307">
+</testcase>
+<testcase name="should have a menu on route /homework_platform/correction" classname="src\e2e\menu.test.ts" time="0.283">
+</testcase>
+<testcase name="should have a menu on route /course_platform_s" classname="src\e2e\menu.test.ts" time="0.35">
+</testcase>
+<testcase name="should have a menu on route /course_platform_s/mycourse_s" classname="src\e2e\menu.test.ts" time="0.634">
+</testcase>
+<testcase name="should have a menu on route /course_platform_s/mission" classname="src\e2e\menu.test.ts" time="0.324">
+</testcase>
+<testcase name="should have a menu on route /teaching_manage" classname="src\e2e\menu.test.ts" time="0.285">
+</testcase>
+<testcase name="should have a menu on route /teaching_manage/course_manage" classname="src\e2e\menu.test.ts" time="0.336">
+</testcase>
+<testcase name="should have a menu on route /teaching_manage/people_manage" classname="src\e2e\menu.test.ts" time="0.481">
+</testcase>
+<testcase name="should have a menu on route /permission_manage" classname="src\e2e\menu.test.ts" time="0.336">
+</testcase>
+<testcase name="should have a menu on route /myinformation" classname="src\e2e\menu.test.ts" time="0.403">
+</testcase>
+<testcase name="should have a menu on route /myinformation/basicinformation" classname="src\e2e\menu.test.ts" time="0.403">
+</testcase>
+<testcase name="should have a menu on route /myinformation/safetysettings" classname="src\e2e\menu.test.ts" time="0.518">
+</testcase>
+<testcase name="should have a menu on route /myinformation/othersettings" classname="src\e2e\menu.test.ts" time="1.162">
+</testcase>
+<testcase name="should have a menu on route /" classname="src\e2e\menu.test.ts" time="0.287">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\message.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="1" failures="1" skipped="0" time="5.414" errors="0">
+<testcase name="should display a Message component on the page" classname="src\e2e\message.test.ts" time="5.414">
+<failure message="message.test.ts:22:5 should display a Message component on the page" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\message.test.ts:22:5 › should display a Message component on the page ────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.message') to be visible
+    ============================================================
+
+      12 |
+      13 | const testMessageComponent = async (page: Page, messageSelector: string, expectedMessage: string) => {
+    > 14 |   const messageElement = await page.waitForSelector(messageSelector, { timeout: 5000 });
+         |                                     ^
+      15 |   expect(messageElement).toBeTruthy();
+      16 |
+      17 |   // 获取 Message 组件的文本内容并进行断言
+
+        at testMessageComponent (D:\PA-frontend\PAsystem-frontend\src\e2e\message.test.ts:14:37)
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\message.test.ts:24:9
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\space.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="1" failures="1" skipped="0" time="5.378" errors="0">
+<testcase name="should display a Space component on the page" classname="src\e2e\space.test.ts" time="5.378">
+<failure message="space.test.ts:23:5 should display a Space component on the page" type="FAILURE">
+<![CDATA[  [firefox] › src\e2e\space.test.ts:23:5 › should display a Space component on the page ────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    =========================== logs ===========================
+    waiting for locator('.space') to be visible
+    ============================================================
+
+      12 |
+      13 | const testSpaceComponent = async (page: Page, spaceSelector: string) => {
+    > 14 |   const spaceElement = await page.waitForSelector(spaceSelector, { timeout: 5000 });
+         |                                   ^
+      15 |   expect(spaceElement).toBeTruthy();
+      16 |
+      17 |   
+
+        at testSpaceComponent (D:\PA-frontend\PAsystem-frontend\src\e2e\space.test.ts:14:35)
+        at D:\PA-frontend\PAsystem-frontend\src\e2e\space.test.ts:25:9
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\table.test.ts" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="7.828" errors="0">
+<testcase name="should have a table on route /user" classname="src\e2e\table.test.ts" time="0.236">
+</testcase>
+<testcase name="should have a table on route /user/login" classname="src\e2e\table.test.ts" time="0.239">
+</testcase>
+<testcase name="should have a table on route /welcome_s" classname="src\e2e\table.test.ts" time="0.277">
+</testcase>
+<testcase name="should have a table on route /welcome_t" classname="src\e2e\table.test.ts" time="0.481">
+</testcase>
+<testcase name="should have a table on route /welcome_a" classname="src\e2e\table.test.ts" time="0.288">
+</testcase>
+<testcase name="should have a table on route /course_platform_t" classname="src\e2e\table.test.ts" time="0.32">
+</testcase>
+<testcase name="should have a table on route /course_platform_t/mycourse_t" classname="src\e2e\table.test.ts" time="0.359">
+</testcase>
+<testcase name="should have a table on route /course_platform_t/student_grade" classname="src\e2e\table.test.ts" time="0.393">
+</testcase>
+<testcase name="should have a table on route /homework_platform" classname="src\e2e\table.test.ts" time="0.412">
+</testcase>
+<testcase name="should have a table on route /homework_platform/homework_manage" classname="src\e2e\table.test.ts" time="0.299">
+</testcase>
+<testcase name="should have a table on route /homework_platform/correction" classname="src\e2e\table.test.ts" time="0.321">
+</testcase>
+<testcase name="should have a table on route /course_platform_s" classname="src\e2e\table.test.ts" time="0.351">
+</testcase>
+<testcase name="should have a table on route /course_platform_s/mycourse_s" classname="src\e2e\table.test.ts" time="0.283">
+</testcase>
+<testcase name="should have a table on route /course_platform_s/mission" classname="src\e2e\table.test.ts" time="0.367">
+</testcase>
+<testcase name="should have a table on route /teaching_manage" classname="src\e2e\table.test.ts" time="0.33">
+</testcase>
+<testcase name="should have a table on route /teaching_manage/course_manage" classname="src\e2e\table.test.ts" time="0.847">
+</testcase>
+<testcase name="should have a table on route /teaching_manage/people_manage" classname="src\e2e\table.test.ts" time="0.228">
+</testcase>
+<testcase name="should have a table on route /permission_manage" classname="src\e2e\table.test.ts" time="0.284">
+</testcase>
+<testcase name="should have a table on route /myinformation" classname="src\e2e\table.test.ts" time="0.3">
+</testcase>
+<testcase name="should have a table on route /myinformation/basicinformation" classname="src\e2e\table.test.ts" time="0.316">
+</testcase>
+<testcase name="should have a table on route /myinformation/safetysettings" classname="src\e2e\table.test.ts" time="0.238">
+</testcase>
+<testcase name="should have a table on route /myinformation/othersettings" classname="src\e2e\table.test.ts" time="0.349">
+</testcase>
+<testcase name="should have a table on route /" classname="src\e2e\table.test.ts" time="0.31">
+</testcase>
+</testsuite>
+<testsuite name="src\e2e\upload.test.tsx" timestamp="2023-11-30T13:25:42.078Z" hostname="firefox" tests="23" failures="0" skipped="0" time="7.763" errors="0">
+<testcase name="should have a upload on route /user" classname="src\e2e\upload.test.tsx" time="0.304">
+</testcase>
+<testcase name="should have a upload on route /user/login" classname="src\e2e\upload.test.tsx" time="0.345">
+</testcase>
+<testcase name="should have a upload on route /welcome_s" classname="src\e2e\upload.test.tsx" time="0.257">
+</testcase>
+<testcase name="should have a upload on route /welcome_t" classname="src\e2e\upload.test.tsx" time="0.296">
+</testcase>
+<testcase name="should have a upload on route /welcome_a" classname="src\e2e\upload.test.tsx" time="0.272">
+</testcase>
+<testcase name="should have a upload on route /course_platform_t" classname="src\e2e\upload.test.tsx" time="0.288">
+</testcase>
+<testcase name="should have a upload on route /course_platform_t/mycourse_t" classname="src\e2e\upload.test.tsx" time="0.273">
+</testcase>
+<testcase name="should have a upload on route /course_platform_t/student_grade" classname="src\e2e\upload.test.tsx" time="0.319">
+</testcase>
+<testcase name="should have a upload on route /homework_platform" classname="src\e2e\upload.test.tsx" time="0.274">
+</testcase>
+<testcase name="should have a upload on route /homework_platform/homework_manage" classname="src\e2e\upload.test.tsx" time="0.304">
+</testcase>
+<testcase name="should have a upload on route /homework_platform/correction" classname="src\e2e\upload.test.tsx" time="0.332">
+</testcase>
+<testcase name="should have a upload on route /course_platform_s" classname="src\e2e\upload.test.tsx" time="0.352">
+</testcase>
+<testcase name="should have a upload on route /course_platform_s/mycourse_s" classname="src\e2e\upload.test.tsx" time="0.274">
+</testcase>
+<testcase name="should have a upload on route /course_platform_s/mission" classname="src\e2e\upload.test.tsx" time="0.366">
+</testcase>
+<testcase name="should have a upload on route /teaching_manage" classname="src\e2e\upload.test.tsx" time="0.367">
+</testcase>
+<testcase name="should have a upload on route /teaching_manage/course_manage" classname="src\e2e\upload.test.tsx" time="0.774">
+</testcase>
+<testcase name="should have a upload on route /teaching_manage/people_manage" classname="src\e2e\upload.test.tsx" time="0.222">
+</testcase>
+<testcase name="should have a upload on route /permission_manage" classname="src\e2e\upload.test.tsx" time="0.423">
+</testcase>
+<testcase name="should have a upload on route /myinformation" classname="src\e2e\upload.test.tsx" time="0.339">
+</testcase>
+<testcase name="should have a upload on route /myinformation/basicinformation" classname="src\e2e\upload.test.tsx" time="0.364">
+</testcase>
+<testcase name="should have a upload on route /myinformation/safetysettings" classname="src\e2e\upload.test.tsx" time="0.3">
+</testcase>
+<testcase name="should have a upload on route /myinformation/othersettings" classname="src\e2e\upload.test.tsx" time="0.374">
+</testcase>
+<testcase name="should have a upload on route /" classname="src\e2e\upload.test.tsx" time="0.344">
+</testcase>
+</testsuite>
+</testsuites>
