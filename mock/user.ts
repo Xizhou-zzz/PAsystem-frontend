@@ -22,9 +22,14 @@ const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION } = process.env;
  * 如果是 pro 的预览，默认是有权限的
  */
 let access = ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION === 'site' ? 'admin' : '';
+let currentUser = 'a'
 
 const getAccess = () => {
   return access;
+};
+
+const getCurrentUser = () => {
+  return currentUser;
 };
 
 // 代码中会兼容本地 service mock 以及部署站点的静态数据
@@ -45,7 +50,7 @@ export default {
     res.send({
       success: true,
       data: {
-        name: 'duoduoduo',
+        name: getCurrentUser(),
         avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
         userid: '00000001',
         email: 'antdesign@alipay.com',
@@ -78,18 +83,6 @@ export default {
       age: 32,
       address: 'New York No. 1 Lake Park',
     },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
   ],
   'POST /api/login/account': async (req: Request, res: Response) => {
     const { password, username, type } = req.body;
@@ -101,6 +94,7 @@ export default {
 
     const re_status = response.data.status;
     const re_access = response.data.access;
+    console.log(response.data)
 
     await waitTime(2000);
     //管理员用户
@@ -111,6 +105,7 @@ export default {
         currentAuthority:'admin',
       });
       access = re_access;
+      currentUser = response.data.cookie;
       return;
     }
     //学生用户
@@ -121,6 +116,7 @@ export default {
         currentAuthority:'student',
       });
       access = re_access;
+      currentUser = response.data.cookie;
       return;
     }
     //教师用户
@@ -131,6 +127,7 @@ export default {
         currentAuthority:'teacher',
       });
       access = re_access;
+      currentUser = response.data.cookie;
       return;
     }
     // zlt:add assistant
@@ -141,6 +138,7 @@ export default {
         currentAuthority:'assistant',
       });
       access = re_access;
+      currentUser = response.data.cookie;
       return;
     }
 
@@ -161,6 +159,7 @@ export default {
     });
     access = 'guest';
   },
+  
   'POST /api/login/outLogin': (req: Request, res: Response) => {
     access = '';
     res.send({ data: {}, success: true });

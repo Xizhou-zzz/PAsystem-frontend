@@ -1,20 +1,25 @@
+import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Alert, Card, Typography } from 'antd';
-import React from 'react';
 import { FormattedMessage, useIntl } from 'umi';
-// import styles from './Welcome.less';
 import { currentUser } from '@/services/ant-design-pro/api';
-
-// const CodePreview: React.FC = ({ children }) => (
-//   <pre className={styles.pre}>
-//     <code>
-//       <Typography.Text copyable>{children}</Typography.Text>
-//     </code>
-//   </pre>
-// );
 
 const Welcome_t: React.FC = () => {
   const intl = useIntl();
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await currentUser();
+        setCurrentUserInfo(response.data);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
 
   return (
     <PageContainer>
@@ -22,7 +27,7 @@ const Welcome_t: React.FC = () => {
         <Alert
           message={intl.formatMessage({
             id: 'pages.welcome.alertMessage_teacher',
-            defaultMessage: '欢迎来到教师界面，尊敬的',
+            defaultMessage: '欢迎来到教师界面，尊敬的' + (currentUserInfo ? currentUserInfo.name : '加载中...'),
           })}
           type="success"
           showIcon

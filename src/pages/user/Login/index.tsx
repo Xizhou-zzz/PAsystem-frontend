@@ -120,7 +120,7 @@ const Login: React.FC = () => {
               key="mobile"
               tab={intl.formatMessage({
                 id: 'pages.login.phoneLogin.tab',
-                defaultMessage: '手机号登录',
+                defaultMessage: '邮箱登录',
               })}
             />
           </Tabs>
@@ -193,7 +193,7 @@ const Login: React.FC = () => {
                 name="mobile"
                 placeholder={intl.formatMessage({
                   id: 'pages.login.phoneNumber.placeholder',
-                  defaultMessage: '手机号',
+                  defaultMessage: '邮箱号',
                 })}
                 rules={[
                   {
@@ -201,7 +201,7 @@ const Login: React.FC = () => {
                     message: (
                       <FormattedMessage
                         id="pages.login.phoneNumber.required"
-                        defaultMessage="请输入手机号！"
+                        defaultMessage="请输入邮箱"
                       />
                     ),
                   },
@@ -210,7 +210,7 @@ const Login: React.FC = () => {
                     message: (
                       <FormattedMessage
                         id="pages.login.phoneNumber.invalid"
-                        defaultMessage="手机号格式错误！"
+                        defaultMessage="邮箱格式错误！"
                       />
                     ),
                   },
