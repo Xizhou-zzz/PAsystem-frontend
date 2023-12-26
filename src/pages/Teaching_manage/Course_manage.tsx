@@ -3,14 +3,23 @@ import { Card, Table, Button, Input, Space, Modal, Tag } from 'antd';
 import React, { useState, useEffect } from 'react';
 
 const Course_manage: React.FC = () => {
+  const [dataSource, setDataSource] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedClass, setSelectedClass] = useState<any>(null);
 
+  useEffect(() => {
+    // 发起请求以获取课程数据
+    fetch('http://localhost:5000/api/courses')
+      .then(response => response.json())
+      .then(data => setDataSource(data))
+      .catch(error => console.error('Error:', error));
+  }, []);
+  
+  
   const handleSearch = (value: string) => {
     setSearchText(value);
   };
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedClass, setSelectedClass] = useState<any>(null);
 
   const handleModalOk = () => {
     // 处理模态框确认逻辑
@@ -29,32 +38,6 @@ const Course_manage: React.FC = () => {
     setIsModalVisible(true);
   };
 
-  const dataSource = [
-    {
-      key: '1',
-      course_name: '软件项目管理与产品运维',
-      course_id: 'M310008B',
-      teacher_name: '马翼萱',
-      classroom: 'YF409',
-      time: 'Mon 16:20-18:10',
-    },
-    {
-      key: '2',
-      course_name: '软件项目管理与产品运维',
-      course_id: 'M310008B',
-      teacher_name: '马翼萱',
-      classroom: 'SD203',
-      time: 'Wed(单周) 10:10-12:00',
-    },
-    {
-      key: '3',
-      course_name: '专业课程综合实训 Ⅲ',
-      course_id: 'P310002B',
-      teacher_name: '马翼萱',
-      classroom: 'YF609',
-      time: 'Fri 14:10-16:00',
-    },
-  ];
   const columns = [
     {
       title: '课程名称',
@@ -68,18 +51,18 @@ const Course_manage: React.FC = () => {
     },
     {
       title: '主讲教师',
-      dataIndex: 'teacher_name',
-      key: 'teacher_name',
+      dataIndex: 'main_teacher',
+      key: 'main_teacher',
     },
     {
       title: '授课教室',
-      dataIndex: 'classroom',
-      key: 'classroom',
+      dataIndex: 'teaching_room',
+      key: 'teaching_room',
     },
     {
       title: '授课时间',
-      dataIndex: 'time',
-      key: 'time',
+      dataIndex: 'teaching_time',
+      key: 'teaching_time',
     },
     {
       title: '',
@@ -116,7 +99,7 @@ const Course_manage: React.FC = () => {
         <Table columns={columns} dataSource={dataSource} />
         {/* 设备模态框 */}
         <Modal
-          title={selectedClass ? '课程详情' : '新增设备'}
+          title={selectedClass ? '课程详情' : '新增课程'}
           visible={isModalVisible}
           onOk={handleModalOk}
           onCancel={handleModalCancel}
@@ -129,15 +112,15 @@ const Course_manage: React.FC = () => {
           </div>
           <div>
             授课教师：
-            <Input value={selectedClass?.teacher_name} />
+            <Input value={selectedClass?.main_teacher} />
           </div>
           <div>
             授课教室：
-            <Input value={selectedClass?.classroom} />
+            <Input value={selectedClass?.teaching_room} />
           </div>
           <div>
             授课时间：
-            <Input value={selectedClass?.time} />
+            <Input value={selectedClass?.teaching_time} />
           </div>
         </Modal>
       

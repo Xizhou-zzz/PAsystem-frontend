@@ -1,20 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Table, Modal, Button, Select } from 'antd';
+import { Table, Modal, Button, Select } from 'antd';
+import axios from 'axios';
+
 const { Option } = Select;
+
 const Permission_manage: React.FC = () => {
+    const [users, setUsers] = useState([]);
     const [isModalVisible, setIsModalVisible] = useState(false);
+    
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/users')
+            .then(response => {
+                setUsers(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching users:', error);
+            });
+    }, []);
+
     const [selectedUser, setSelectedUser] = useState<any>(null);
     const [selectedRole, setSelectedRole] = useState<string>('');
 
     const handleAuthorize = (record) => {
         setSelectedUser(record);
+        setSelectedRole(record.access); // 初始化选中的权限为当前用户权限
         setIsModalVisible(true);
     };
 
     const handleModalOk = () => {
-        setIsModalVisible(false);
+        // 发送请求更新用户权限
+        axios.post(`http://localhost:5000/api/users/${selectedUser.id}/access`, {
+            access: selectedRole
+        })
+        .then(response => {
+            setIsModalVisible(false);
+    
+            // 更新 users 状态以反映权限的更改
+            setUsers(users.map(user => {
+                if (user.id === selectedUser.id) {
+                    return { ...user, access: selectedRole }; // 更新权限
+                }
+                return user;
+            }));
+        })
+        .catch(error => {
+            console.error('Error updating access:', error);
+        });
     };
+    
 
     const handleModalCancel = () => {
         setIsModalVisible(false);
@@ -24,42 +58,21 @@ const Permission_manage: React.FC = () => {
         setSelectedRole(value);
     };
 
-    const users = [
-        {
-            key: '1',
-            name: '曾令腾',
-            account: 'zlt',
-            role: '学生',
-        },
-        {
-            key: '2',
-            name: '李四',
-            account: 'lisi',
-            role: '教师',
-        },
-        {
-            key: '3',
-            name: '王五',
-            account: 'wangwu',
-            role: '管理员',
-        },
-    ];
-
     const columns = [
         {
             title: '姓名',
-            dataIndex: 'name',
-            key: 'name',
+            dataIndex: 'username',
+            key: 'username',
         },
         {
-            title: '账号',
-            dataIndex: 'account',
-            key: 'account',
+            title: 'ID',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: '权限',
-            dataIndex: 'role',
-            key: 'role',
+            dataIndex: 'access',
+            key: 'access',
         },
         {
             title: '操作',
@@ -89,10 +102,10 @@ const Permission_manage: React.FC = () => {
                         onChange={handleRoleChange}
                         value={selectedRole}
                     >
-                        <Option value="学生">学生</Option>
-                        <Option value="助教">助教</Option>
-                        <Option value="教师">教师</Option>
-                        <Option value="管理员">管理员</Option>
+                        <Option value="student">学生</Option>
+                        <Option value="assistant">助教</Option>
+                        <Option value="teacher">教师</Option>
+                        <Option value="admin">管理员</Option>
                     </Select>
                 </Modal>
             

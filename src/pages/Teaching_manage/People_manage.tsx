@@ -1,11 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Button, Table, Modal, Checkbox, Form, Select } from 'antd';
-import Search from "antd/es/input/Search";
+import { Table, Button, Input, Modal, Checkbox, Form, Select } from 'antd';
+import Search from 'antd/es/input/Search';
 
 const { Option } = Select;
 
 const People_manage: React.FC = () => {
+    const [students, setStudents] = useState([]);
+    const [teachers, setTeachers] = useState([]);
+    
+    useEffect(() => {
+        fetch('http://localhost:5000/api/people')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // 检查数据结构
+                if (Array.isArray(data.students) && Array.isArray(data.teachers)) {
+                    setStudents(data.students);
+                    setTeachers(data.teachers);
+                } else {
+                    // 处理错误情况或者设置默认值
+                    setStudents([]);
+                    setTeachers([]);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }, []);
+
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedPerson, setSelectedPerson] = useState<any>(null);
 
@@ -22,41 +42,18 @@ const People_manage: React.FC = () => {
         setIsModalVisible(false);
     };
 
-    const students = [
-        {
-            key: '1',
-            name: '曾令腾',
-            student_id: '21301002',
-            courses: ['软件测试与质量保证', '专业课程综合实训III'],
-        },
-        {
-            key: '2',
-            name: '李明',
-            student_id: '21301000',
-            courses: ['机械制图', '高等数学'],
-        },
-    ];
-
-    const teachers = [
-        {
-            key: '1',
-            name: '完颜慧德',
-            teacher_id: 'T001',
-            courses: ['大学生心理健康', '闺蜜敌密辩证法'],
-        },
-    ];
-
     const columns = [
         {
-            title: '姓名',
-            dataIndex: 'name',
-            key: 'name',
+          title: '姓名',
+          dataIndex: 'username', // 确保这里是后端返回的对象中对应姓名的字段名
+          key: 'username',
         },
         {
-            title: 'ID',
-            dataIndex: 'student_id',
-            key: 'student_id',
+          title: 'ID',
+          dataIndex: 'id', // 确保这里是后端返回的对象中对应ID的字段名
+          key: 'id',
         },
+        // ...其他列定义
         {
             title: '操作',
             key: 'courses',
@@ -100,12 +97,12 @@ const People_manage: React.FC = () => {
     };
 
     const filteredStudents = students.filter((student) =>
-        student.name.includes(searchText)
-    );
+    student.username.includes(searchText)
+);
 
-    const filteredTeachers = teachers.filter((teacher) =>
-        teacher.name.includes(searchText)
-    );
+const filteredTeachers = teachers.filter((teacher) =>
+    teacher.username.includes(searchText)
+);
 
     return (
         <PageContainer style ={{backgroundColor:'white'}}>
