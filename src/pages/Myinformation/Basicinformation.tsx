@@ -1,16 +1,47 @@
+import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Avatar, Form, Input, Button, Upload, message } from 'antd';
 import { UserOutlined, UploadOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
-//定义一个名为Basicinformation的函数组件
+import axios from 'axios';
+
 const Basicinformation: React.FC = () => {
-  //声明一个状态变量avatarUrl，初始值设为null；声明一个函数setAvatarUrl，用于更新avatarUrl的值
+  // 确保在组件函数体内部调用Form.useForm()
+  const [form] = Form.useForm();
+    //声明一个状态变量avatarUrl，初始值设为null；声明一个函数setAvatarUrl，用于更新avatarUrl的值
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const user_id = 1;
+    axios.get(`http://localhost:5000/api/user/${user_id}`)
+      .then(response => {
+        form.setFieldsValue(response.data);
+      })
+      .catch(error => console.error('Error fetching user data:', error));
+  }, [form]);
+
+  const [initialValues, setInitialValues] = useState({
+    username: '',
+    id: '',
+    access: '',
+    email: '',
+    address: ''
+  });
+  
   // 处理更新信息逻辑
   const handleUpdateInfo = (values: any) => {
     console.log('更新信息:', values);
-    // 这里可以编写更新信息的处理代码，如发送到后端进行保存等操作
+
+    axios.post('http://localhost:5000/api/user/update', values)
+      .then(response => {
+        message.success('用户信息更新成功');
+        // 这里可以进行其他操作，如更新页面状态或重定向
+      })
+      .catch(error => {
+        console.error('Error updating user data:', error);
+        message.error('用户信息更新失败');
+      });
   };
+  
   //处理头像上传逻辑
   const handleAvatarChange = (info: any) => {
     if (info.file.status === 'done') {
@@ -30,29 +61,23 @@ const Basicinformation: React.FC = () => {
       <div style={{ textAlign: 'center' }}>
         <Avatar size={120} icon={<UserOutlined />} src={avatarUrl} />
         <Form
-          onFinish={handleUpdateInfo}
-          initialValues={{
-            username: '闹铃哥',
-            account: '起飞',
-            identity: 'Admin',
-            contact: '21301028@bjtu.edu.cn',
-            hometown: '内蒙古包头市',
-          }}
-          style={{ marginTop: 24 }}
+        form={form} // 将form实例传递给Form组件
+        onFinish={handleUpdateInfo}
+        style={{ marginTop: 24 }}
         >
           <Form.Item name="username" label="用户名">
             <Input type="text" style={{ marginLeft: '0em' }} />
           </Form.Item>
-          <Form.Item name="account" label="账号">
+          <Form.Item name="id" label="账号">
             <Input style={{ marginLeft: '1em' }} />
           </Form.Item>
-          <Form.Item name="identity" label="身份">
+          <Form.Item name="access" label="身份">
             <Input style={{ marginLeft: '1em' }} />
           </Form.Item>
-          <Form.Item name="contact" label="邮箱">
+          <Form.Item name="email" label="邮箱">
             <Input style={{ marginLeft: '1em' }} />
           </Form.Item>
-          <Form.Item name="hometown" label="籍贯">
+          <Form.Item name="address" label="地址">
             <Input style={{ marginLeft: '1em' }} />
           </Form.Item>
           <Form.Item label="上传头像">
