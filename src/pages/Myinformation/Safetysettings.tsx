@@ -88,16 +88,6 @@ const Safetysettings: React.FC = () => {
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
       {contextHolder}
-      <Card title="邮箱" style={{ marginBottom: 24 }}>
-        <Form onFinish={handleUpdatePhone}>
-          <Form.Item label="当前邮箱" name="email">
-            <Input />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">修改</Button>
-          </Form.Item>
-        </Form>
-      </Card>
       <Card title="密保手机">
         <Form onFinish={handleUpdateEmail}>
           <Form.Item label="已绑定手机号" name="phoneNumber">

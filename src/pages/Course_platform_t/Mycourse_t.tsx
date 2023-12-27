@@ -19,8 +19,8 @@ const Mycourse_t: React.FC = () => {
     fetchCurrentUser();
   }, []);
   
-  const [course_data, setCourseData] = useState([]);
 
+  const [course_data, setCourseData] = useState([]);
     // 在页面加载时发起get请求，获取后端数据
     useEffect(() => {
       if (currentUserInfo) {
@@ -36,11 +36,6 @@ const Mycourse_t: React.FC = () => {
       }
     }, [currentUserInfo]); // 添加 currentUserInfo 作为依赖项
   
-  const [searchText, setSearchText] = useState('');
-    
-  const handleSearch = (value: string) => {
-    setSearchText(value);
-  };
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedClass, setSelectedClass] = useState<any>(null);
@@ -101,6 +96,16 @@ const Mycourse_t: React.FC = () => {
     },
   ];
 
+
+  const [searchText, setSearchText] = useState('');
+  const handleSearch = (value: string) => {
+    setSearchText(value);
+  };
+  const filteredCourses = course_data.filter((data) =>
+    data.course_name.includes(searchText)
+  );
+  
+
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
         <div style={{ marginBottom: 16 }}>
@@ -110,7 +115,7 @@ const Mycourse_t: React.FC = () => {
             style={{ width: 200, marginLeft: 16 }}
           />
         </div>
-        <Table columns={columns} dataSource={course_data} />
+        <Table columns={columns} dataSource={filteredCourses} />
         {/* 设备模态框 */}
         <Modal
           title={selectedClass ? '课程详情' : '新增设备'}

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Table, Button, Input, Modal, Upload, Space, Progress } from 'antd';
+import { Card, Table, Button, Input, Modal, Upload, Space, Progress,Select,Calendar } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { currentUser } from '@/services/ant-design-pro/api';
 import axios from 'axios';
+import type { Dayjs } from 'dayjs';
+import type { CalendarProps } from 'antd';
 
 const HomeworkManage: React.FC = () => {
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
@@ -58,23 +60,7 @@ const HomeworkManage: React.FC = () => {
     console.log('点击了发布批改任务按钮');
     setIsModalVisible1(true);
   }
-  const handleModalOk1 = () => {
-    setIsModalVisible1(false);
-    // 添加发布批改任务的逻辑
-  };
-
-  const handleModalCancel1 = () => {
-    setIsModalVisible1(false);
-  };
-
-  const handleModalOk = () => {
-    setIsModalVisible(false);
-    // 添加保存作业信息的逻辑
-  };
-
-  const handleModalCancel = () => {
-    setIsModalVisible(false);
-  };
+  
 
   const handleViewDetails = (record:any) => {
     setSelectedHomework(record);
@@ -148,6 +134,51 @@ const HomeworkManage: React.FC = () => {
     },
   ];
 
+  //第一个对话框（新增作业对话框）的保存按钮处理
+  const handleModalOk1 = () => {
+    setSelectedValue1('');
+    setIsModalVisible(false);
+    // 添加保存作业信息的逻辑
+  };
+  //第一个对话框（新增作业对话框）的取消按钮处理
+  const handleModalCancel1 = () => {
+    setSelectedValue1('');
+    setIsModalVisible(false);
+  };
+  //第一个对话框（新增作业对话框）中选择框选择内容改变时的处理函数
+  const handleSelectChange1 = value => {
+    setSelectedValue1(value);
+  };
+  //第一个对话框（新增作业对话框）中选择框选择内容改变时的处理函数
+  const handleSelectChange2 = value => {
+    setSelectedValue2(value);
+  };
+  //第二个对话框（发布批改任务对话框）的保存按钮处理
+  const handleModalOk2 = () => {
+    setSelectedValue2('');
+    setIsModalVisible1(false);
+    // 添加发布批改任务的逻辑
+  };
+  //第二个对话框（新增作业对话框）的取消按钮处理
+  const handleModalCancel2 = () => {
+    setSelectedValue2('');
+    setIsModalVisible1(false);
+  };
+  //新增作业模态框中所选择的课程值
+  const [selectedValue1,setSelectedValue1] = useState('');
+  //发布批改任务模态框中所选择的课程值
+  const [selectedValue2,setSelectedValue2] = useState('');
+
+
+  //第一个对话框中的日历内容变化处理内容
+  const onPanelChange1 = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
+  console.log(value.format('YYYY-MM-DD'), mode);
+};
+  //第一个对话框中的日历内容变化处理内容
+  const onPanelChange2 = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
+  console.log(value.format('YYYY-MM-DD'), mode);
+};
+
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
         <div style={{ marginBottom: 16 }}>
@@ -167,22 +198,33 @@ const HomeworkManage: React.FC = () => {
         <Modal
           title={isDetail ? '作业详情' : selectedHomework?.title ? '编辑作业' : '新增作业'}
           visible={isModalVisible}
-          onOk={handleModalOk}
-          onCancel={handleModalCancel}
-          footer={!isDetail ? [<Button key="back" onClick={handleModalCancel}>取消</Button>, <Button key="submit" type="primary" onClick={handleModalOk}>保存</Button>] : null}
+          onOk={handleModalOk1}
+          onCancel={handleModalCancel1}
+          footer={!isDetail ? [<Button key="back" onClick={handleModalCancel1}>取消</Button>, <Button key="submit" type="primary" onClick={handleModalOk1}>保存</Button>] : null}
         >
           {/* 模态框内的内容 */}
+          <div style={{ marginTop: 16 }}>
+            所属课程：
+            {/* <Input value={selectedHomework?.course_name} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, course_name: e.target.value })} /> */}
+            <Select 
+              style={{ width: 200 }}
+              value={selectedValue1}
+              onChange={handleSelectChange1}
+              //此处的课程名称应从后端获取
+              options = {[
+                {value:'软件项目管理与产品运维',label:'软件项目管理与产品运维'},
+                {value:'科技论文协作',label:'科技论文协作'},
+              ]}
+            />
+          </div>
           <div style={{ marginTop: 16 }}>
             作业标题：
             <Input value={selectedHomework?.title} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, title: e.target.value })} />
           </div>
           <div style={{ marginTop: 16 }}>
-            所属课程：
-            <Input value={selectedHomework?.course_name} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, course_name: e.target.value })} />
-          </div>
-          <div style={{ marginTop: 16 }}>
             截止日期：
-            <Input value={selectedHomework?.due_date} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, due_date  : e.target.value })} />
+            {/* <Input value={selectedHomework?.due_date} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, due_date  : e.target.value })} /> */}
+            <Calendar fullscreen={false} onPanelChange={onPanelChange1} />
           </div>
           <div style={{ marginTop: 16 }}>
             作业简介：
@@ -209,23 +251,32 @@ const HomeworkManage: React.FC = () => {
         <Modal
           title='发布批改任务'
           visible={isModalVisible1}
-          onOk={handleModalOk1}
-          onCancel={handleModalCancel1}
-          footer={[<Button onClick={handleModalCancel1}>取消</Button>,
-        <Button onClick={handleModalOk1} type='primary'>发布</Button>]}
+          onOk={handleModalOk2}
+          onCancel={handleModalCancel2}
+          footer={[<Button onClick={handleModalCancel2}>取消</Button>,
+        <Button onClick={handleModalOk2} type='primary'>发布</Button>]}
         >
           {/* 模态框内的内容 */}
+          <div style={{ marginTop: 16 }}>
+            所属课程：
+            <Select 
+              style={{ width: 200 }}
+              value={selectedValue2}
+              onChange={handleSelectChange2}
+              //此处的课程名称应从后端获取
+              options = {[
+                {value:'软件项目管理与产品运维',label:'软件项目管理与产品运维'},
+                {value:'科技论文协作',label:'科技论文协作'},
+              ]}
+            />
+          </div>
           <div style={{ marginTop: 16 }}>
             作业标题：
             <Input />
           </div>
           <div style={{ marginTop: 16 }}>
-            所属课程：
-            <Input />
-          </div>
-          <div style={{ marginTop: 16 }}>
             截止日期：
-            <Input />
+            <Calendar fullscreen={false} onPanelChange={onPanelChange2} />
           </div>
           <div style={{ marginTop: 16 }}>
             批改人：
