@@ -206,7 +206,7 @@ const Login: React.FC = () => {
                     ),
                   },
                   {
-                    pattern: /^1\d{10}$/,
+                    pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                     message: (
                       <FormattedMessage
                         id="pages.login.phoneNumber.invalid"
