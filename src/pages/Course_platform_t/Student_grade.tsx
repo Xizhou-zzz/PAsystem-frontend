@@ -3,8 +3,39 @@ import { Card, Table, Button, Input, Space, Modal,Form,message,Popconfirm,Select
 import React, { useState,useEffect } from 'react';
 import { Line } from '@ant-design/charts';
 import { ColumnType, ColumnGroupType } from 'antd/lib/table';
+import { currentUser } from '@/services/ant-design-pro/api';
+import axios from 'axios';
 
 const Student_grade: React.FC = () => {
+  
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await currentUser();
+        setCurrentUserInfo(response.data);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+
+  const [gradesData, setGradesData] = useState([]); // 定义状态存储成绩数据
+  useEffect(() => {
+    if (currentUserInfo) {
+      const user_name = currentUserInfo.name; // 使用当前用户name
+      axios.get(`http://127.0.0.1:5000/api/course_platform_t/student_grade/getStudent/${user_name}`)
+      .then(res => {
+        setGradesData(res.data); // 更新成绩数据状态
+      })
+      .catch(error => {
+        console.error('Error fetching grades data:', error);
+      });
+    }
+  }, [currentUserInfo]); // 添加 currentUserInfo 作为依赖项
+
   const data = [
     { year: '作业1', value: 90 },
     { year: '作业2', value: 74 },
@@ -122,8 +153,12 @@ const Student_grade: React.FC = () => {
 
   const columns: (ColumnType<{ id: string; homework: string; grade: string }> | ColumnGroupType<{ id: string; homework: string; grade: string }>)[] = [
 
-    { title: '学生学号', dataIndex: 'id', key: 'id' },
+    { title: '学生学号', dataIndex: 'student_id', key: 'student_id' },
+    { title: '课程名', dataIndex: 'course_name', key: 'course_name' },
+    { title: '班级号', dataIndex: 'class_id', key: 'class_id' },
+    { title: '作业名', dataIndex: 'title', key: 'title' },
     { title: '成绩', dataIndex: 'grade', key: 'grade' },
+
     {
       title: '操作',
       key: 'action',
@@ -150,7 +185,7 @@ const Student_grade: React.FC = () => {
           onChange={handleChangeCourse}
           // 目前是静态数据，课程列表需要从后端获取
           options={[
-            {value:'软件项目管理与运维',label:'软件项目管理与运维'},
+            {value:'项目管理与运维',label:'项目管理与运维'},
             {value:'科技论文写作w',label:'科技论文写作w'},
           ]}
         />
@@ -174,7 +209,7 @@ const Student_grade: React.FC = () => {
           />
         </div> */}
 
-        <Table dataSource={dataSource} columns={columns} rowKey="id" />
+        <Table columns={columns} dataSource={gradesData} rowKey="id" /> {/* 使用gradesData作为数据源 */}
 
         {/* 设备模态框 */}
         <Modal
@@ -187,13 +222,13 @@ const Student_grade: React.FC = () => {
           <Form form={form} onFinish={onFinish}>
             <Form.Item
               label="学生学号"
-              name="id">
-                <Input value={selectedGrade?.id}/>
+              name="student_id">
+                <Input value={selectedGrade?.student_id}/>
             </Form.Item>
             <Form.Item
               label="作业名称"
-              name="homework">
-                <Input value={selectedGrade?.homework}/>
+              name="title">
+                <Input value={selectedGrade?.title}/>
             </Form.Item>
             <Form.Item
               label="作业成绩"
