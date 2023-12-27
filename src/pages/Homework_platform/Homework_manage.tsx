@@ -1,16 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Table, Button, Input, Modal, Upload, Space,Progress,Select } from 'antd';
+import { Card, Table, Button, Input, Modal, Upload, Space, Progress } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import { currentUser } from '@/services/ant-design-pro/api';
+import axios from 'axios';
 
 const HomeworkManage: React.FC = () => {
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await currentUser();
+        setCurrentUserInfo(response.data);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+
   const [searchText, setSearchText] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible1,setIsModalVisible1] = useState(false);
   const [selectedHomework, setSelectedHomework] = useState<any>({});
   const [fileList, setFileList] = useState([]);
-  const [isDetail, setIsDetail] = useState(false); // 新增状态来判断是否是详情模式
+  const [homeworkData, setHomeworkData] = useState([]); // 添加这行代码来定义homeworkData状态
 
+  useEffect(() => {
+    if (currentUserInfo) {
+      const user_name = currentUserInfo.name; // 使用当前用户name
+      axios.get(`http://127.0.0.1:5000/api/homework_manage/teacher_get/${user_name}`)
+      .then(res => {
+        setHomeworkData(res.data); // 更新homeworkData状态
+      })
+      .catch(error => {
+        console.error('Error fetching homework data:', error);
+      });
+    }
+  }, [currentUserInfo]); // 添加 currentUserInfo 作为依赖项
+
+  const [isDetail, setIsDetail] = useState(false); // 新增状态来判断是否是详情模式
+  
   const handleSearch = (value: string) => {
     setSearchText(value);
     // 添加搜索逻辑
@@ -64,28 +95,6 @@ const HomeworkManage: React.FC = () => {
 
   const handleFileChange = ({ fileList }:any) => setFileList(fileList);
 
-  const dataSource = [
-    // 示例数据源，需要根据实际情况调整
-    {
-      key: '1',
-      course_id: 'C001',
-      class_id: 'CL001',
-      submitted_count: 30,
-      homework_title: '作业1',
-      course_name: '软件项目管理与运维',
-      deadline: '2023-11-30',
-    },
-    {
-      key: '2',
-      course_id: 'C001',
-      class_id: 'CL001',
-      submitted_count: 20,
-      homework_title: '作业2',
-      course_name: '科技论文写作w',
-      deadline: '2023-11-30',
-    },
-    // 更多作业...
-  ];
   const TaskProgress: React.FC<{ percent: number }> = ({ percent }) => (
     <Progress percent={percent} steps={5} strokeColor={[]} />
   );
@@ -93,18 +102,18 @@ const HomeworkManage: React.FC = () => {
   const columns = [
     {
       title: '作业标题',
-      dataIndex: 'homework_title',
-      key: 'homework_title',
+      dataIndex: 'title',
+      key: 'title',
     },
     {
       title: '课程编号',
-      dataIndex: 'course_id',
-      key: 'course_id',
+      dataIndex: 'course_code',
+      key: 'course_code',
     },
     {
       title: '课堂编号',
-      dataIndex: 'class_id',
-      key: 'class_id',
+      dataIndex: 'class_code',
+      key: 'class_code',
     },
     {
       title: '已提交人数',
@@ -123,8 +132,8 @@ const HomeworkManage: React.FC = () => {
     },
     {
       title: '截止日期',
-      dataIndex: 'deadline',
-      key: 'deadline',
+      dataIndex: 'due_date',
+      key: 'due_date',
     },
     {
       title: '操作',
@@ -154,9 +163,9 @@ const HomeworkManage: React.FC = () => {
             style={{ width: 200 }}
           />
         </div>
-        <Table columns={columns} dataSource={dataSource} />
+        <Table columns={columns} dataSource={homeworkData} /> {/* 使用homeworkData作为数据源 */}
         <Modal
-          title={isDetail ? '作业详情' : selectedHomework?.homework_title ? '编辑作业' : '新增作业'}
+          title={isDetail ? '作业详情' : selectedHomework?.title ? '编辑作业' : '新增作业'}
           visible={isModalVisible}
           onOk={handleModalOk}
           onCancel={handleModalCancel}
@@ -164,32 +173,24 @@ const HomeworkManage: React.FC = () => {
         >
           {/* 模态框内的内容 */}
           <div style={{ marginTop: 16 }}>
-            {/* <Input value={selectedHomework?.course_name} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, course_name: e.target.value })} /> */}
-            <Select
-              defaultValue="选择所属课程"
-              style={{ width: 200 }}
-              // 目前是静态数据，课程列表需要从后端获取
-              options={[
-                {value:'软件项目管理与运维',label:'软件项目管理与运维'},
-                {value:'科技论文写作w',label:'科技论文写作w'},
-              ]}
-            />
+            作业标题：
+            <Input value={selectedHomework?.title} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, title: e.target.value })} />
           </div>
           <div style={{ marginTop: 16 }}>
-            作业标题：
-            <Input value={selectedHomework?.homework_title} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, homework_title: e.target.value })} />
+            所属课程：
+            <Input value={selectedHomework?.course_name} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, course_name: e.target.value })} />
           </div>
           <div style={{ marginTop: 16 }}>
             截止日期：
-            <Input value={selectedHomework?.deadline} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, deadline: e.target.value })} />
+            <Input value={selectedHomework?.due_date} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, due_date  : e.target.value })} />
           </div>
           <div style={{ marginTop: 16 }}>
             作业简介：
             <Input.TextArea
               rows={4}
-              value={selectedHomework?.description}
+              value={selectedHomework?.assignment_description}
               disabled={isDetail}
-              onChange={e => setSelectedHomework({ ...selectedHomework, description: e.target.value })}
+              onChange={e => setSelectedHomework({ ...selectedHomework, assignment_description: e.target.value })}
             />
           </div>
           <div style={{ marginTop: 16 }}>
@@ -214,17 +215,12 @@ const HomeworkManage: React.FC = () => {
         <Button onClick={handleModalOk1} type='primary'>发布</Button>]}
         >
           {/* 模态框内的内容 */}
-          <Select
-              defaultValue="选择所属课程"
-              style={{ width: 200 }}
-              // 目前是静态数据，课程列表需要从后端获取
-              options={[
-                {value:'软件项目管理与运维',label:'软件项目管理与运维'},
-                {value:'科技论文写作w',label:'科技论文写作w'},
-              ]}
-            />
           <div style={{ marginTop: 16 }}>
             作业标题：
+            <Input />
+          </div>
+          <div style={{ marginTop: 16 }}>
+            所属课程：
             <Input />
           </div>
           <div style={{ marginTop: 16 }}>
