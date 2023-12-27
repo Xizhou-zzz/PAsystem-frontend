@@ -1,6 +1,7 @@
 import Footer from '@/components/Footer';
-import { login } from '@/services/ant-design-pro/api';
+import { login, login_email, sendVerificationCode } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
+import { Form } from 'antd';
 import {
   AlipayCircleOutlined,
   LockOutlined,
@@ -38,6 +39,7 @@ const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const { initialState, setInitialState } = useModel('@@initialState');
 
+  const [form] = Form.useForm();
   const intl = useIntl();
 
   const fetchUserInfo = async () => {
@@ -50,10 +52,24 @@ const Login: React.FC = () => {
     }
   };
 
+  const handleSendCode = async () => {
+    const email = form.getFieldValue('mobile'); // 确保这里的字段名称与表单中的邮箱输入字段名称一致
+    await sendVerificationCode(email);
+    // 根据结果显示消息或处理逻辑
+  };
+
+  
   const handleSubmit = async (values: API.LoginParams) => {
     try {
-      // 登录
-      const msg = await login({ ...values, type });
+      let msg;
+      if (type === 'account') {
+        // 账号密码登录
+        msg = await login({ ...values, type });
+      } else if (type === 'mobile') {
+        // 邮箱登录
+        msg = await login_email({ ...values, type }); // 假设login_email是您的邮箱登录接口
+      }
+  
       if (msg.status === 'ok') {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
@@ -87,7 +103,7 @@ const Login: React.FC = () => {
         {SelectLang && <SelectLang />}
       </div>
       <div className={styles.content}>
-        <LoginForm
+        <LoginForm form={form}
           logo={<img alt="logo" src="/logo.svg" />}
           title="基于同伴合作的作业互评系统"
           subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
@@ -228,6 +244,7 @@ const Login: React.FC = () => {
                   id: 'pages.login.captcha.placeholder',
                   defaultMessage: '请输入验证码',
                 })}
+                
                 captchaTextRender={(timing, count) => {
                   if (timing) {
                     return `${count} ${intl.formatMessage({
@@ -253,6 +270,8 @@ const Login: React.FC = () => {
                   },
                 ]}
                 onGetCaptcha={async (phone) => {
+                  await handleSendCode();
+
                   const result = await getFakeCaptcha({
                     phone,
                   });

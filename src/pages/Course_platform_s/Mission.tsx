@@ -1,9 +1,48 @@
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Divider, Space, Button, Table, Modal, Upload, Input, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { currentUser } from '@/services/ant-design-pro/api';
+import axios from 'axios'; // 确保安装了axios
 
 const Mission: React.FC = () => {
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await currentUser();
+        setCurrentUserInfo(response.data);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+
+  const [homeworkData, setHomeworkData] = useState([]);
+  const [missionData, setMissionData] = useState([]);
+
+  // 获取数据
+  useEffect(() => {
+    if (currentUserInfo) {
+      const user_name = currentUserInfo.name; // 使用当前用户name
+    const fetchHomeworkData = async () => {
+      const response = await axios.get(`http://127.0.0.1:5000//api/course_platform_s/mission/gethomework/${user_name}`);
+      setHomeworkData(response.data);
+      console.log(response.data);
+    };
+
+    const fetchMissionData = async () => {
+      const response = await axios.get(`http://127.0.0.1:5000//api/course_platform_s/mission/getmission/${user_name}`);
+      setMissionData(response.data);
+    };
+
+    fetchHomeworkData();
+    fetchMissionData();
+    }
+  }, [currentUserInfo]);
+
   //控制查看作业对话框是否弹出的状态变量
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -97,8 +136,8 @@ const Mission: React.FC = () => {
     },
     {
       title: '作业名称',
-      dataIndex: 'homework_name',
-      key: 'homework_name',
+      dataIndex: 'title',
+      key: 'title',
     },
     {
       title: '',
@@ -200,10 +239,10 @@ const Mission: React.FC = () => {
     <PageContainer style={{ backgroundColor: 'white' }}>
       {contextHolder}
         <p>待完成作业：</p>
-        <Table columns={columns} dataSource={dataSource} />
+        <Table columns={columns} dataSource={homeworkData} />
         <Divider />
         <p>待批改作业：</p>
-        <Table columns={columns1} dataSource={dataSource1} />
+        <Table columns={columns1} dataSource={missionData} />
     </PageContainer>
   );
 };
