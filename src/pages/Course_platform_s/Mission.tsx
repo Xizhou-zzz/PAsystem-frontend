@@ -22,6 +22,7 @@ const Mission: React.FC = () => {
 
   const [homeworkData, setHomeworkData] = useState([]);
   const [missionData, setMissionData] = useState([]);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   // 获取数据
   useEffect(() => {
@@ -84,7 +85,7 @@ const Mission: React.FC = () => {
     setModalText('正在提交...');
     setConfirmLoading(true);
     setTimeout(() => {
-      setOpen(false);
+      // setOpen(false);
       setConfirmLoading(false);
       setModalText('请输入作业内容：');
       info();
@@ -118,6 +119,12 @@ const Mission: React.FC = () => {
       message.error(`${info.file.name} 文件上传失败`);
     }
   };
+
+  const handleLookHomework = (record) =>{
+    setSelectedRow(record);
+    showModal();
+  
+  }
   
   //提交作业中文本域相关定义
   const { TextArea } = Input;
@@ -150,13 +157,7 @@ const Mission: React.FC = () => {
       key: 'action',
       render: (record: any) => (
         <Space size="middle">
-          <Button onClick={showModal}>查看作业</Button>
-          <Modal
-            title="作业内容"
-            open={isModalOpen}
-            onOk={handleOk}
-            onCancel={handleCancel}
-          ></Modal>
+          <Button onClick={()=>handleLookHomework(record)}>查看作业</Button>
           <Button type="primary" onClick={showModal1}>
             提交作业
           </Button>
@@ -211,17 +212,11 @@ const Mission: React.FC = () => {
       key: 'action',
       render: (record: any) => (
         <Space size="middle">
-          <Button onClick={showModal}>查看作业</Button>
-          <Modal
-            title="作业内容"
-            open={isModalOpen}
-            onOk={handleOk}
-            onCancel={handleCancel}
-          ></Modal>
-
+          <Button onClick={()=>handleLookHomework(record)}>查看作业</Button>
           <Button type="primary" onClick={showModal2}>
             批改作业
           </Button>
+          {/* 批改作业对话框 */}
           <Modal
             title="批改作业"
             open={isModalOpen2}
@@ -243,6 +238,8 @@ const Mission: React.FC = () => {
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
+
+      {/* 提交作业对话框 */}
       <Modal
         title="提交作业"
         open={open}
@@ -261,6 +258,22 @@ const Mission: React.FC = () => {
           <Button icon={<UploadOutlined />}>上传附件</Button>
         </Upload>
       </Modal>
+
+      {/* 查看作业对话框 */}
+      <Modal
+            title="作业内容"
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
+          >
+          {selectedRow && (
+              <div>
+                <p>课程名称：<Input disabled = {true} value={selectedRow.course_name}/></p>
+                <p>作业名称：<Input disabled = {true} value={selectedRow.title}/></p>
+              </div>
+            )}
+      </Modal>
+
       {contextHolder}
         <p>待完成作业：</p>
         <Table columns={columns} dataSource={homeworkData} />
