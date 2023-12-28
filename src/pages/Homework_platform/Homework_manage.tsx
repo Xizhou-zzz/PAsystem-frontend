@@ -30,6 +30,7 @@ const HomeworkManage: React.FC = () => {
   const [isModalVisible1, setIsModalVisible1] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const [isModalVisible3, setIsModalVisible3] = useState(false);
+  const [isModalVisible4, setIsModalVisible4] = useState(false);
   
   
   const [selectedDueDate, setSelectedDueDate] = useState(null); // 存储选中的截止日期
@@ -143,13 +144,21 @@ const HomeworkManage: React.FC = () => {
         <Space>
           <Button onClick={()=>handleDetail(record)} style={{ color: '#1890ff' }}>详情</Button>
           <Button style={{ color: '#ff4d4f' }}>删除</Button>
-          <Button style={{ color: '#52c41a' }}>编辑</Button>
+          <Button onClick={()=>handleEdit(record)} style={{ color: '#52c41a' }}>编辑</Button>
         </Space>
       ),
     },
   ];
+  const handleInputChange = (e, fieldName) => {
+    // 更新 selectedRow1 的对应属性
+    setSelectedRow1({
+      ...selectedRow1,
+      [fieldName]: e.target.value,
+    });
+  };
 
   const [selectedRow, setSelectedRow] = useState(null);
+  const [selectedRow1,setSelectedRow1] = useState(null);
   const handleDetail = (record) =>{
     setSelectedRow(record);
     setIsModalVisible3(true);
@@ -159,6 +168,31 @@ const HomeworkManage: React.FC = () => {
   };
   const handleModalCancel3 = () => {
     setIsModalVisible3(false);
+  };
+  const handleEdit = (record) =>{
+    setSelectedRow1(record);
+    setIsModalVisible4(true);
+  }
+  const handleModalOk4 = () => {
+    if (!selectedRow1) {
+      // 可以在这里进行一些错误处理或者提示用户
+      console.error('selectedRow1 is null');
+      return;
+    }
+    //构建要传回给后端的数据
+    const updatedCourseInformation = {
+      title: selectedRow1.title,
+      course_code: selectedRow1.course_code,
+      class_code: selectedRow1.class_code,
+      submitted_count: selectedRow1.submitted_count,
+      course_name: selectedRow1.course_name,
+      due_date: selectedRow1.due_date,
+    }
+    
+    setIsModalVisible4(false);
+  };
+  const handleModalCancel4 = () => {
+    setIsModalVisible4(false);
   };
 
   //第一个对话框（新增作业对话框）的确定按钮处理
@@ -376,6 +410,19 @@ const HomeworkManage: React.FC = () => {
                 <p>已提交人数：<Input disabled = {true} value={selectedRow.submitted_count}/></p>
                 <p>所属课程：<Input disabled = {true} value={selectedRow.course_name}/></p>
                 <p>截止日期：<Input disabled = {true} value={selectedRow.due_date}/></p>
+              </div>
+            )}
+        </Modal>
+        <Modal title="编辑作业" visible={isModalVisible4} onOk={handleModalOk4}
+          onCancel={handleModalCancel4}>
+            {selectedRow1 && (
+              <div>
+                <p>作业标题：<Input  value={selectedRow1.title} onChange={(e) => handleInputChange(e, 'title')}/></p>
+                <p>课程编号：<Input  value={selectedRow1.course_code} onChange={(e) => handleInputChange(e, 'course_code')}/></p>
+                <p>课堂编号：<Input  value={selectedRow1.class_code} onChange={(e) => handleInputChange(e, 'class_code')}/></p>
+                <p>已提交人数：<Input  value={selectedRow1.submitted_count} onChange={(e) => handleInputChange(e, 'submitted_count')}/></p>
+                <p>所属课程：<Input  value={selectedRow1.course_name} onChange={(e) => handleInputChange(e, 'course_name')}/></p>
+                <p>截止日期：<Input  value={selectedRow1.due_date} onChange={(e) => handleInputChange(e, 'due_date')}/></p>
               </div>
             )}
         </Modal>
