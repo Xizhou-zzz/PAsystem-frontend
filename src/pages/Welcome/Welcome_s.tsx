@@ -7,7 +7,7 @@ import { currentUser } from '@/services/ant-design-pro/api';
 const Welcome_s: React.FC = () => {
   const intl = useIntl();
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
-
+  //获取当前用户名
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
@@ -20,6 +20,34 @@ const Welcome_s: React.FC = () => {
 
     fetchCurrentUser();
   }, []);
+  //获取未提交作业的课程门数和未提交作业的课程名
+  useEffect(() => {
+  const fetchData1 = async () => {
+    try {
+      // 获取未提交作业的课程名
+      const responseCourses = await fetch('/api/getUnsubmittedCourses');
+      const coursesData = await responseCourses.json();
+      setHomeworkToBeSubmitted(coursesData);
+
+      // 获取待提交课程的门数
+      const responseCount = await fetch('/api/getPendingCourseCount');
+      const countData = await responseCount.json();
+      setCountOfHomeworkToBeSubmitted(countData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData1();
+}, []);
+
+  //有几门课程有待提交作业
+  const [countOfHomeworkToBeSubmitted,setCountOfHomeworkToBeSubmitted] = useState(0);
+  const [homeworkToBeSubmitted,setHomeworkToBeSubmitted] = useState([]);
+  //有几门课程有待提交作业
+  const [countOfHomeworkToBeCorrected,setCountOfHomeworkToBeCorrected] = useState(0);
+  const [homeworkToBeCorrected,setHomeworkToBeCorrected] = useState([]);
+
 
   return (
     <PageContainer>
@@ -37,6 +65,8 @@ const Welcome_s: React.FC = () => {
             marginBottom: 24,
           }}
         />
+        <p>您有{countOfHomeworkToBeSubmitted}门课程有待提交作业</p>
+        <p>您有{countOfHomeworkToBeCorrected}门课程有待批改作业</p>
         <Typography.Text strong>
           <a
             href="https://procomponents.ant.design/components/table"

@@ -275,10 +275,10 @@ const Mission: React.FC = () => {
       </Modal>
 
       {contextHolder}
-        <p>待完成作业：</p>
+        <p>所有作业</p>
         <Table columns={columns} dataSource={homeworkData} />
         <Divider />
-        <p>待批改作业：</p>
+        <p>所有批改作业</p>
         <Table columns={columns1} dataSource={missionData} />
     </PageContainer>
   );
