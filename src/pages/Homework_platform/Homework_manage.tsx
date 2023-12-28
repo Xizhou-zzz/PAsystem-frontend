@@ -85,7 +85,25 @@ const HomeworkManage: React.FC = () => {
     setIsModalVisible2(true);
   }
   
-
+  const handleDelete = (record) => {
+    Modal.confirm({
+      title: '确定要删除这项作业吗？',
+      content: '这将删除所有相关的学生作业记录。',
+      onOk: async () => {
+        try {
+          // 发送删除请求
+          const response = await axios.delete(`http://127.0.0.1:5000/api/homework_manage/deletehomework/${record.course_name}/${record.title}`);
+          if (response.status === 200) {
+            //message.success('作业删除成功');
+            // 刷新作业列表
+            fetchHomeworkData();
+          }
+        } catch (error) {
+          //message.error('作业删除失败');
+        }
+      }
+    });
+  };
   
 
   
@@ -143,7 +161,7 @@ const HomeworkManage: React.FC = () => {
       render: (record: any) => (
         <Space>
           <Button onClick={()=>handleDetail(record)} style={{ color: '#1890ff' }}>详情</Button>
-          <Button style={{ color: '#ff4d4f' }}>删除</Button>
+          <Button onClick={() => handleDelete(record)} style={{ color: '#ff4d4f' }}>删除</Button>
           <Button onClick={()=>handleEdit(record)} style={{ color: '#52c41a' }}>编辑</Button>
         </Space>
       ),

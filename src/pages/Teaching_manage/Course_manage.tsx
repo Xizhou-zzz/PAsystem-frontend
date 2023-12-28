@@ -1,6 +1,7 @@
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Table, Button, Input, Space, Modal, Tag  } from 'antd';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Course_manage: React.FC = () => {
   const [dataSource, setDataSource] = useState([]);
@@ -92,24 +93,36 @@ const Course_manage: React.FC = () => {
     setIsAddCourseModalOpen(true);
   };
   //新增课程对话框的ok按钮
-  const handleAddCourseModalOk = () =>{
-    //这里要添加把这五个变量的内容（也就是要新增的课程信息）传回后端的逻辑
-    //新增课程的全部信息
+  const handleAddCourseModalOk = async () => {
     const NewCourseData = {
       courseName: newCourseName,
       courseId: newCourseId,
       mainTeacher: newMainTeacher,
       teachingClassrom: newTeachingClassroom,
-      teachingTime:newTeachingTime,
+      teachingTime: newTeachingTime,
     };
+  
+    try {
+      // 发送POST请求到后端接口
+      const response = await axios.post('http://localhost:5000/api/addcourse', NewCourseData);
+      console.log(response); // 检查响应
+  
+      // 成功后的逻辑，例如更新课程列表
+      // ...
+  
+      // 重置表单状态并关闭模态框
+      setNewCourseName('');
+      setNewCourseId('');
+      setNewMainTeacher('');
+      setNewTeachingClassroom('');
+      setNewTeachingTime('');
+      setIsAddCourseModalOpen(false);
+    } catch (error) {
+      console.error('Error:', error);
+      // 错误处理逻辑
+    }
+  };
 
-    setNewCourseName('');
-    setNewCourseId('');
-    setNewMainTeacher('');
-    setNewTeachingClassroom('');
-    setNewTeachingTime('');
-    setIsAddCourseModalOpen(false);
-  }
   //新增课程对话框的cancel按钮
   const handleAddCourseModalCancel = () =>{
     setNewCourseName('');
@@ -125,21 +138,26 @@ const Course_manage: React.FC = () => {
   const [newMainTeacher,setNewMainTeacher] = useState('');
   const [newTeachingClassroom,setNewTeachingClassroom] = useState('');
   const [newTeachingTime,setNewTeachingTime] = useState('');
-  const handleNewCourseNameChange = value => {
-    setNewCourseName(value);
+  const handleNewCourseNameChange = (e) => {
+    setNewCourseName(e.target.value);
   };
-  const handleNewCourseIdChange = value => {
-    setNewCourseId(value);
+  
+  const handleNewCourseIdChange = (e) => {
+    setNewCourseId(e.target.value);
   };
-  const handleNewMainTeacherChange = value => {
-    setNewMainTeacher(value);
+  
+  const handleNewMainTeacherChange = (e) => {
+    setNewMainTeacher(e.target.value);
   };
-  const handleNewTeachingClassroomChange = value => {
-    setNewTeachingClassroom(value);
+  
+  const handleNewTeachingClassroomChange = (e) => {
+    setNewTeachingClassroom(e.target.value);
   };
-  const handleNewTeachingTimeChange = value => {
-    setNewTeachingTime(value);
+  
+  const handleNewTeachingTimeChange = (e) => {
+    setNewTeachingTime(e.target.value);
   };
+  
   
 
 
