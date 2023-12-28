@@ -41,6 +41,10 @@ const Course_manage: React.FC = () => {
     setIsModalVisible(true);
   };
 
+  const [isEditCourseModalOpen, setIsEditCourseModalOpen] = useState(false);
+  const [editingCourse, setEditingCourse] = useState(null);
+
+
   const columns = [
     {
       title: '课程名称',
@@ -75,11 +79,11 @@ const Course_manage: React.FC = () => {
           <Button type="primary" onClick={() => handleEdit(record)}>
             查看
           </Button>
-          <Button>
+          <Button onClick={() => handleOpenEditModal(record)}>
             修改课程信息
           </Button>
-          <Button type="primary" danger>
-            删除课程
+          <Button type="primary" danger onClick={() => handleDeleteCourse(record.course_id)}>
+          删除课程
           </Button>
 
         </Space>
@@ -123,6 +127,25 @@ const Course_manage: React.FC = () => {
     }
   };
 
+  const handleDeleteCourse = async (courseId) => {
+    try {
+      // 发送DELETE请求到后端
+      await axios.delete(`http://localhost:5000/api/course_manage/deletecourse/${courseId}`);
+      // 更新课程列表
+      const updatedCourses = dataSource.filter(course => course.course_id !== courseId);
+      setDataSource(updatedCourses);
+    } catch (error) {
+      console.error('Error deleting course:', error);
+      // 错误处理逻辑
+    }
+  };
+
+  const handleOpenEditModal = (record) => {
+    setEditingCourse(record);
+    setIsEditCourseModalOpen(true);
+  };
+  
+
   //新增课程对话框的cancel按钮
   const handleAddCourseModalCancel = () =>{
     setNewCourseName('');
@@ -137,6 +160,7 @@ const Course_manage: React.FC = () => {
   const [newCourseId,setNewCourseId] = useState('');
   const [newMainTeacher,setNewMainTeacher] = useState('');
   const [newTeachingClassroom,setNewTeachingClassroom] = useState('');
+
   const [newTeachingTime,setNewTeachingTime] = useState('');
   const handleNewCourseNameChange = (e) => {
     setNewCourseName(e.target.value);
@@ -158,8 +182,17 @@ const Course_manage: React.FC = () => {
     setNewTeachingTime(e.target.value);
   };
   
-  
-
+  const handleEditCourseModalOk = async () => {
+    try {
+      const response = await axios.put(`http://localhost:5000/api/course_manage/editcourse/${editingCourse.course_id}`, editingCourse);
+      // 更新课程列表
+      // ...
+      setIsEditCourseModalOpen(false);
+    } catch (error) {
+      console.error('Error editing course:', error);
+      // 错误处理逻辑
+    }
+  };
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
@@ -174,6 +207,16 @@ const Course_manage: React.FC = () => {
             <p>授课教室：<Input onChange={handleNewTeachingClassroomChange}/></p>
             <p>授课时间：<Input onChange={handleNewTeachingTimeChange}/></p>
           </Modal>
+          <Modal
+  title="修改课程"
+  open={isEditCourseModalOpen}
+  onOk={handleEditCourseModalOk}
+  onCancel={() => setIsEditCourseModalOpen(false)}
+>
+  <p>课程名称：<Input value={editingCourse?.course_name} onChange={e => setEditingCourse({...editingCourse, course_name: e.target.value})}/></p>
+  {/* 其他表单项 */}
+</Modal>
+
           <Input.Search
             placeholder="搜索课程"
             onSearch={handleSearch}

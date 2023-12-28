@@ -6,6 +6,24 @@ import Search from 'antd/es/input/Search';
 const { Option } = Select;
 
 const People_manage: React.FC = () => {
+    const [allCourses, setAllCourses] = useState([]);
+
+    useEffect(() => {
+    const fetchCourses = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/get_all_courses');
+            const data = await response.json();
+            if (data.courses) {
+                setAllCourses(data.courses);
+            }
+        } catch (error) {
+            console.error('Error fetching courses:', error);
+        }
+    };
+    fetchCourses();
+    }, []);
+
+
     const [students, setStudents] = useState([]);
     const [teachers, setTeachers] = useState([]);
     
@@ -29,10 +47,21 @@ const People_manage: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedPerson, setSelectedPerson] = useState<any>(null);
 
-    const handleAdjust = (record) => {
-        setSelectedPerson(record);
-        setIsModalVisible(true);
+    const handleAdjust = async (record) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/people_management/get_student_courses/${record.id}`);
+            const data = await response.json();
+            if (data.courses) {
+                setSelectedPerson({...record, courses: data.courses});
+            } else {
+                setSelectedPerson({...record, courses: []});
+            }
+            setIsModalVisible(true);
+        } catch (error) {
+            console.error('Error fetching courses:', error);
+        }
     };
+    
 
     const handleModalOk = () => {
         setIsModalVisible(false);
@@ -66,29 +95,22 @@ const People_manage: React.FC = () => {
     ];
 
     const renderCourseOptions = () => {
-        const courses = [
-            '软件测试与质量保证',
-            '专业课程综合实训III',
-            '机械制图',
-            '高等数学',
-            '大学生心理健康',
-            '闺蜜敌密辩证法',
-        ]; //下拉菜单的备选课程列表
-        return courses.map((course) => (
+        return allCourses.map((course) => (
             <Option value={course} key={course}>
                 {course}
             </Option>
         ));
     };
+    
 
-    const renderCourseList = (person) => {
-        const { courses } = person;
-        return courses.map((course) => (
-            <Checkbox value={course} key={course}>
+    const renderCourseList = () => {
+        return selectedPerson?.courses?.map((course, index) => (
+            <Checkbox value={course} key={index}>
                 {course}
             </Checkbox>
         ));
     };
+    
     //学生的搜索
     const [searchText1, setSearchText1] = useState('');
     //老师的搜索
@@ -152,11 +174,9 @@ const filteredTeachers = teachers.filter((teacher) =>
                 >
                     <Form>
                         <Form.Item label="已选课程">
-                            <Checkbox.Group style={{ width: '100%' }}>
-                                {selectedPerson &&
-                                    selectedPerson.courses &&
-                                    renderCourseList(selectedPerson)}
-                            </Checkbox.Group>
+                        <Checkbox.Group style={{ width: '100%' }}>
+                            {renderCourseList()}
+                        </Checkbox.Group>
                         </Form.Item>
                         <Form.Item label="全部课程">
                             <Select
