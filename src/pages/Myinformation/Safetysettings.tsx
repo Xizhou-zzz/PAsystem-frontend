@@ -9,15 +9,9 @@ const Safetysettings: React.FC = () => {
     // 这里可以编写更新密码的处理代码，如发送到后端进行保存等操作
   };
 
-  const handleUpdatePhone = (values: any) => {
-    // 处理更新手机逻辑
-    console.log('更新手机:', values);
-    // 这里可以编写更新手机的处理代码，如发送到后端进行保存等操作
-  };
-
-  const handleUpdateEmail = (values: any) => {
+  const handleUpdatePhoneNumber = (values: any) => {
     // 处理更新邮箱逻辑
-    console.log('更新邮箱:', values);
+    console.log('更新手机:', values);
     // 这里可以编写更新邮箱的处理代码，如发送到后端进行保存等操作
   };
 
@@ -89,7 +83,7 @@ const Safetysettings: React.FC = () => {
     <PageContainer style={{ backgroundColor: 'white' }}>
       {contextHolder}
       <Card title="密保手机">
-        <Form onFinish={handleUpdateEmail}>
+        <Form onFinish={handleUpdatePhoneNumber}>
           <Form.Item label="已绑定手机号" name="phoneNumber">
             <Input />
           </Form.Item>

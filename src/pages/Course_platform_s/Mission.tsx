@@ -58,10 +58,21 @@ const Mission: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState('请输入作业内容：');
+  const [uploadFileList, setUploadFileList] = useState([]); // 新增状态变量
 
+  // 在打开提交作业对话框时，不要重置文件列表
   const showModal1 = () => {
     setOpen(true);
+    // 不再调用 setUploadFileList([]);
   };
+
+  // 在关闭提交作业对话框时，也不要重置文件列表
+  const handleCancel1 = () => {
+    console.log('Clicked cancel button');
+    setOpen(false);
+    // 不再调用 setUploadFileList([]);
+  };
+
 
   //提交成功与否消息提示的相关定义
   const [messageApi, contextHolder] = message.useMessage();
@@ -78,11 +89,6 @@ const Mission: React.FC = () => {
       setModalText('请输入作业内容：');
       info();
     }, 2000);
-  };
-
-  const handleCancel1 = () => {
-    console.log('Clicked cancel button');
-    setOpen(false);
   };
 
   //点击批改作业弹出的对话框
@@ -237,6 +243,24 @@ const Mission: React.FC = () => {
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
+      <Modal
+        title="提交作业"
+        open={open}
+        onOk={handleOk1}
+        confirmLoading={confirmLoading}
+        onCancel={handleCancel1}
+        destroyOnClose={true}
+      >
+        <p>{modalText}</p>
+        <TextArea defaultValue="" rows={4} />
+        <Upload
+          action="http://127.0.0.1:5000/api/upload"
+          onChange={handleUploadChange}
+          fileList={uploadFileList} // 使用状态变量作为fileList
+        >
+          <Button icon={<UploadOutlined />}>上传附件</Button>
+        </Upload>
+      </Modal>
       {contextHolder}
         <p>待完成作业：</p>
         <Table columns={columns} dataSource={homeworkData} />
