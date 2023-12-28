@@ -257,10 +257,30 @@ const HomeworkManage: React.FC = () => {
     setSelectedValue3(value);
   };
   //第二个对话框（发布批改任务对话框）的保存按钮处理
-  const handleModalOk2 = () => {
-    setSelectedValue2('');
-    setIsModalVisible2(false);
-    // 添加发布批改任务的逻辑
+  const handleModalOk2 = async () => {
+    try {
+    const response = await axios.post('http://127.0.0.1:5000//api/homework_platform/homework_manage/postdata', {
+      course: selectedValue2,
+      homeworkTitle: selectedValue3,
+      assignWay: value,
+    });
+
+    if (response.status === 200) {
+      // 处理成功响应，例如关闭对话框或进行其他操作
+      setSelectedValue2('');
+      setSelectedValue3('');
+      setIsModalVisible2(false);
+    } else {
+      // 处理失败响应，例如提示用户发布失败
+      console.error('Failed to publish correction task:', response.data);
+    }
+  } catch (error) {
+    // 处理请求错误，例如提示用户网络错误
+    console.error('Error publishing correction task:', error);
+  }
+
+
+
   };
   //第二个对话框（新增作业对话框）的取消按钮处理
   const handleModalCancel2 = () => {
@@ -411,7 +431,7 @@ const HomeworkManage: React.FC = () => {
               onChange={handleSelectChange3}
               //此处的课程名称应从后端获取
               options = {[
-                {value:'软件项目管理与产品运维作业1',label:'软件项目管理与产品运维作业1'},
+                {value:'项目管理作业1',label:'项目管理作业1'},
                 {value:'科技论文协作作业1',label:'科技论文协作作业1'},
               ]}
             />
