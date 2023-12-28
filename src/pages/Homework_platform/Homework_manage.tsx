@@ -23,11 +23,14 @@ const HomeworkManage: React.FC = () => {
   }, []);
 
   const [searchText, setSearchText] = useState('');
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalVisible1,setIsModalVisible1] = useState(false);
+  
   const [selectedHomework, setSelectedHomework] = useState<any>({});
   const [fileList, setFileList] = useState([]);
   const [homeworkData, setHomeworkData] = useState([]); // 添加这行代码来定义homeworkData状态
+  const [isModalVisible1, setIsModalVisible1] = useState(false);
+  const [isModalVisible2, setIsModalVisible2] = useState(false);
+  const [isModalVisible3, setIsModalVisible3] = useState(false);
+  
   
   const [selectedDueDate, setSelectedDueDate] = useState(null); // 存储选中的截止日期
 
@@ -58,7 +61,8 @@ const HomeworkManage: React.FC = () => {
     }
   }, [homeworkData]); // 当 homeworkData 更新时重新计算
 
-  const [isDetail, setIsDetail] = useState(false); // 新增状态来判断是否是详情模式
+
+  
   
   const handleSearch = (value: string) => {
     setSearchText(value);
@@ -67,51 +71,23 @@ const HomeworkManage: React.FC = () => {
 
   const handleAddHomework = () => {
     setSelectedHomework({});
-    setIsModalVisible(true);
+    setIsModalVisible1(true);
     setFileList([]);
     setSelectedDueDate(null); // 重置截止日期
-    setIsDetail(false);
+  
   };
   
-  const handleEdit = (record: any) => {
-    setSelectedHomework(record);
-    setIsModalVisible(true);
-    setFileList([]); // 根据需要设置
-    setSelectedDueDate(record.due_date); // 设置为编辑作业的截止日期
-    setIsDetail(false);
-  };
+  
 
   const handleRelease = () => {
     console.log('点击了发布批改任务按钮');
-    setIsModalVisible1(true);
+    setIsModalVisible2(true);
   }
   
 
-  const handleViewDetails = (record:any) => {
-    setSelectedHomework(record);
-    setIsModalVisible(true);
-    setIsDetail(true); // 设置为详情模式
-  };
+  
 
-  const handleDelete = (record) => {
-    Modal.confirm({
-      title: '确定要删除这项作业吗？',
-      content: '这将删除所有相关的学生作业记录。',
-      onOk: async () => {
-        try {
-          // 发送删除请求
-          const response = await axios.delete(`http://127.0.0.1:5000/api/homework_manage/deletehomework/${record.course_name}/${record.title}`);
-          if (response.status === 200) {
-            //message.success('作业删除成功');
-            // 刷新作业列表
-            fetchHomeworkData();
-          }
-        } catch (error) {
-          message.error('作业删除失败');
-        }
-      }
-    });
-  };
+  
 
   const fetchHomeworkData = async () => {
     // 获取作业数据的逻辑
@@ -165,14 +141,27 @@ const HomeworkManage: React.FC = () => {
       key: 'action',
       render: (record: any) => (
         <Space>
-          <Button onClick={() => handleViewDetails(record)} style={{ color: '#1890ff' }}>详情</Button>
-          <Button onClick={() => handleDelete(record)} style={{ color: '#ff4d4f' }}>删除</Button>
-          <Button onClick={() => handleEdit(record)} style={{ color: '#52c41a' }}>编辑</Button>
+          <Button onClick={()=>handleDetail(record)} style={{ color: '#1890ff' }}>详情</Button>
+          <Button style={{ color: '#ff4d4f' }}>删除</Button>
+          <Button style={{ color: '#52c41a' }}>编辑</Button>
         </Space>
       ),
     },
   ];
 
+  const [selectedRow, setSelectedRow] = useState(null);
+  const handleDetail = (record) =>{
+    setSelectedRow(record);
+    setIsModalVisible3(true);
+  }
+  const handleModalOk3 = () => {
+    setIsModalVisible3(false);
+  };
+  const handleModalCancel3 = () => {
+    setIsModalVisible3(false);
+  };
+
+  //第一个对话框（新增作业对话框）的确定按钮处理
   const handleModalOk1 = async () => {
     const homeworkInfo = {
       courseName: selectedValue1,
@@ -189,7 +178,7 @@ const HomeworkManage: React.FC = () => {
       console.log(homeworkInfo);
       await axios.post(`http://127.0.0.1:5000/api/homework_manage/addhomework/${user_name}`, homeworkInfo);
       //message.success('作业保存成功');
-      setIsModalVisible(false);
+      setIsModalVisible1(false);
       }
     } catch (error) {
       console.error('Error saving homework:', error);
@@ -200,26 +189,27 @@ const HomeworkManage: React.FC = () => {
   //第一个对话框（新增作业对话框）的取消按钮处理
   const handleModalCancel1 = () => {
     setSelectedValue1('');
-    setIsModalVisible(false);
+    setIsModalVisible1(false);
   };
   //第一个对话框（新增作业对话框）中选择框选择内容改变时的处理函数
   const handleSelectChange1 = value => {
     setSelectedValue1(value);
   };
-  //第一个对话框（新增作业对话框）中选择框选择内容改变时的处理函数
+
+  //第二个对话框（发布批改任务对话框）中选择框选择内容改变时的处理函数
   const handleSelectChange2 = value => {
     setSelectedValue2(value);
   };
   //第二个对话框（发布批改任务对话框）的保存按钮处理
   const handleModalOk2 = () => {
     setSelectedValue2('');
-    setIsModalVisible1(false);
+    setIsModalVisible2(false);
     // 添加发布批改任务的逻辑
   };
   //第二个对话框（新增作业对话框）的取消按钮处理
   const handleModalCancel2 = () => {
     setSelectedValue2('');
-    setIsModalVisible1(false);
+    setIsModalVisible2(false);
   };
   //新增作业模态框中所选择的课程值
   const [selectedValue1,setSelectedValue1] = useState('');
@@ -247,6 +237,8 @@ const HomeworkManage: React.FC = () => {
     console.log("Selected Date:", value.format('YYYY-MM-DD'));
     // 如果需要，在这里处理第二个日历的日期选择
   };
+
+
   
 
   return (
@@ -265,12 +257,12 @@ const HomeworkManage: React.FC = () => {
           />
         </div>
         <Table columns={columns} dataSource={homeworkData} /> {/* 使用homeworkData作为数据源 */}
+
         <Modal
-        title={isDetail ? '作业详情' : selectedHomework?.title ? '编辑作业' : '新增作业'}
-        visible={isModalVisible}
+        title='新增作业'
+        visible={isModalVisible1}
         onOk={handleModalOk1}
         onCancel={handleModalCancel1}
-        footer={!isDetail ? [<Button key="back" onClick={handleModalCancel1}>取消</Button>, <Button key="submit" type="primary" onClick={handleModalOk1}>保存</Button>] : null}
       >
           {/* 模态框内的内容 */}
           <div style={{ marginTop: 16 }}>
@@ -284,7 +276,7 @@ const HomeworkManage: React.FC = () => {
         </div>
           <div style={{ marginTop: 16 }}>
             作业标题：
-            <Input value={selectedHomework?.title} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, title: e.target.value })} />
+            <Input value={selectedHomework?.title}  onChange={e => setSelectedHomework({ ...selectedHomework, title: e.target.value })} />
           </div>
           <div style={{ marginTop: 16 }}>
             截止日期：
@@ -306,7 +298,7 @@ const HomeworkManage: React.FC = () => {
             <Input.TextArea
               rows={4}
               value={selectedHomework?.assignment_description}
-              disabled={isDetail}
+              
               onChange={e => setSelectedHomework({ ...selectedHomework, assignment_description: e.target.value })}
             />
           </div>
@@ -316,16 +308,16 @@ const HomeworkManage: React.FC = () => {
               fileList={fileList}
               onChange={handleFileChange}
               beforeUpload={() => false} // 阻止自动上传
-              disabled={isDetail}
+              
             >
-              <Button icon={<UploadOutlined />} disabled={isDetail}>选择文件</Button>
+              <Button icon={<UploadOutlined />} >选择文件</Button>
             </Upload>
           </div>
         </Modal>
 
         <Modal
           title='发布批改任务'
-          visible={isModalVisible1}
+          visible={isModalVisible2}
           onOk={handleModalOk2}
           onCancel={handleModalCancel2}
           footer={[<Button onClick={handleModalCancel2}>取消</Button>,
@@ -370,9 +362,22 @@ const HomeworkManage: React.FC = () => {
               onChange={handleFileChange}
               beforeUpload={() => false} // 阻止自动上传
             >
-              <Button icon={<UploadOutlined />} disabled={isDetail}>选择文件</Button>
+              <Button icon={<UploadOutlined />} >选择文件</Button>
             </Upload>
           </div>
+        </Modal>
+        <Modal title='作业详情' visible={isModalVisible3} onOk={handleModalOk3}
+          onCancel={handleModalCancel3}>
+            {selectedRow && (
+              <div>
+                <p>作业标题：<Input disabled = {true} value={selectedRow.title}/></p>
+                <p>课程编号：<Input disabled = {true} value={selectedRow.course_code}/></p>
+                <p>课堂编号：<Input disabled = {true} value={selectedRow.class_code}/></p>
+                <p>已提交人数：<Input disabled = {true} value={selectedRow.submitted_count}/></p>
+                <p>所属课程：<Input disabled = {true} value={selectedRow.course_name}/></p>
+                <p>截止日期：<Input disabled = {true} value={selectedRow.due_date}/></p>
+              </div>
+            )}
         </Modal>
     </PageContainer>
   );
