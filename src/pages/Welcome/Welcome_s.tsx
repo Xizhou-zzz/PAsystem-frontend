@@ -20,27 +20,30 @@ const Welcome_s: React.FC = () => {
 
     fetchCurrentUser();
   }, []);
-  //获取未提交作业的课程门数和未提交作业的课程名
+
   useEffect(() => {
-  const fetchData1 = async () => {
-    try {
-      // 获取未提交作业的课程名
-      const responseCourses = await fetch('/api/getUnsubmittedCourses');
-      const coursesData = await responseCourses.json();
-      setHomeworkToBeSubmitted(coursesData);
-
-      // 获取待提交课程的门数
-      const responseCount = await fetch('/api/getPendingCourseCount');
-      const countData = await responseCount.json();
-      setCountOfHomeworkToBeSubmitted(countData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  fetchData1();
-}, []);
-
+    const fetchData = async () => {
+      if (currentUserInfo && currentUserInfo.name) {
+        try {
+          // 获取未提交作业的课程信息
+          const responseCourses = await fetch(`http://localhost:5000/api/welcome_s/getUnsubmittedCourses/${currentUserInfo.name}`);
+          const coursesData = await responseCourses.json();
+          setCountOfHomeworkToBeSubmitted(coursesData.count);
+  
+          // 获取待批改作业的课程门数
+          const responseCount = await fetch(`http://localhost:5000/api/welcome_s/getPendingCourseCount/${currentUserInfo.name}`);
+          const countData = await responseCount.json();
+          setCountOfHomeworkToBeCorrected(countData.count);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+    };
+  
+    fetchData();
+  }, [currentUserInfo]); // 添加 currentUserInfo 作为依赖项
+  
+  
   //有几门课程有待提交作业
   const [countOfHomeworkToBeSubmitted,setCountOfHomeworkToBeSubmitted] = useState(0);
   const [homeworkToBeSubmitted,setHomeworkToBeSubmitted] = useState([]);
