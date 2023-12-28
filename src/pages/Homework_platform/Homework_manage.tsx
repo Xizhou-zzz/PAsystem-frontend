@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Table, Button, Input, Modal, Upload, Space, Progress,Select,Calendar } from 'antd';
+import { Card, Table, Button, Input, Modal, Upload, Space, Progress,Select,Calendar,Radio } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { currentUser } from '@/services/ant-design-pro/api';
 import axios from 'axios';
 import type { Dayjs } from 'dayjs';
 import type { CalendarProps } from 'antd';
+import type { RadioChangeEvent } from 'antd';
 
 const HomeworkManage: React.FC = () => {
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
@@ -252,6 +253,9 @@ const HomeworkManage: React.FC = () => {
   const handleSelectChange2 = value => {
     setSelectedValue2(value);
   };
+  const handleSelectChange3 = value => {
+    setSelectedValue3(value);
+  };
   //第二个对话框（发布批改任务对话框）的保存按钮处理
   const handleModalOk2 = () => {
     setSelectedValue2('');
@@ -267,6 +271,8 @@ const HomeworkManage: React.FC = () => {
   const [selectedValue1,setSelectedValue1] = useState('');
   //发布批改任务模态框中所选择的课程值
   const [selectedValue2,setSelectedValue2] = useState('');
+  //发布批改任务模态框中所选择的作业标题值
+  const [selectedValue3,setSelectedValue3] = useState('');
 
 
   //第一个对话框中的日历内容变化处理内容
@@ -288,6 +294,14 @@ const HomeworkManage: React.FC = () => {
   const onSelectDate2 = (value: Dayjs) => {
     console.log("Selected Date:", value.format('YYYY-MM-DD'));
     // 如果需要，在这里处理第二个日历的日期选择
+  };
+
+  //分配方式的值：1代表随机分配 2代表算法分配
+  const [value, setValue] = useState(1);
+  //处理单选框所选内容发生变化的函数
+   const onRadioChange = (e: RadioChangeEvent) => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value);
   };
 
 
@@ -334,10 +348,10 @@ const HomeworkManage: React.FC = () => {
             截止日期：
             {/* <Input value={selectedHomework?.due_date} disabled={isDetail} onChange={e => setSelectedHomework({ ...selectedHomework, due_date  : e.target.value })} /> */}
             <Calendar 
-  fullscreen={false} 
-  onPanelChange={onPanelChange1} 
-  onSelect={onSelectDate1} // 使用 onSelect 事件
-/>
+              fullscreen={false} 
+              onPanelChange={onPanelChange1} 
+              onSelect={onSelectDate1} // 使用 onSelect 事件
+            />
 
 {/* <Calendar 
   fullscreen={false} 
@@ -379,7 +393,7 @@ const HomeworkManage: React.FC = () => {
           <div style={{ marginTop: 16 }}>
             所属课程：
             <Select 
-              style={{ width: 200 }}
+              style={{ width: 300 }}
               value={selectedValue2}
               onChange={handleSelectChange2}
               //此处的课程名称应从后端获取
@@ -391,31 +405,27 @@ const HomeworkManage: React.FC = () => {
           </div>
           <div style={{ marginTop: 16 }}>
             作业标题：
-            <Input />
+            <Select 
+              style={{ width: 300 }}
+              value={selectedValue3}
+              onChange={handleSelectChange3}
+              //此处的课程名称应从后端获取
+              options = {[
+                {value:'软件项目管理与产品运维作业1',label:'软件项目管理与产品运维作业1'},
+                {value:'科技论文协作作业1',label:'科技论文协作作业1'},
+              ]}
+            />
           </div>
           <div style={{ marginTop: 16 }}>
             截止日期：
             <Calendar fullscreen={false} onPanelChange={onPanelChange2} />
           </div>
           <div style={{ marginTop: 16 }}>
-            批改人：
-            <Input />
-          </div>
-          <div style={{ marginTop: 16 }}>
-            作业简介：
-            <Input.TextArea
-              rows={4}
-            />
-          </div>
-          <div style={{ marginTop: 16 }}>
-            上传附件：
-            <Upload
-              fileList={fileList}
-              onChange={handleFileChange}
-              beforeUpload={() => false} // 阻止自动上传
-            >
-              <Button icon={<UploadOutlined />} >选择文件</Button>
-            </Upload>
+            作业分配方式：
+            <Radio.Group onChange={onRadioChange} value={value}>
+              <Radio value={1}>随机分配</Radio>
+              <Radio value={2}>算法分配</Radio>
+            </Radio.Group>
           </div>
         </Modal>
         <Modal title='作业详情' visible={isModalVisible3} onOk={handleModalOk3}
