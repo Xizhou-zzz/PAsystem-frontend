@@ -93,9 +93,30 @@ const HomeworkManage: React.FC = () => {
     setIsDetail(true); // 设置为详情模式
   };
 
-  const handleDelete = (record:any) => {
-    // 删除逻辑
+  const handleDelete = (record) => {
+    Modal.confirm({
+      title: '确定要删除这项作业吗？',
+      content: '这将删除所有相关的学生作业记录。',
+      onOk: async () => {
+        try {
+          // 发送删除请求
+          const response = await axios.delete(`http://127.0.0.1:5000/api/homework_manage/deletehomework/${record.course_name}/${record.title}`);
+          if (response.status === 200) {
+            //message.success('作业删除成功');
+            // 刷新作业列表
+            fetchHomeworkData();
+          }
+        } catch (error) {
+          message.error('作业删除失败');
+        }
+      }
+    });
   };
+
+  const fetchHomeworkData = async () => {
+    // 获取作业数据的逻辑
+  };
+  
 
   const handleFileChange = ({ fileList }:any) => setFileList(fileList);
 
