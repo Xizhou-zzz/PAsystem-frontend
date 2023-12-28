@@ -66,8 +66,9 @@ const Student_grade: React.FC = () => {
     messageApi.info('删除成功！');
   };
 
+  const [selectedCourse, setSelectedCourse] = useState('');
+  const [selectedHomework, setSelectedHomework] = useState('');
   const [form] = Form.useForm();
-  const [searchText, setSearchText] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedGrade, setSelectedGrade] = useState<any>(null);
   const [selectedRow,setSelectedRow] = useState<number>(-1);
@@ -103,9 +104,7 @@ const Student_grade: React.FC = () => {
     updateRow(selectedRow,values);
   }
 
-  const handleSearch = (value: string) => {
-    setSearchText(value);
-  };
+
   //处理更改成绩逻辑
   const handleEdit = (record: any, index: number) => {
     console.log('当前行的数据：', record);
@@ -142,12 +141,12 @@ const Student_grade: React.FC = () => {
   //处理选择课程名称的函数
   const handleChangeCourse = (value: string) => {
   console.log(`选择的课程名称是：${value}`);
-  //后端在此添加内容
+  setSelectedCourse(value);
 };
   //处理选择作业标题的函数
   const handleChangeHomework = (value: string) => {
   console.log(`选择的作业标题是： ${value}`);
-  //后端在此添加内容
+  setSelectedHomework(value);
 };
 //根据选择的课程名和作业标题返回对应的学生成绩列表
 
@@ -174,6 +173,9 @@ const Student_grade: React.FC = () => {
       ),
     },
   ];
+  const filteredGrade = gradesData.filter((data) =>
+    data.course_name.includes(selectedCourse) && data.title.includes(selectedHomework)
+  );
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
@@ -185,8 +187,8 @@ const Student_grade: React.FC = () => {
           onChange={handleChangeCourse}
           // 目前是静态数据，课程列表需要从后端获取
           options={[
-            {value:'项目管理与运维',label:'项目管理与运维'},
-            {value:'科技论文写作w',label:'科技论文写作w'},
+            {value:'软件项目管理与产品运维',label:'软件项目管理与产品运维'},
+            {value:'综合实训',label:'综合实训'},
           ]}
         />
         <Select
@@ -209,7 +211,7 @@ const Student_grade: React.FC = () => {
           />
         </div> */}
 
-        <Table columns={columns} dataSource={gradesData} rowKey="id" /> {/* 使用gradesData作为数据源 */}
+        <Table columns={columns} dataSource={filteredGrade} rowKey="id" /> {/* 使用gradesData作为数据源 */}
 
         {/* 设备模态框 */}
         <Modal
