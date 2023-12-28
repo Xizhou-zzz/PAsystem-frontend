@@ -1,18 +1,28 @@
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Form, Input, Button,Progress,Modal, message } from 'antd';
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import { currentUser } from '@/services/ant-design-pro/api';
+import axios from 'axios'; // 确保安装了axios
 
 const Safetysettings: React.FC = () => {
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await currentUser();
+        setCurrentUserInfo(response.data);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+
   const handleUpdatePassword = (values: any) => {
     // 处理更新密码逻辑
     console.log('更新密码:', values);
     // 这里可以编写更新密码的处理代码，如发送到后端进行保存等操作
-  };
-
-  const handleUpdatePhoneNumber = (values: any) => {
-    // 处理更新邮箱逻辑
-    console.log('更新手机:', values);
-    // 这里可以编写更新邮箱的处理代码，如发送到后端进行保存等操作
   };
 
   //定义当前密码强度进度条后面的文字内容
@@ -24,14 +34,35 @@ const Safetysettings: React.FC = () => {
   const showChangePasswordModal = () =>{
     setIsChangePasswordModalOpen(true);
   }
-  const handleChangePasswordModalOk = () =>{
-    //需要添加修改后端密码的逻辑，把inputValue2或inputValue3的值传回后端，后端修改对应的密码
-    setIsChangePasswordModalOpen(false);
-    //如果修改成功
-    success();
-    //如果修改失败
-    // error();
-  }
+  const handleChangePasswordModalOk = async () => {
+    if (passwordMismatch || !inputValue2 || !inputValue3) {
+      error();
+      return;
+    }
+  
+    try {
+      const response = await axios.put(`http://127.0.0.1:5000/api/safetysettings/updatepassword`, {
+        username: currentUserInfo?.name,
+        currentPassword:inputValue1,
+        newPassword: inputValue2,
+      });
+  
+      if (response.status === 200) {
+        success();
+        setIsChangePasswordModalOpen(false);
+        setInputValue1('');
+        setInputValue2('');
+        setInputValue3('');
+      } else {
+        error();
+      }
+    } catch (e) {
+      console.error('Error updating password:', e);
+      error();
+    }
+  };
+  
+
   const [messageApi, contextHolder] = message.useMessage();
   const success = () =>{
     messageApi.open({
@@ -39,6 +70,7 @@ const Safetysettings: React.FC = () => {
       content:'密码修改成功！'
     });
   };
+  
   const error = () =>{
     messageApi.open({
       type:'error',
@@ -82,16 +114,6 @@ const Safetysettings: React.FC = () => {
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
       {contextHolder}
-      <Card title="密保手机">
-        <Form onFinish={handleUpdatePhoneNumber}>
-          <Form.Item label="已绑定手机号" name="phoneNumber">
-            <Input />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">修改</Button>
-          </Form.Item>
-        </Form>
-      </Card>
       <Card title="账户密码" style={{ marginBottom: 24 }}>
         <Form onFinish={handleUpdatePassword}>
           <Form.Item label="当前密码强度" name="passwordStrength">
