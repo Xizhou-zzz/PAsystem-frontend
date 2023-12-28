@@ -20,10 +20,7 @@ const HomeworkManage: React.FC = () => {
       }
     };
     fetchCurrentUser();
-  }, []);
-
-  const [searchText, setSearchText] = useState('');
-  
+  }, []);  
   const [selectedHomework, setSelectedHomework] = useState<any>({});
   const [fileList, setFileList] = useState([]);
   const [homeworkData, setHomeworkData] = useState([]); // 添加这行代码来定义homeworkData状态
@@ -64,11 +61,14 @@ const HomeworkManage: React.FC = () => {
 
 
   
-  
+  const [searchText, setSearchText] = useState('');
   const handleSearch = (value: string) => {
     setSearchText(value);
     // 添加搜索逻辑
   };
+  const filteredHomework = homeworkData.filter((data) =>
+    data.title.includes(searchText)
+  );
 
   const handleAddHomework = () => {
     setSelectedHomework({});
@@ -290,7 +290,7 @@ const HomeworkManage: React.FC = () => {
             style={{ width: 200 }}
           />
         </div>
-        <Table columns={columns} dataSource={homeworkData} /> {/* 使用homeworkData作为数据源 */}
+        <Table columns={columns} dataSource={filteredHomework} /> {/* 使用homeworkData作为数据源 */}
 
         <Modal
         title='新增作业'
