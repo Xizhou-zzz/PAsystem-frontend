@@ -96,7 +96,7 @@ const Mycourse_t: React.FC = () => {
     },
   ];
 
-
+  //搜索逻辑的实现
   const [searchText, setSearchText] = useState('');
   const handleSearch = (value: string) => {
     setSearchText(value);

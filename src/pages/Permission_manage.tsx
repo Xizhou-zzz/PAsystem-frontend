@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Table, Modal, Button, Select } from 'antd';
+import { Table, Modal, Button, Select,Input } from 'antd';
 import axios from 'axios';
 
 const { Option } = Select;
@@ -84,11 +84,23 @@ const Permission_manage: React.FC = () => {
             ),
         },
     ];
+    const [searchText, setSearchText] = useState('');
+    const handleSearch = (value) => {
+        setSearchText(value);
+    };
+     const filteredUsers = users.filter((user) =>
+    user.access.includes(searchText)
+);
 
     return (
         <PageContainer style={{backgroundColor:'white'}}>
                 <h2>用户列表</h2>
-                <Table dataSource={users} columns={columns} />
+                <Input.Search
+                    placeholder="搜索权限"
+                    onSearch={handleSearch}
+                    style={{ width: 200, marginLeft: 16 }}
+                />
+                <Table dataSource={filteredUsers} columns={columns} />
 
                 <Modal
                     title="调整权限"

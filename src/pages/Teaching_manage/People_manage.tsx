@@ -89,19 +89,23 @@ const People_manage: React.FC = () => {
             </Checkbox>
         ));
     };
-
-    const [searchText, setSearchText] = useState('');
-
-    const handleSearch = (value) => {
-        setSearchText(value);
+    //学生的搜索
+    const [searchText1, setSearchText1] = useState('');
+    //老师的搜索
+    const [searchText2, setSearchText2] = useState('');
+    const handleSearch1 = (value) => {
+        setSearchText1(value);
+    };
+    const handleSearch2 = (value) => {
+        setSearchText2(value);
     };
 
     const filteredStudents = students.filter((student) =>
-    student.username.includes(searchText)
+    student.username.includes(searchText1)
 );
 
 const filteredTeachers = teachers.filter((teacher) =>
-    teacher.username.includes(searchText)
+    teacher.username.includes(searchText2)
 );
 
     return (
@@ -117,7 +121,7 @@ const filteredTeachers = teachers.filter((teacher) =>
                         placeholder="搜索学生姓名"
                         allowClear
                         enterButton="搜索"
-                        onSearch={handleSearch}
+                        onSearch={handleSearch1}
                         style={{ width: 200, marginLeft: 16 }}
                     />
                 </div>
@@ -134,7 +138,7 @@ const filteredTeachers = teachers.filter((teacher) =>
                         placeholder="搜索教师姓名"
                         allowClear
                         enterButton="搜索"
-                        onSearch={handleSearch}
+                        onSearch={handleSearch2}
                         style={{ width: 200, marginLeft: 16 }}
                     />
                 </div>

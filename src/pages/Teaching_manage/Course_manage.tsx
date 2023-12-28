@@ -1,10 +1,9 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { Card, Table, Button, Input, Space, Modal, Tag } from 'antd';
+import { Card, Table, Button, Input, Space, Modal, Tag  } from 'antd';
 import React, { useState, useEffect } from 'react';
 
 const Course_manage: React.FC = () => {
   const [dataSource, setDataSource] = useState([]);
-  const [searchText, setSearchText] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedClass, setSelectedClass] = useState<any>(null);
 
@@ -16,10 +15,13 @@ const Course_manage: React.FC = () => {
       .catch(error => console.error('Error:', error));
   }, []);
   
-  
+  const [searchText, setSearchText] = useState('');
   const handleSearch = (value: string) => {
     setSearchText(value);
   };
+  const filteredCourses = dataSource.filter((data) =>
+    data.course_name.includes(searchText)
+  );
 
   const handleModalOk = () => {
     // 处理模态框确认逻辑
@@ -84,19 +86,83 @@ const Course_manage: React.FC = () => {
     },
   ];
 
+  //新增课程对话框的逻辑
+  const [isAddCourseModalOpen,setIsAddCourseModalOpen] = useState(false);
+  const handleAddCourse = () =>{
+    setIsAddCourseModalOpen(true);
+  };
+  //新增课程对话框的ok按钮
+  const handleAddCourseModalOk = () =>{
+    //这里要添加把这五个变量的内容（也就是要新增的课程信息）传回后端的逻辑
+    //新增课程的全部信息
+    const NewCourseData = {
+      courseName: newCourseName,
+      courseId: newCourseId,
+      mainTeacher: newMainTeacher,
+      teachingClassrom: newTeachingClassroom,
+      teachingTime:newTeachingTime,
+    };
+
+    setNewCourseName('');
+    setNewCourseId('');
+    setNewMainTeacher('');
+    setNewTeachingClassroom('');
+    setNewTeachingTime('');
+    setIsAddCourseModalOpen(false);
+  }
+  //新增课程对话框的cancel按钮
+  const handleAddCourseModalCancel = () =>{
+    setNewCourseName('');
+    setNewCourseId('');
+    setNewMainTeacher('');
+    setNewTeachingClassroom('');
+    setNewTeachingTime('');
+    setIsAddCourseModalOpen(false);
+  }
+  //新增课程对话框的五个输入框中的内容变量
+  const [newCourseName,setNewCourseName] = useState('');
+  const [newCourseId,setNewCourseId] = useState('');
+  const [newMainTeacher,setNewMainTeacher] = useState('');
+  const [newTeachingClassroom,setNewTeachingClassroom] = useState('');
+  const [newTeachingTime,setNewTeachingTime] = useState('');
+  const handleNewCourseNameChange = value => {
+    setNewCourseName(value);
+  };
+  const handleNewCourseIdChange = value => {
+    setNewCourseId(value);
+  };
+  const handleNewMainTeacherChange = value => {
+    setNewMainTeacher(value);
+  };
+  const handleNewTeachingClassroomChange = value => {
+    setNewTeachingClassroom(value);
+  };
+  const handleNewTeachingTimeChange = value => {
+    setNewTeachingTime(value);
+  };
+  
+
+
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
         <div style={{ marginBottom: 16 }}>
-          <Button type="primary">
+          <Button type="primary" onClick={handleAddCourse}>
             新增课程
           </Button>
+          <Modal title="新增课程" open={isAddCourseModalOpen} onOk={handleAddCourseModalOk} onCancel={handleAddCourseModalCancel}>
+            <p>课程名称：<Input onChange={handleNewCourseNameChange}/></p>
+            <p>课程编号：<Input onChange={handleNewCourseIdChange}/></p>
+            <p>主讲教师：<Input onChange={handleNewMainTeacherChange}/></p>
+            <p>授课教室：<Input onChange={handleNewTeachingClassroomChange}/></p>
+            <p>授课时间：<Input onChange={handleNewTeachingTimeChange}/></p>
+          </Modal>
           <Input.Search
             placeholder="搜索课程"
             onSearch={handleSearch}
             style={{ width: 200, marginLeft: 16 }}
           />
         </div>
-        <Table columns={columns} dataSource={dataSource} />
+        <Table columns={columns} dataSource={filteredCourses} />
         {/* 设备模态框 */}
         <Modal
           title={selectedClass ? '课程详情' : '新增课程'}
