@@ -33,15 +33,18 @@ export async function login(body: API.LoginParams, options?: { [key: string]: an
 }
 
 export async function sendVerificationCode(email: string) {
-  return request('/api/sendcode', {
+  return request('http://127.0.0.1:5000/api/sendcode', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     data: { email },
-  });
+  });  
 }
 
 /** 登录接口 POST /api/login/email */
 export async function login_email(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('/api/login_email', {
+  return request<API.LoginResult>('http://127.0.0.1:5000/api/login_email', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
