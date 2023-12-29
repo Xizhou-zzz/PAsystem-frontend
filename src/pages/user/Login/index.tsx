@@ -145,7 +145,15 @@ const Login: React.FC = () => {
             <LoginMessage
               content={intl.formatMessage({
                 id: 'pages.login.accountLogin.errorMessage',
-                defaultMessage: '账户或密码错误(admin/ant.design)',
+                defaultMessage: '账户或密码错误',
+              })}
+            />
+          )}
+          {status === 'erro' && loginType === 'account' && (
+            <LoginMessage
+              content={intl.formatMessage({
+                id: '',
+                defaultMessage: '黑名单用户无权限！',
               })}
             />
           )}

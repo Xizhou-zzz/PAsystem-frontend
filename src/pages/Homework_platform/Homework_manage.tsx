@@ -150,11 +150,6 @@ useEffect(() => {
       key: 'submitted_count',
     },
     {
-      title: '提交进度',
-      key: 'progress',
-      render: (record: any) => <TaskProgress percent={70} />,
-    },
-    {
       title: '所属课程',
       dataIndex: 'course_name',
       key: 'course_name',
