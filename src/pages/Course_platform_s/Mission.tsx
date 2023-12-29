@@ -229,6 +229,11 @@ const submitHomework = async ({ filePath, fileName, fileData, homeworkId }) => {
       key: 'title',
     },
     {
+      title: '截止日期',
+      dataIndex: 'due_date',
+      key: 'due_date',
+    },
+    {
       title: '成绩',
       dataIndex: 'grade',
       key: 'grade',
