@@ -31,6 +31,7 @@ const GradingStatus: React.FC = () => {
   const dataSource = [
     {
       key: '1',
+      course_name:'软件项目管理与产品运维',
       homework_title: '作业1',
       course_id: 'C001',
       class_id: 'CL001',
@@ -42,6 +43,11 @@ const GradingStatus: React.FC = () => {
   ];
 
   const columns = [
+    {
+      title: '课程名称',
+      dataIndex: 'course_name',
+      key: 'course_name',
+    },
     {
       title: '作业标题',
       dataIndex: 'homework_title',
@@ -76,12 +82,29 @@ const GradingStatus: React.FC = () => {
 
   return (
     <PageContainer style={{backgroundColor:'white'}}>
-        <Select placeholder="选择课程" style={{ width: 200 }} onChange={handleCourseChange}>
-          {/* 示例课程选项，实际应从后端获取 */}
-          <Select.Option value="all">全部</Select.Option>
-          <Select.Option value="course1">课程1</Select.Option>
-          <Select.Option value="course2">课程2</Select.Option>
-        </Select>
+        <Space>
+        <Select
+          defaultValue="请选择课程"
+          style={{ width: 250 }}
+          // onChange={handleChangeCourse}
+          // 目前是静态数据，课程列表需要从后端获取
+          options={[
+            {value:'软件项目管理与产品运维',label:'软件项目管理与产品运维'},
+            {value:'综合实训',label:'综合实训'},
+          ]}
+        />
+        <Select
+          defaultValue="请选择作业标题"
+          style={{ width: 200 }}
+          // onChange={handleChangeHomework}
+          //作业标题列表需要从后端获取
+          // 目前是静态数据，作业标题列表需要从后端获取，一个课程名称有它对应的作业标题列表
+          options={[
+            {value:'作业1',label:'作业1'},
+            {value:'作业2',label:'作业2'},
+          ]}
+        />
+        </Space>
         <Table columns={columns} dataSource={dataSource} style={{ marginTop: 16 }} />
         <Modal
           title="批改详情"

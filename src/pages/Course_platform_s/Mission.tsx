@@ -205,6 +205,7 @@ const submitHomework = async ({ filePath, fileName, fileData, homeworkId }) => {
     // 处理申诉逻辑
     console.log("申诉内容：", userFeedback);
     // 发送申诉内容到后端或执行其他逻辑
+    setIsAppealModalOpen(true);
   };
 
   const handleResultModalOk = () => {
@@ -332,6 +333,28 @@ const submitHomework = async ({ filePath, fileName, fileData, homeworkId }) => {
       ),
     },
   ];
+  //申诉内容对话框
+  const [isAppealModalOpen,setIsAppealModalOpen] = useState(false);
+  const handleAppealModalOk = async () => {
+    try{
+      const response = await axios.post('http://127.0.0.1:5000//api/course_platform_s/mission/postdata',{
+        appeal:appeal,
+      });
+      if (response.status === 200){
+        setIsAppealModalOpen(false);
+
+      }else{
+        console.error('内容：',response.data);
+      }
+    } catch(error){
+      console.error('ss',error);
+    }
+  };
+  const handleAppealModalCancel = () => {
+    setAppeal('');
+    setIsAppealModalOpen(false);
+  };
+  const [appeal,setAppeal] = useState('');
 
   return (
     <PageContainer style={{ backgroundColor: 'white' }}>
@@ -373,6 +396,14 @@ const submitHomework = async ({ filePath, fileName, fileData, homeworkId }) => {
                 <p>作业名称：<Input disabled = {true} value={selectedRow.title}/></p>
               </div>
             )}
+      </Modal>
+      <Modal title="申诉" open={isAppealModalOpen} onOk={handleAppealModalOk} onCancel={handleAppealModalCancel}>
+        <Input.TextArea
+          rows={4}
+          value={appeal}
+          onChange={(e) => setAppeal(e.target.value)}
+          placeholder="请输入您申诉的理由"
+        />
       </Modal>
 
       {contextHolder}

@@ -294,9 +294,6 @@ useEffect(() => {
     // 处理请求错误，例如提示用户网络错误
     console.error('Error publishing correction task:', error);
   }
-
-
-
   };
   //第二个对话框（新增作业对话框）的取消按钮处理
   const handleModalCancel2 = () => {
