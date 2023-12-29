@@ -23,6 +23,23 @@ const Mission: React.FC = () => {
   const [homeworkData, setHomeworkData] = useState([]);
   const [missionData, setMissionData] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
+  // 定义状态变量
+const [gradingInfo, setGradingInfo] = useState({
+  grade: '',
+  reason: ''
+});
+
+// 更新成绩和理由的函数
+const handleGradingChange = (e, field) => {
+  setGradingInfo({ ...gradingInfo, [field]: e.target.value });
+};
+
+// 确认批改的逻辑（根据实际需求实现）
+const confirmGrading = () => {
+  console.log('成绩:', gradingInfo.grade, '理由:', gradingInfo.reason);
+  // 发送数据到后端等逻辑
+  setIsModalOpen2(false);
+};
 
   // 获取数据
   useEffect(() => {
@@ -36,6 +53,7 @@ const Mission: React.FC = () => {
 
     const fetchMissionData = async () => {
       const response = await axios.get(`http://127.0.0.1:5000//api/course_platform_s/mission/getmission/${user_name}`);
+      console.log(response.data); // 检查返回的数据
       setMissionData(response.data);
     };
 
@@ -60,6 +78,7 @@ const Mission: React.FC = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState('请输入作业内容：');
   const [uploadFileList, setUploadFileList] = useState([]); // 新增状态变量
+  const [homeworkText, setHomeworkText] = useState('');
 
   // 在打开提交作业对话框时，不要重置文件列表
   const showModal1 = () => {
@@ -81,17 +100,34 @@ const Mission: React.FC = () => {
     messageApi.info('提交成功！');
   };
 
-  const handleOk1 = () => {
-    setModalText('正在提交...');
-    setConfirmLoading(true);
-    setTimeout(() => {
-      // setOpen(false);
-      setConfirmLoading(false);
-      setModalText('请输入作业内容：');
-      info();
-    }, 2000);
-  };
+  // 当提交作业对话框确定按钮被点击
+const handleOk1 = async () => {
+  const formData = new FormData();
+  uploadFileList.forEach(file => {
+    formData.append('file', file.originFileObj);
+  });
 
+  try {
+    const response = await axios.post('http://127.0.0.1:5000/api/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    // 这里假设后端返回的数据中包含了文件的路径
+    const filePath = response.data.path;
+    const fileName = uploadFileList[0].name;
+    const fileData = homeworkText;
+    await submitHomework({
+      filePath,
+      fileName,
+      fileData,
+      homeworkId: selectedHomeworkId // 确保这里正确传递了homeworkId
+    }); // 提交作业的函数，需要实现
+  } catch (error) {
+    console.error('Error uploading file:', error);
+  }
+};
+  
   //点击批改作业弹出的对话框
   const [isModalOpen2,setIsModalOpen2] = useState(false);
   const showModal2 = () => {
@@ -107,40 +143,79 @@ const Mission: React.FC = () => {
     setIsModalOpen2(false);
   };
 
-  const handleUploadChange = (info) => {
-    if (info.file.status === 'uploading') {
-      // 正在上传
-      console.log('Uploading...');
-    } else if (info.file.status === 'done') {
-      // 上传完成
-      message.success(`${info.file.name} 文件上传成功`);
-    } else if (info.file.status === 'error') {
-      // 上传失败
-      message.error(`${info.file.name} 文件上传失败`);
-    }
-  };
+// 当文件上传状态改变时
+const handleUploadChange = (info) => {
+  let fileList = [...info.fileList];
 
+  // 只显示最近上传的文件，且保留上传状态
+  fileList = fileList.slice(-1);
+  fileList = fileList.map(file => {
+    if (file.response) {
+      // 把response中的文件路径等信息转化成fileList需要的格式
+      file.url = file.response.path;
+    }
+    return file;
+  });
+
+  setUploadFileList(fileList);
+};
+  
   const handleLookHomework = (record) =>{
     setSelectedRow(record);
     showModal();
   
   }
+const [selectedHomeworkId, setSelectedHomeworkId] = useState(null);
+
+// 假设这是用户点击提交作业按钮时调用的函数
+const handleSelectHomework = (record) => {
+  setSelectedHomeworkId(record.homework_id);
+  showModal1(); // 打开提交作业的模态框
+};
+const [isResultModalOpen, setIsResultModalOpen] = useState(false);
+const [selectedResult, setSelectedResult] = useState(null);
+const [userFeedback, setUserFeedback] = useState("");
+
+const handleShowResult = (record) => {
+  setSelectedResult(record);
+  setIsResultModalOpen(true);
+};
+
+const submitHomework = async ({ filePath, fileName, fileData, homeworkId }) => {
+  console.log(homeworkId);
+  try {
+    const response = await axios.post('http://127.0.0.1:5000/api/submit_homework', {
+      filePath,
+      fileName,
+      fileData,
+      homeworkId, // 添加这行
+      userName: currentUserInfo.name
+    });
+      if (response.data.message === '作业提交成功') {
+        message.success('作业提交成功');
+        // 可以在这里执行其他逻辑，例如关闭模态框
+      }
+    } catch (error) {
+      console.error('Error submitting homework:', error);
+      message.error('作业提交失败');
+    }
+  };
+
+  const handleAppeal = () => {
+    // 处理申诉逻辑
+    console.log("申诉内容：", userFeedback);
+    // 发送申诉内容到后端或执行其他逻辑
+  };
+
+  const handleResultModalOk = () => {
+    // 这里可以添加处理逻辑，例如发送用户反馈到后端
+  
+    // 关闭模态框
+    setIsResultModalOpen(false);
+  };
   
   //提交作业中文本域相关定义
   const { TextArea } = Input;
-  //待完成作业表格数据和列名定义
-  const dataSource = [
-    {
-      key: '1',
-      course_name: '科技论文写作',
-      homework_name: '作业1',
-    },
-    {
-      key: '2',
-      course_name: '计算机网络',
-      homework_name: '作业2',
-    },
-  ];
   const columns = [
     {
       title: '课程名称',
@@ -153,14 +228,49 @@ const Mission: React.FC = () => {
       key: 'title',
     },
     {
+      title: '成绩',
+      dataIndex: 'grade',
+      key: 'grade',
+    },
+    {
       title: '',
       key: 'action',
       render: (record: any) => (
         <Space size="middle">
-          <Button onClick={()=>handleLookHomework(record)}>查看作业</Button>
-          <Button type="primary" onClick={showModal1}>
-            提交作业
+          <Button onClick={() => handleLookHomework(record)}>查看作业</Button>
+          {/* 只有当 grade 为 -1 时才显示提交按钮 */}
+          {record.grade === -1 && (
+            <Button type="primary" onClick={() => handleSelectHomework(record)}>
+              提交作业
+            </Button>
+          )}
+          {record.grade >= 0 && (
+          <Button type="primary" onClick={() => handleShowResult(record)}>
+            查看结果
           </Button>
+        )}
+        <Modal
+  title="互评结果"
+  visible={isResultModalOpen}
+  onOk={handleResultModalOk}
+  onCancel={() => setIsResultModalOpen(false)}
+>
+  {selectedResult && (
+    <div>
+      <p>互评成绩：{selectedResult.grade}</p>
+      <p>互评理由：你做的很好！</p>
+      <Input.TextArea
+        rows={4}
+        value={userFeedback}
+        onChange={(e) => setUserFeedback(e.target.value)}
+        placeholder="请输入您对该评价的看法"
+      />
+      <Button type="primary" onClick={handleAppeal} style={{ marginTop: '10px' }}>
+        申诉
+      </Button>
+    </div>
+  )}
+</Modal>
           <Modal
             title="提交作业"
             open={open}
@@ -183,29 +293,16 @@ const Mission: React.FC = () => {
     },
   ];
 
-  //待批改作业表格数据和列名定义
-  const dataSource1 = [
-    {
-      key: '1',
-      course_name: '科技论文写作',
-      homework_name: '作业1',
-    },
-    {
-      key: '2',
-      course_name: '计算机网络',
-      homework_name: '作业2',
-    },
-  ];
   const columns1 = [
     {
       title: '课程名称',
-      dataIndex: 'course_name',
+      dataIndex: '7',
       key: 'course_name',
     },
     {
       title: '作业名称',
-      dataIndex: 'homework_name',
-      key: 'homework_name',
+      dataIndex: '1',
+      key: 'title',
     },
     {
       title: '',
@@ -218,19 +315,19 @@ const Mission: React.FC = () => {
           </Button>
           {/* 批改作业对话框 */}
           <Modal
-            title="批改作业"
-            open={isModalOpen2}
-            onOk={handleOk2}
-            confirmLoading={confirmLoading}
-            onCancel={handleCancel2}
-            destroyOnClose={true}
-          >
-            <p>请提交批改内容：</p>
-            <TextArea defaultValue="" rows={4} />
-            <Upload>
-              <Button icon={<UploadOutlined />}>上传附件</Button>
-            </Upload>
-          </Modal>
+  title="批改作业"
+  visible={isModalOpen2}
+  onOk={confirmGrading}
+  onCancel={() => setIsModalOpen2(false)}
+  destroyOnClose={true}
+>
+  <div>
+    {/* 更新下载链接，指向 Flask 提供的下载路由 */}
+    <p><a href="http://127.0.0.1:5000/download/homework1.txt" download>下载作业文件</a></p>
+    <p>成绩：<Input value={gradingInfo.grade} onChange={(e) => handleGradingChange(e, 'grade')} /></p>
+    <p>理由：<Input.TextArea value={gradingInfo.reason} onChange={(e) => handleGradingChange(e, 'reason')} rows={4} /></p>
+  </div>
+</Modal>
         </Space>
       ),
     },
@@ -249,7 +346,11 @@ const Mission: React.FC = () => {
         destroyOnClose={true}
       >
         <p>{modalText}</p>
-        <TextArea defaultValue="" rows={4} />
+        <TextArea
+  value={homeworkText}
+  onChange={(e) => setHomeworkText(e.target.value)}
+  rows={4}
+/>
         <Upload
           action="http://127.0.0.1:5000/api/upload"
           onChange={handleUploadChange}

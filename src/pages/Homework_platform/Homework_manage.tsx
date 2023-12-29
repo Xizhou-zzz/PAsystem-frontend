@@ -39,6 +39,7 @@ const HomeworkManage: React.FC = () => {
       axios.get(`http://127.0.0.1:5000/api/homework_manage/teacher_get/${user_name}`)
       .then(res => {
         setHomeworkData(res.data); // 更新homeworkData状态
+        console.log(res.data)
       })
       .catch(error => {
         console.error('Error fetching homework data:', error);
@@ -46,20 +47,27 @@ const HomeworkManage: React.FC = () => {
     }
   }, [currentUserInfo]); // 添加 currentUserInfo 作为依赖项
 
-  const [courseOptions, setCourseOptions] = useState([]);  // 新增一个状态来存储去重后的课程名称
-  
-  useEffect(() => {
-    if (homeworkData.length > 0) {
-      // 提取课程名称
-      const courseNames = homeworkData.map(item => item.course_name);
-      // 去重
-      const uniqueCourseNames = Array.from(new Set(courseNames));
-      // 创建 Select options
-      const options = uniqueCourseNames.map(name => ({ value: name, label: name }));
-      setCourseOptions(options);
-    }
-  }, [homeworkData]); // 当 homeworkData 更新时重新计算
+  const [courseOptions, setCourseOptions] = useState([]);
 
+useEffect(() => {
+  const fetchCourses = async () => {
+    if (currentUserInfo) {
+      const user_name = currentUserInfo.name; 
+      try {
+        const response = await axios.get(`http://127.0.0.1:5000/api/homework_manage/teacher_get/${user_name}`);
+        // 创建一个新的Set，以确保每个课程名称只被添加一次
+        const courseNames = new Set(response.data.map(course => course.course_name));
+        // 基于Set创建Select组件的options
+        const courses = Array.from(courseNames).map(name => ({ value: name, label: name }));
+        setCourseOptions(courses);
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
+    }
+  };
+
+  fetchCourses();
+}, [currentUserInfo]);
 
   
   const [searchText, setSearchText] = useState('');
@@ -249,10 +257,18 @@ const HomeworkManage: React.FC = () => {
     setSelectedValue1(value);
   };
 
-  //第二个对话框（发布批改任务对话框）中选择框选择内容改变时的处理函数
-  const handleSelectChange2 = value => {
+  const [homeworkTitleOptions, setHomeworkTitleOptions] = useState([]);
+
+  const handleSelectChange2 = async (value) => {
     setSelectedValue2(value);
-  };
+    try {
+      const response = await axios.get(`http://127.0.0.1:5000/api/homework_manage/get_homework_by_course/${value}`);
+      const homeworkTitles = response.data.map(item => ({ value: item.title, label: item.title }));
+      setHomeworkTitleOptions(homeworkTitles);
+    } catch (error) {
+      console.error('Error fetching homework titles:', error);
+    }
+  };  
   const handleSelectChange3 = value => {
     setSelectedValue3(value);
   };
@@ -413,28 +429,21 @@ const HomeworkManage: React.FC = () => {
           <div style={{ marginTop: 16 }}>
             所属课程：
             <Select 
-              style={{ width: 300 }}
-              value={selectedValue2}
-              onChange={handleSelectChange2}
-              //此处的课程名称应从后端获取
-              options = {[
-                {value:'软件项目管理与产品运维',label:'软件项目管理与产品运维'},
-                {value:'科技论文协作',label:'科技论文协作'},
-              ]}
-            />
+  style={{ width: 300 }}
+  value={selectedValue2}
+  onChange={handleSelectChange2}
+  options={courseOptions}
+/>
           </div>
           <div style={{ marginTop: 16 }}>
             作业标题：
             <Select 
-              style={{ width: 300 }}
-              value={selectedValue3}
-              onChange={handleSelectChange3}
-              //此处的课程名称应从后端获取
-              options = {[
-                {value:'项目管理作业1',label:'项目管理作业1'},
-                {value:'科技论文协作作业1',label:'科技论文协作作业1'},
-              ]}
-            />
+  style={{ width: 300 }}
+  value={selectedValue3}
+  onChange={handleSelectChange3}
+  options={homeworkTitleOptions} // 使用从后端获取的作业标题选项
+/>
+
           </div>
           <div style={{ marginTop: 16 }}>
             截止日期：

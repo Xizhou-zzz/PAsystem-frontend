@@ -37,15 +37,15 @@ const Student_grade: React.FC = () => {
   }, [currentUserInfo]); // 添加 currentUserInfo 作为依赖项
 
   const data = [
-    { year: '作业1', value: 90 },
-    { year: '作业2', value: 74 },
-    { year: '作业3', value: 63.5 },
-    { year: '作业4', value: 75 },
-    { year: '作业5', value: 64.9 },
-    { year: '作业6', value: 36 },
-    { year: '作业7', value: 67 },
-    { year: '作业8', value: 89 },
-    { year: '作业9', value: 43 },
+    { year: 'student1', value: 90 },
+    { year: 'student2', value: 74 },
+    { year: 'student3', value: 63.5 },
+    { year: 'student4', value: 75 },
+    { year: 'student5', value: 64.9 },
+    { year: 'student6', value: 36 },
+    { year: 'student7', value: 67 },
+    { year: 'student8', value: 89 },
+    { year: 'student9', value: 43 },
   ];
   const config = {
     data,
@@ -241,7 +241,7 @@ const Student_grade: React.FC = () => {
 
         </Modal>
         <div>
-          <p style={{ fontSize: '20px' }}>作业均分</p>
+          <p style={{ fontSize: '20px' }}>作业成绩</p>
           <Line {...config} />
         </div>
     </PageContainer>

@@ -115,7 +115,7 @@ const Permission_manage: React.FC = () => {
                         value={selectedRole}
                     >
                         <Option value="student">学生</Option>
-                        <Option value="assistant">助教</Option>
+                        <Option value="assistant">黑名单用户</Option>
                         <Option value="teacher">教师</Option>
                         <Option value="admin">管理员</Option>
                     </Select>
